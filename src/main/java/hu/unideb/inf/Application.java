@@ -1,9 +1,6 @@
 package hu.unideb.inf;
 
 import java.sql.SQLException;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import hu.unideb.inf.model.*;
 import org.h2.tools.Server;
@@ -13,15 +10,12 @@ public class Application {
     public static void main(String[] args) throws SQLException {
         startDatabase();
 
-        try (AnimalDAO aDao = new JpaAnimalDAO();){
-                Animal a = new Animal();
-                a.setName("Pepa");
-                a.setAge(5);
-                a.setGender(Animal.GenderType.FEMALE);
-                //aDao.saveAnimal(a);
+        try (FlightsDAO aDao = new JpaFlightsDAO();){
+                Flights a = new Flights("test1","Debrecen", "Berlin", "Boeing 747-400", "2022.04.01 12:00" );
 
-                Zoo zoo = new Zoo();
-                zoo.setName("Debrecen Zoo");
+
+                Airport bud = new Airport();
+                zoo.setName("Debrecen Airport");
                 zoo.getAnimals().add(a);
                 aDao.saveZoo(zoo);
 

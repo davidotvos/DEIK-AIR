@@ -5,14 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Zoo {
+public class Airport {
     @Id
     @GeneratedValue
     private int id;
     private String name;
+    private String city;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "zoo_id")
-    private List<Animal> animals = new ArrayList<>();
+    @JoinColumn(name = "Airport_id")
+    private List<Flights> flights = new ArrayList<>();
 
 
     public int getId() {
@@ -31,11 +32,11 @@ public class Zoo {
         this.name = name;
     }
 
-    public List<Animal> getAnimals() {
-        return animals;
+    public List<Flights> getFlights() {
+        return flights;
     }
 
-    public void setAnimals(List<Animal> animals) {
-        this.animals = animals;
+    public void setAnimals(List<Flights> animals) {
+        this.flights = animals;
     }
 }
