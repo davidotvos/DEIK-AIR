@@ -15,10 +15,13 @@ public class Application{
             deb = new Airport();
             deb.setCity("Debrecen");
             deb.setName("DEB");
+
             fDao.saveAirport(deb);
             Flights f = new Flights("deb-ber1", "Debrecen", "Berlin", "Boeing 747-400", "2022.04.01 12:00");
+            deb.flightToList(f);
             fDao.saveFlight(f);
             Flights f2 = new Flights("deb-rome1", "Debrecen", "Róma", "Boeing 747-400", "2022.04.01 14:00");
+            deb.flightToList(f2);
             fDao.saveFlight(f2);
 
 

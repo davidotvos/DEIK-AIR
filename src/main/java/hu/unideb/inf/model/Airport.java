@@ -15,6 +15,11 @@ public class Airport {
     @JoinColumn(name = "Airport_id")
     private List<Flights> flights = new ArrayList<>();
 
+    public void flightToList(Flights f)
+    {
+        this.flights.add(f);
+    }
+
     public String getCity() {return city;}
 
     public int getId() {
@@ -34,6 +39,7 @@ public class Airport {
     public void setName(String name) {
         this.name = name;
     }
+
 
 
 
