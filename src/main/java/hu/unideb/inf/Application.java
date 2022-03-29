@@ -8,7 +8,7 @@ import org.h2.tools.Server;
 public class Application{
 
 
-
+// comment
     public static void start(String[] args) throws SQLException {
         startDatabase();
 
