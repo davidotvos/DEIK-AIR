@@ -1,4 +1,4 @@
-package hu.unideb.inf.model;
+package hu.unideb.inf;
 
 import hu.unideb.inf.Application;
 
@@ -8,7 +8,9 @@ public class Main {
 
     public Main() {
     }
+
     public static void main(String[] args) throws SQLException { Application.start(args); }
-    }
+
+}
 
 

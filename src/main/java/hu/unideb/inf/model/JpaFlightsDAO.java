@@ -8,35 +8,35 @@ import java.util.List;
 
 public class JpaFlightsDAO implements FlightsDAO {
 
-    final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("br.com.fredericci.pu");
+    final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("br.com.flights");
     final EntityManager entityManager = entityManagerFactory.createEntityManager();
 
     @Override
-    public void saveFlight(Flights a) {
+    public void saveFlight(Flights f) {
         entityManager.getTransaction().begin();
-        entityManager.persist(a);
+        entityManager.persist(f);
         entityManager.getTransaction().commit();
     }
 
     @Override
-    public void deleteFlight(Flights a) {
+    public void deleteFlight(Flights f) {
         entityManager.getTransaction().begin();
-        entityManager.remove(a);
+        entityManager.remove(f);
         entityManager.getTransaction().commit();
     }
 
     @Override
-    public void updateFlight(Flights a) {
+    public void updateFlight(Flights f) {
         /*entityManager.getTransaction().begin();
         entityManager.persist(a);
         entityManager.getTransaction().commit();*/
-        saveFlight(a);
+        saveFlight(f);
     }
 
     @Override
     public List<Flights> getFlights() {
         TypedQuery<Flights> query = entityManager.createQuery(
-                "SELECT a FROM Flights a", Flights.class);
+                "SELECT f FROM Flights f", Flights.class);
         List<Flights> flights = query.getResultList();
         return flights;
     }
@@ -47,6 +47,8 @@ public class JpaFlightsDAO implements FlightsDAO {
         entityManager.persist(airport);
         entityManager.getTransaction().commit();
     }
+
+
 
     @Override
     public void close() throws Exception {

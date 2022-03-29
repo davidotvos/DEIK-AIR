@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Airport {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private int id;
     private String name;
     private String city;
@@ -35,8 +35,6 @@ public class Airport {
         this.name = name;
     }
 
-    public List<Flights> getFlights() {
-        return flights;
-    }
+
 
 }

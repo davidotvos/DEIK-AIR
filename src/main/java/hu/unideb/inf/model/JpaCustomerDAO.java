@@ -8,34 +8,34 @@ import java.util.List;
 
 public class JpaCustomerDAO implements CustomerDAO{
 
-    final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("br.com.fredericci.pu");
+    final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("br.com.flights");
     final EntityManager entityManager = entityManagerFactory.createEntityManager();
 
     @Override
-    public void saveCustomer(Customer a)
+    public void saveCustomer(Customer c)
     {
         entityManager.getTransaction().begin();
-        entityManager.persist(a);
+        entityManager.persist(c);
         entityManager.getTransaction().commit();
     }
 
     @Override
-    public void deleteCustomer(Customer a)
+    public void deleteCustomer(Customer c)
     {
         entityManager.getTransaction().begin();
-        entityManager.remove(a);
+        entityManager.remove(c);
         entityManager.getTransaction().commit();
     }
 
     @Override
-    public void updateCustomer(Customer a) {
-        saveCustomer(a);
+    public void updateCustomer(Customer c) {
+        saveCustomer(c);
     }
 
     @Override
     public List<Customer> getCustomers() {
         TypedQuery<Customer> query = entityManager.createQuery(
-                "SELECT a FROM Customer a", Customer.class);
+                "SELECT c FROM Customer c", Customer.class);
         List<Customer> customers = query.getResultList();
         return customers;
     }

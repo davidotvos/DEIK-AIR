@@ -7,41 +7,32 @@ import org.h2.tools.Server;
 
 public class Application{
 
-
-
     public static void start(String[] args) throws SQLException {
         startDatabase();
 
-        try (FlightsDAO aDao = new JpaFlightsDAO();){
-                Flights a = new Flights("test1","Debrecen", "Berlin", "Boeing 747-400", "2022.04.01 12:00" );
-                aDao.saveFlight(a);
-                Airport bud = new Airport();
-                aDao.saveAirport(bud);
+        try (FlightsDAO fDao = new JpaFlightsDAO();) {
+            Airport deb;
+            deb = new Airport();
+            deb.setCity("Debrecen");
+            deb.setName("DEB");
+            fDao.saveAirport(deb);
+            Flights f = new Flights("deb-ber1", "Debrecen", "Berlin", "Boeing 747-400", "2022.04.01 12:00");
+            fDao.saveFlight(f);
+            Flights f2 = new Flights("deb-rome1", "Debrecen", "Róma", "Boeing 747-400", "2022.04.01 14:00");
+            fDao.saveFlight(f2);
+
 
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        // Ex 1
-        /*Customer customer = new Customer();
-        customer.setFirstName("Dennys");
-        customer.setLastName("Fredericci");
 
-        Animal elephant = new Animal();
-        elephant.setName("Nelly");
-        elephant.setAge(10);
-        elephant.setGender(Animal.GenderType.FEMALE);
-
-        entityManager.getTransaction().begin();
-        entityManager.persist(customer);
-        entityManager.persist(elephant);
-        entityManager.getTransaction().commit();
 
         System.out.println("Open your browser and navigate to http://localhost:8082/");
         System.out.println("JDBC URL: jdbc:h2:mem:my_database");
         System.out.println("User Name: sa");
-        System.out.println("Password: ");*/
+        System.out.println("Password: -");
 
     }
 

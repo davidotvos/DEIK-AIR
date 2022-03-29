@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface FlightsDAO extends AutoCloseable{
 
-    public void saveFlight(Flights a);
-    public void deleteFlight(Flights a);
-    public void updateFlight(Flights a);
+    public void saveFlight(Flights f);
+    public void deleteFlight(Flights f);
+    public void updateFlight(Flights f);
     public List<Flights> getFlights();
     public void saveAirport(Airport airport);
 
