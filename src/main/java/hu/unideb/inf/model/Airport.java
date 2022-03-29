@@ -19,7 +19,10 @@ public class Airport {
     {
         this.flights.add(f);
     }
-
+    public List<Flights> getFlightList()
+    {
+        return flights;
+    }
     public String getCity() {return city;}
 
     public int getId() {

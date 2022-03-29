@@ -10,6 +10,7 @@ public class Flights implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String name;
     private String start_city;
     private String destination_city;
