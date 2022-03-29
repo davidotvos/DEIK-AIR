@@ -15,6 +15,7 @@ public class Flights implements Serializable {
     private String destination_city;
     private String plane_type;
     private String start_time;
+    private Airport start_airport;
 
     public Flights(String name, String start_city, String destination_city, String plane_type, String start_time) {
 

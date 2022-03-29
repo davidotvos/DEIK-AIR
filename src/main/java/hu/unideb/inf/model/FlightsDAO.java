@@ -8,7 +8,7 @@ public interface FlightsDAO extends AutoCloseable{
     public void deleteFlight(Flights a);
     public void updateFlight(Flights a);
     public List<Flights> getFlights();
-    public void saveZoo(Zoo zoo);
+    public void saveAirport(Airport airport);
 
 
 

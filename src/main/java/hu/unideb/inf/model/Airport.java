@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Airport {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private String city;
@@ -15,18 +15,21 @@ public class Airport {
     @JoinColumn(name = "Airport_id")
     private List<Flights> flights = new ArrayList<>();
 
+    public String getCity() {return city;}
 
     public int getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
+    public void setCity(String city) {this.city = city;}
 
     public void setName(String name) {
         this.name = name;
@@ -36,7 +39,4 @@ public class Airport {
         return flights;
     }
 
-    public void setAnimals(List<Flights> animals) {
-        this.flights = animals;
-    }
 }

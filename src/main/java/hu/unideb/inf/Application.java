@@ -5,19 +5,19 @@ import java.sql.SQLException;
 import hu.unideb.inf.model.*;
 import org.h2.tools.Server;
 
-public class Application {
+public class Application{
 
-    public static void main(String[] args) throws SQLException {
+
+
+    public static void start(String[] args) throws SQLException {
         startDatabase();
 
         try (FlightsDAO aDao = new JpaFlightsDAO();){
                 Flights a = new Flights("test1","Debrecen", "Berlin", "Boeing 747-400", "2022.04.01 12:00" );
-
-
+                aDao.saveFlight(a);
                 Airport bud = new Airport();
-                zoo.setName("Debrecen Airport");
-                zoo.getAnimals().add(a);
-                aDao.saveZoo(zoo);
+                aDao.saveAirport(bud);
+
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -30,7 +30,6 @@ public class JpaFlightsDAO implements FlightsDAO {
         /*entityManager.getTransaction().begin();
         entityManager.persist(a);
         entityManager.getTransaction().commit();*/
-
         saveFlight(a);
     }
 
@@ -43,14 +42,17 @@ public class JpaFlightsDAO implements FlightsDAO {
     }
 
     @Override
+    public void saveAirport(Airport airport) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(airport);
+        entityManager.getTransaction().commit();
+    }
+
+    @Override
     public void close() throws Exception {
         entityManager.close();
         entityManagerFactory.close();
     }
 
-    public void saveZoo(Zoo zoo){
-        entityManager.getTransaction().begin();
-        entityManager.persist(zoo);
-        entityManager.getTransaction().commit();
-    }
+
 }
