@@ -4,32 +4,16 @@ import java.sql.SQLException;
 
 import hu.unideb.inf.controller.FXMLCustomerLogInSceneConroller;
 import hu.unideb.inf.model.*;
+import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.h2.tools.Server;
 
-public class Application{
+public class MainApp extends Application{
 
-    public static void start(String args[]) throws SQLException {
-
-     /*   FXMLLoader CustomerLogInloader = new FXMLLoader(Application.class.getResource("/fxml/FXMLCustomerLogInScene.fxml"));
-        Scene scene2 = new Scene((Parent)loader.load());
-        ((FXMLCustomerLogInSceneConroller)loader.getController()).setModel(new Customer());
-        stage.setTitle("Students Register");
-        stage.setScene(scene2);
-        stage.show();
-
-        FXMLLoader customerRegisterloader = new FXMLLoader(Application.class.getResource("/fxml/FXMLCustomerRegister.fxml"));
-        Scene scene = new Scene((Parent)loader.load());
-        ((FXMLStudentsSceneController)loader.getController()).setModel(new Customer());
-        stage.setTitle("Students Register");
-        stage.setScene(scene);
-        //stage.show();
-     */
-
-
+    public static void start(String args[]) throws SQLException{
         startDatabase();
 
         try (FlightsDAO fDao = new JpaFlightsDAO();) {
@@ -125,11 +109,27 @@ public class Application{
         System.out.println("JDBC URL: jdbc:h2:mem:my_database");
         System.out.println("User Name: sa");
         System.out.println("Password: -");
-
     }
-
 
     private static void startDatabase() throws SQLException {
         new Server().runTool("-tcp", "-web", "-ifNotExists");
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        FXMLLoader customerLogInloader = new FXMLLoader(MainApp.class.getResource("/fxml/FXMLCustomerLogInScene.fxml"));
+        Scene scene = new Scene((Parent)customerLogInloader.load());
+       // ((FXMLCustomerLogInSceneConroller)customerLogInloader.getController()).setModel(new Customer());
+        stage.setTitle("Log In");
+        stage.setScene(scene);
+        stage.show();
+    /*
+        FXMLLoader customerRegisterloader = new FXMLLoader(Application.class.getResource("/fxml/FXMLCustomerRegister.fxml"));
+        Scene scene = new Scene((Parent)loader.load());
+        ((FXMLStudentsSceneController)loader.getController()).setModel(new Customer());
+        stage.setTitle("Students Register");
+        stage.setScene(scene);
+        //stage.show();
+     */
     }
 }
