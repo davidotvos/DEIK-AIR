@@ -43,7 +43,6 @@ public class Application{
             Airport.addAirportToSet(bar);
             fDao.saveAirport(bar);
 
-            //
             Airport ams;
             ams = new Airport();
             ams.setCity("Amsterdam");
@@ -96,12 +95,9 @@ public class Application{
             fDao.saveFlight(ams_vie1);
 
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
 
         System.out.println("Open your browser and navigate to http://localhost:8082/");
         System.out.println("JDBC URL: jdbc:h2:mem:my_database");
