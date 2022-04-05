@@ -1,6 +1,7 @@
 package hu.unideb.inf;
 
 import java.sql.SQLException;
+import java.util.Arrays;
 
 import hu.unideb.inf.controller.FXMLCustomerLogInSceneConroller;
 import hu.unideb.inf.model.*;
@@ -100,15 +101,19 @@ public class MainApp extends Application{
             lon.addFlightToList(ams_vie1);
             fDao.saveFlight(ams_vie1);
 
+            System.out.println(fDao.getFlights());
+            //System.out.println(fDao.getFlightsBy_start_city());
+            System.out.println(fDao.findWith_start_city("Debrecen"));
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        System.out.println(Airport.getAirport_city_string_list());
         System.out.println("Open your browser and navigate to http://localhost:8082/");
         System.out.println("JDBC URL: jdbc:h2:mem:my_database");
         System.out.println("User Name: sa");
         System.out.println("Password: -");
+
     }
 
     private static void startDatabase() throws SQLException {

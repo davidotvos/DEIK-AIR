@@ -41,11 +41,24 @@ public class JpaFlightsDAO implements FlightsDAO {
         return flights;
     }
 
+
+
     @Override
     public void saveAirport(Airport airport) {
         entityManager.getTransaction().begin();
         entityManager.persist(airport);
         entityManager.getTransaction().commit();
+    }
+
+
+
+    //vissza ad egy listát ami tartalmazza azokat a Flights példányokat amik start_city-je megeggyezik az átadott paraméterel(String)
+    public List<Flights> findWith_start_city(String start_city) {
+        return entityManager.createQuery(
+                        "SELECT f FROM Flights f WHERE f.start_city LIKE :Flights_start_city")
+                .setParameter("Flights_start_city", start_city)
+                .setMaxResults(10)
+                .getResultList();
     }
 
 

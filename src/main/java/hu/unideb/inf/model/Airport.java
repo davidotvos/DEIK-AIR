@@ -19,9 +19,26 @@ public class Airport {
     private List<Flights> flights = new ArrayList<>();
     public static Set<Airport> airports = new HashSet<>();
 
+    @Override
+    public String toString() {
+        return city;
+    }
+
+
+    //visszaad egy string listát ami az összes légitársaság city -jét tartalmazza
+    public static List<String> getAirport_city_string_list()
+    {
+        List<String> airport_city_string_list = new ArrayList<>();
+        for (Airport s : Airport.getAirportSet()) {
+            airport_city_string_list.add(s.toString());
+        }
+        return airport_city_string_list;
+    }
+
+
     public static void addAirportToSet(Airport a){ airports.add(a);}
 
-    public Set<Airport> getAirportSet()
+    public static Set<Airport> getAirportSet()
     {
         return airports;
     }

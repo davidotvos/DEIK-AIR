@@ -17,6 +17,9 @@ public class Flights implements Serializable {
     private String plane_type;
     private String start_time;
 
+    public Flights() {
+    }
+
     public Flights(String name, String start_city, String destination_city, String plane_type, String start_time) {
 
         this.name = name;
@@ -29,14 +32,14 @@ public class Flights implements Serializable {
 
     @Override
     public String toString() {
-        return "Flights{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", start_city='" + start_city + '\'' +
-                ", destination_city='" + destination_city + '\'' +
-                ", plane_type='" + plane_type + '\'' +
-                ", start_time='" + start_time + '\'' +
-                '}';
+        return "Flight: " +
+                "id= " + id +
+                ", name= " + name +
+                ", start_city= " + start_city +
+                ", destination_city= " + destination_city +
+                ", plane_type= " + plane_type +
+                ", start_time= " + start_time +
+                ";\n";
     }
 
     public String getStart_city() { return start_city; }
