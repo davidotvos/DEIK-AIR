@@ -1,9 +1,7 @@
 package hu.unideb.inf;
 
 import java.sql.SQLException;
-import java.util.Arrays;
 
-import hu.unideb.inf.controller.FXMLCustomerLogInSceneConroller;
 import hu.unideb.inf.model.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -110,7 +108,7 @@ public class MainApp extends Application{
         }
         System.out.println(Airport.getAirport_city_string_list());
         System.out.println("Open your browser and navigate to http://localhost:8082/");
-        System.out.println("JDBC URL: jdbc:h2:mem:my_database");
+        System.out.println("JDBC URL: jdbc:h2:file:my_database");
         System.out.println("User Name: sa");
         System.out.println("Password: -");
 
