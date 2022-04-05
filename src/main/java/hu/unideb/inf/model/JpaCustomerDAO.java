@@ -40,6 +40,7 @@ public class JpaCustomerDAO implements CustomerDAO{
         return customers;
     }
 
+
     @Override
     public void close() throws Exception {
 

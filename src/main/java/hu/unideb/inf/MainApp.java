@@ -18,6 +18,7 @@ public class MainApp extends Application{
         startDatabase();
 
         try (FlightsDAO fDao = new JpaFlightsDAO();) {
+
             Airport deb;
             deb = new Airport();
             deb.setCity("Debrecen");
@@ -33,6 +34,14 @@ public class MainApp extends Application{
             bud.setCountry("Hungary");
             Airport.addAirportToSet(bud);
             fDao.saveAirport(bud);
+
+            Airport vie;
+            vie = new Airport();
+            vie.setCity("Vienna");
+            vie.setName("VIE");
+            vie.setCountry("Austria");
+            Airport.addAirportToSet(vie);
+            fDao.saveAirport(vie);
 
             Airport lon;
             lon = new Airport();
