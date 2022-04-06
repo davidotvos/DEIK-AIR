@@ -1,5 +1,7 @@
 package hu.unideb.inf;
 import java.sql.SQLException;
+
+import hu.unideb.inf.controller.MainSceneController;
 import hu.unideb.inf.model.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,27 +10,27 @@ import javafx.stage.Stage;
 import org.h2.tools.Server;
 
 public class MainApp extends Application {
-
+    Stage window;
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader customerLogInloader = new FXMLLoader(MainApp.class.getResource("/FXML/MainScene.fxml"));
-        Scene scene = new Scene(customerLogInloader.load());
-        stage.setTitle("Log In");
+        window = stage;
+        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/FXML/MainScene.fxml"));
+        Scene scene = new Scene(loader.load());
+        stage.setTitle("Main Scene");
         stage.setScene(scene);
         stage.show();
     }
 
     public static void main(String[] args){
 
-        try {
-            startDB();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            startDB();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
         launch(args);
     }
-
 
     public static void startDB() throws SQLException{
         startDatabase();
