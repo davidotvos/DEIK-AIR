@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.RegisterSceneController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <Button fx:id="registerButton" layoutX="288.0" layoutY="307.0" mnemonicParsing="false" onAction="#register" text="Register" />
+            <PasswordField fx:id="pwConfirmLabel" layoutX="245.0" layoutY="239.0" />
+            <PasswordField fx:id="pwLabel" layoutX="245.0" layoutY="200.0" />
+            <CheckBox fx:id="tcLabel" layoutX="250.0" layoutY="275.0" mnemonicParsing="false" text="Terms and conditions" />
+            <Text layoutX="167.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó újra">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="192.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó" wrappingWidth="38.21368408203125">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <PasswordField fx:id="userLabel" layoutX="246.0" layoutY="163.0" />
+            <Text layoutX="138.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Felhasználónév">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="238.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DEIK Air" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial" size="43.0" />
+               </font>
+            </Text>
+            <Button fx:id="backButton" layoutX="288.0" layoutY="341.0" mnemonicParsing="false" onAction="#toLogin" prefHeight="26.0" prefWidth="59.0" text="Back" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

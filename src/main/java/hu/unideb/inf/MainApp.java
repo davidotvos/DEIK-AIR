@@ -1,24 +1,46 @@
 package hu.unideb.inf;
-
 import java.sql.SQLException;
-import java.util.Arrays;
 
-import hu.unideb.inf.controller.FXMLCustomerLogInSceneConroller;
+import hu.unideb.inf.controller.MainSceneController;
 import hu.unideb.inf.model.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.h2.tools.Server;
 
-public class MainApp extends Application{
+public class MainApp extends Application {
+    Stage window;
+    @Override
+    public void start(Stage stage) throws Exception {
+        window = stage;
+        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/FXML/MainScene.fxml"));
+        Scene scene = new Scene(loader.load());
+        stage.setTitle("Main Scene");
+        stage.setScene(scene);
+        stage.show();
+    }
 
-    public static void start(String args[]) throws SQLException{
+    public static void main(String[] args){
+
+//        try {
+//            startDB();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+
+        launch(args);
+    }
+
+    public static void startDB() throws SQLException{
         startDatabase();
 
+<<<<<<< HEAD
         try (FlightsDAO fDao = new JpaFlightsDAO();) {
 
+=======
+        try (FlightsDAO fDao = new JpaFlightsDAO()) {
+>>>>>>> 6c625957726419e3f501fb62c49af692a3d771d4
             Airport deb;
             deb = new Airport();
             deb.setCity("Debrecen");
@@ -119,31 +141,16 @@ public class MainApp extends Application{
         }
         System.out.println(Airport.getAirport_city_string_list());
         System.out.println("Open your browser and navigate to http://localhost:8082/");
-        System.out.println("JDBC URL: jdbc:h2:mem:my_database");
+        System.out.println("JDBC URL: jdbc:h2:file:my_database");
         System.out.println("User Name: sa");
         System.out.println("Password: -");
+
+
 
     }
 
     private static void startDatabase() throws SQLException {
         new Server().runTool("-tcp", "-web", "-ifNotExists");
     }
-
-    @Override
-    public void start(Stage stage) throws Exception {
-        FXMLLoader customerLogInloader = new FXMLLoader(MainApp.class.getResource("/fxml/FXMLCustomerLogInScene.fxml"));
-        Scene scene = new Scene((Parent)customerLogInloader.load());
-       // ((FXMLCustomerLogInSceneConroller)customerLogInloader.getController()).setModel(new Customer());
-        stage.setTitle("Log In");
-        stage.setScene(scene);
-        stage.show();
-    /*
-        FXMLLoader customerRegisterloader = new FXMLLoader(Application.class.getResource("/fxml/FXMLCustomerRegister.fxml"));
-        Scene scene = new Scene((Parent)loader.load());
-        ((FXMLStudentsSceneController)loader.getController()).setModel(new Customer());
-        stage.setTitle("Students Register");
-        stage.setScene(scene);
-        //stage.show();
-     */
-    }
 }
+
