@@ -51,9 +51,10 @@ public class RegisterSceneController {
         // 2. email foglalt
         //3. nem ugyanaz a két jelszó
         //4. nincs elfogadva tc
-        //
+
+
         //if(username.foglalt(userLabel.getText()))
-        //
+
 
         if(!tcLabel.isSelected())
         {
