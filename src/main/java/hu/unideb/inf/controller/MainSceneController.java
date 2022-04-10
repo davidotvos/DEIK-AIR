@@ -5,8 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import javax.swing.text.html.ImageView;
 import java.io.IOException;
 
 public class MainSceneController {
@@ -23,6 +25,7 @@ public class MainSceneController {
         Parent newRoot = FXMLLoader.load(getClass().getResource("/FXML/LoginScene.fxml"));
         Stage currentStage = (Stage) loginButton.getScene().getWindow();
         currentStage.getScene().setRoot(newRoot);
+
     }
 
     @FXML

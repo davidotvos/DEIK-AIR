@@ -6,6 +6,7 @@ import hu.unideb.inf.model.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.h2.tools.Server;
 
@@ -16,18 +17,20 @@ public class MainApp extends Application {
         window = stage;
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/FXML/MainScene.fxml"));
         Scene scene = new Scene(loader.load());
-        stage.setTitle("Main Scene");
+        stage.setTitle("DEIKAir");
         stage.setScene(scene);
+        Image indexImage = new Image("file:src/main/java/hu/unideb/inf/icon.png");
+        stage.getIcons().add(indexImage);
         stage.show();
     }
 
     public static void main(String[] args){
 
-//        try {
-//            startDB();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            startDB();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         launch(args);
     }

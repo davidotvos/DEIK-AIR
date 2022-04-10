@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="JPATest" />
         <module name="DEIK-AIR" />
+        <module name="Projekt" />
       </profile>
     </annotationProcessing>
   </component>

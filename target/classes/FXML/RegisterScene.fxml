@@ -34,7 +34,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -44,11 +46,19 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button fx:id="registerButton" layoutX="288.0" layoutY="307.0" mnemonicParsing="false" onAction="#register" text="Register" />
-            <PasswordField fx:id="pwConfirmLabel" layoutX="245.0" layoutY="239.0" />
+            <TextField fx:id="userLabel" layoutX="243.0" layoutY="122.0" />
+            <TextField fx:id="registerEmailField" layoutX="243.0" layoutY="162.0" />
             <PasswordField fx:id="pwLabel" layoutX="245.0" layoutY="200.0" />
+            <PasswordField fx:id="pwConfirmLabel" layoutX="245.0" layoutY="239.0" />
             <CheckBox fx:id="tcLabel" layoutX="250.0" layoutY="275.0" mnemonicParsing="false" text="Terms and conditions" />
-            <Text layoutX="167.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó újra">
+            <Button fx:id="registerButton" layoutX="288.0" layoutY="307.0" mnemonicParsing="false" onAction="#register" text="Register" />
+            <Button fx:id="backButton" layoutX="288.0" layoutY="341.0" mnemonicParsing="false" onAction="#toLogin" prefHeight="26.0" prefWidth="59.0" text="Back" />
+            <Text layoutX="238.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DEIK Air" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial" size="43.0" />
+               </font>
+            </Text>
+            <Text layoutX="137.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Felhasználónév">
                <font>
                   <Font size="14.0" />
                </font>
@@ -58,18 +68,13 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <PasswordField fx:id="userLabel" layoutX="246.0" layoutY="163.0" />
-            <Text layoutX="138.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Felhasználónév">
+            <Text layoutX="167.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó újra">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text layoutX="238.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DEIK Air" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial" size="43.0" />
-               </font>
-            </Text>
-            <Button fx:id="backButton" layoutX="288.0" layoutY="341.0" mnemonicParsing="false" onAction="#toLogin" prefHeight="26.0" prefWidth="59.0" text="Back" />
+            <Text layoutX="173.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail cím" />
+            <Label fx:id="registerErrorLabel" layoutX="424.0" layoutY="179.0" />
       </children>
     </AnchorPane>
   </children>
