@@ -1,5 +1,6 @@
 package hu.unideb.inf;
 import java.sql.SQLException;
+import java.util.List;
 
 import hu.unideb.inf.controller.MainSceneController;
 import hu.unideb.inf.model.*;
@@ -38,6 +39,52 @@ public class MainApp extends Application {
     public static void startDB() throws SQLException{
         startDatabase();
 
+        //AddCustomer();
+        //DeleteCustomer("admin");
+
+        System.out.println("Open your browser and navigate to http://localhost:8082/");
+        System.out.println("JDBC URL: jdbc:h2:file:my_database");
+        System.out.println("User Name: sa");
+        System.out.println("Password: -");
+
+
+
+    }
+
+    private static void AddCustomer(){
+        try( CustomerDAO cDao = new JpaCustomerDAO()){
+            Customer admin;
+            admin = new Customer();
+            admin.setName("admin");
+            admin.setEmail("admin@admin.com");
+            admin.setPassword("admin");
+            cDao.saveCustomer(admin);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void DeleteCustomer(String name){
+        try( CustomerDAO cDao = new JpaCustomerDAO()){
+            List<Customer> templi = cDao.getCustomers();
+            Customer temp = new Customer();
+            for(Customer c : templi){
+                System.out.println(c.getName());
+                if(c.getName() == name){
+                    temp = c;
+
+                }
+                cDao.deleteCustomer(temp);
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private static void AddFlights(){
         try (FlightsDAO fDao = new JpaFlightsDAO()) {
             Airport deb;
             deb = new Airport();
@@ -129,14 +176,6 @@ public class MainApp extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(Airport.getAirport_city_string_list());
-        System.out.println("Open your browser and navigate to http://localhost:8082/");
-        System.out.println("JDBC URL: jdbc:h2:file:my_database");
-        System.out.println("User Name: sa");
-        System.out.println("Password: -");
-
-
-
     }
 
     private static void startDatabase() throws SQLException {

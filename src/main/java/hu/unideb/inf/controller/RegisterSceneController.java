@@ -34,6 +34,7 @@ public class RegisterSceneController {
     void register(ActionEvent event) {
         CredentialChecker();
 
+
     }
 
     @FXML
