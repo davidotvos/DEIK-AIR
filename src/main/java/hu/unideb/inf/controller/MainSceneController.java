@@ -25,7 +25,6 @@ public class MainSceneController {
         Parent newRoot = FXMLLoader.load(getClass().getResource("/FXML/LoginScene.fxml"));
         Stage currentStage = (Stage) loginButton.getScene().getWindow();
         currentStage.getScene().setRoot(newRoot);
-
     }
 
     @FXML

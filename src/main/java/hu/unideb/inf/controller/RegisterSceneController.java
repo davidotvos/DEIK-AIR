@@ -44,14 +44,11 @@ public class RegisterSceneController {
         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
         if(CredentialChecker(warningAlert)){
             RegisterUser();
-            System.out.println("Sikeres regisztrálás");
             successAlert.setTitle("Regisztráció");
             successAlert.setContentText("Sikeresen regisztráltál!");
             successAlert.showAndWait();
             toLogin(event);
         }
-
-
     }
 
     @FXML
@@ -127,30 +124,12 @@ public class RegisterSceneController {
             Stimmel = false;
         }
 
-
         if(!Stimmel) {
             alert.setContentText(alertText);
             alert.showAndWait();
             return false;
         }
         return true;
-
-
-
-        // lehetséges hibák:
-        // 1. username fogalt
-        // 2. email foglalt
-        //3. nem ugyanaz a két jelszó
-        //4. nincs elfogadva tc
-
-
-        //if(username.foglalt(userLabel.getText()))
-
-
-//        if(!tcLabel.isSelected())
-//        {
-//            registerErrorLabel.setText("Nem fogadtad el a TC-t!");
-//        }
     }
 
     // True ha az összes mező ki van töltve, más esetben False
