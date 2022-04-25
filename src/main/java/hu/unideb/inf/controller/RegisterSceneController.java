@@ -80,8 +80,18 @@ public class RegisterSceneController {
             Stimmel = false;
         }
 
-        //
-        
+        // Jelszó legalább 3 karakter hosszú
+        if(!checkIfPasswordCorrect()){
+            alertText += "Jelszó hossz minimum 3 karakter!\n";
+            Stimmel = false;
+        }
+
+        // Ellenőrzi hogy a két jelszó eggyezik-e
+        if(!checkIfPasswordsMatch()){
+            alertText += "A jelszavak nem eggyeznek!\n";
+            Stimmel = false;
+        }
+
 
 
 
@@ -157,5 +167,11 @@ public class RegisterSceneController {
         return true;
     }
 
+    private boolean checkIfPasswordsMatch(){
+        return pwLabel.getText().equals(pwConfirmLabel.getText());
+    }
 
+    private boolean checkIfPasswordCorrect(){
+        return pwLabel.getText().length() >= 3;
+    }
 }
