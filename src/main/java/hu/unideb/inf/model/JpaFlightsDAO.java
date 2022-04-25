@@ -61,6 +61,13 @@ public class JpaFlightsDAO implements FlightsDAO {
                 .getResultList();
     }
 
+    public List<Flights> findWith_destination_city(String destination_city) {
+        return entityManager.createQuery(
+                        "SELECT f FROM Flights f WHERE f.destination_city LIKE :Flights_destination_city")
+                .setParameter("Flights_destination_city", destination_city)
+                .setMaxResults(10)
+                .getResultList();
+    }
 
 
     @Override

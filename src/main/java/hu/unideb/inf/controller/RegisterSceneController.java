@@ -11,23 +11,24 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class RegisterSceneController {
-    @FXML
-    private Button backButton;
 
     @FXML
-    private PasswordField pwConfirmLabel;
+    private PasswordField userLabel;
 
     @FXML
     private PasswordField pwLabel;
 
     @FXML
-    private Button registerButton;
+    private PasswordField pwConfirmLabel;
 
     @FXML
     private CheckBox tcLabel;
 
     @FXML
-    private PasswordField userLabel;
+    private Button backButton;
+
+    @FXML
+    private Button registerButton;
 
     @FXML
     void register(ActionEvent event) {

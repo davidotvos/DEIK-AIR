@@ -35,12 +35,9 @@ public class MainApp extends Application {
     public static void startDB() throws SQLException{
         startDatabase();
 
-<<<<<<< HEAD
-        try (FlightsDAO fDao = new JpaFlightsDAO();) {
 
-=======
         try (FlightsDAO fDao = new JpaFlightsDAO()) {
->>>>>>> 6c625957726419e3f501fb62c49af692a3d771d4
+
             Airport deb;
             deb = new Airport();
             deb.setCity("Debrecen");
