@@ -39,9 +39,17 @@ public class RegisterSceneController {
     private TextField userLabel;
 
     @FXML
-    void register(ActionEvent event) {
-
-        CredentialChecker();
+    void register(ActionEvent event) throws IOException {
+        Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+        if(CredentialChecker(warningAlert)){
+            RegisterUser();
+            System.out.println("Sikeres regisztrálás");
+            successAlert.setTitle("Regisztráció");
+            successAlert.setContentText("Sikeresen regisztráltál!");
+            successAlert.showAndWait();
+            toLogin(event);
+        }
 
 
     }
@@ -53,10 +61,25 @@ public class RegisterSceneController {
         currentStage.getScene().setRoot(newRoot);
     }
 
+    private void RegisterUser(){
+        String name = userLabel.getText();
+        String email = emailLabel.getText();
+        String pw = pwLabel.getText();
+
+        try( CustomerDAO cDao = new JpaCustomerDAO()){
+            Customer CurrentCustomer = new Customer();
+            CurrentCustomer.setName(name);
+            CurrentCustomer.setEmail(email);
+            CurrentCustomer.setPassword(pw);
+            cDao.saveCustomer(CurrentCustomer);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     //megnézzük , hogy mindegyik adat helyes
-    private void CredentialChecker()
+    private boolean CredentialChecker(Alert alert)
     {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Hiba");
         alert.setHeaderText("Az alábbi hibába ütköztél:");
         String alertText = "";
@@ -80,6 +103,12 @@ public class RegisterSceneController {
             Stimmel = false;
         }
 
+        // Email cím helyes-e
+        if(!emailLabel.getText().contains("@")){
+            alertText += "E-mail cím nem tartalmaz @ karaktert!\n";
+            Stimmel = false;
+        }
+
         // Jelszó legalább 3 karakter hosszú
         if(!checkIfPasswordCorrect()){
             alertText += "Jelszó hossz minimum 3 karakter!\n";
@@ -92,14 +121,19 @@ public class RegisterSceneController {
             Stimmel = false;
         }
 
-
+        // Terms and conditions check
+        if(!tcLabel.isSelected()){
+            alertText += "Feltételek nincsenek elfogadva!\n";
+            Stimmel = false;
+        }
 
 
         if(!Stimmel) {
             alert.setContentText(alertText);
             alert.showAndWait();
+            return false;
         }
-
+        return true;
 
 
 
@@ -138,8 +172,6 @@ public class RegisterSceneController {
         try( CustomerDAO cDao = new JpaCustomerDAO()){
             List<Customer> templi = cDao.getCustomers();
             for(Customer c : templi){
-                System.out.println(c.getName());
-                System.out.println(name);
                 if(Objects.equals(c.getName(), name))
                 {
                     return false;
