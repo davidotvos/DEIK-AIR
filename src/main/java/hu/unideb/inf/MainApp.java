@@ -75,7 +75,7 @@ public class MainApp extends Application {
             ams = new Airport();
             ams.setCity("Amsterdam");
             ams.setName("AMS");
-            ams.setCountry("Neitherland");
+            ams.setCountry("Netherlands");
             Airport.addAirportToSet(ams);
             fDao.saveAirport(ams);
 
