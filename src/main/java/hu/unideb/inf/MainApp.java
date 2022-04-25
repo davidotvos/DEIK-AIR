@@ -39,8 +39,9 @@ public class MainApp extends Application {
     public static void startDB() throws SQLException{
         startDatabase();
 
+        //AddFlights();
         //AddCustomer();
-        //DeleteCustomer("admin");
+        //DeleteCustomer();
 
         System.out.println("Open your browser and navigate to http://localhost:8082/");
         System.out.println("JDBC URL: jdbc:h2:file:my_database");
@@ -64,13 +65,13 @@ public class MainApp extends Application {
         }
     }
 
-    private static void DeleteCustomer(String name){
+    private static void DeleteCustomer(){
         try( CustomerDAO cDao = new JpaCustomerDAO()){
             List<Customer> templi = cDao.getCustomers();
             Customer temp = new Customer();
             for(Customer c : templi){
                 System.out.println(c.getName());
-                if(c.getName() == name){
+                if(c.getId() == 20){
                     temp = c;
 
                 }

@@ -47,7 +47,7 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
             <TextField fx:id="userLabel" layoutX="243.0" layoutY="122.0" />
-            <TextField fx:id="registerEmailField" layoutX="243.0" layoutY="162.0" />
+            <TextField fx:id="emailLabel" layoutX="243.0" layoutY="162.0" />
             <PasswordField fx:id="pwLabel" layoutX="245.0" layoutY="200.0" />
             <PasswordField fx:id="pwConfirmLabel" layoutX="245.0" layoutY="239.0" />
             <CheckBox fx:id="tcLabel" layoutX="250.0" layoutY="275.0" mnemonicParsing="false" text="Terms and conditions" />
@@ -63,7 +63,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text layoutX="192.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó" wrappingWidth="38.21368408203125">
+            <Text layoutX="192.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó">
                <font>
                   <Font size="14.0" />
                </font>
@@ -73,7 +73,10 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text layoutX="173.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail cím" />
+            <Text layoutX="166.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail cím">
+               <font>
+                  <Font size="14.0" />
+               </font></Text>
             <Label fx:id="registerErrorLabel" layoutX="424.0" layoutY="179.0" />
       </children>
     </AnchorPane>

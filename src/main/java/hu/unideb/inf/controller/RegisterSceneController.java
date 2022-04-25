@@ -13,6 +13,9 @@ public class RegisterSceneController {
     private Button backButton;
 
     @FXML
+    private TextField emailLabel;
+
+    @FXML
     private PasswordField pwConfirmLabel;
 
     @FXML
@@ -22,16 +25,21 @@ public class RegisterSceneController {
     private Button registerButton;
 
     @FXML
+    private Label registerErrorLabel;
+
+    @FXML
     private CheckBox tcLabel;
 
     @FXML
     private TextField userLabel;
 
     @FXML
-    private Label registerErrorLabel;
-
-    @FXML
     void register(ActionEvent event) {
+        System.out.println(userLabel.getText());
+        System.out.println(emailLabel.getText());
+        System.out.println(pwLabel.getText());
+        System.out.println(pwConfirmLabel.getText());
+
         CredentialChecker();
 
 
@@ -47,6 +55,18 @@ public class RegisterSceneController {
     //megnézzük , hogy mindegyik adat helyes
     private void CredentialChecker()
     {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Hiba");
+        alert.setHeaderText("Az alábbi hibába ütköztél:");
+
+        // Ellenőrzi hogy egyik mező sem üres.
+        if(!checkIfLabelsEmpty()){
+            alert.setContentText("Az összes mező kitöltése kötelező!");
+        }
+        alert.showAndWait();
+
+
+
         // lehetséges hibák:
         // 1. username fogalt
         // 2. email foglalt
@@ -57,9 +77,25 @@ public class RegisterSceneController {
         //if(username.foglalt(userLabel.getText()))
 
 
-        if(!tcLabel.isSelected())
-        {
-            registerErrorLabel.setText("Nem fogadtad el a TC-t!");
+//        if(!tcLabel.isSelected())
+//        {
+//            registerErrorLabel.setText("Nem fogadtad el a TC-t!");
+//        }
+    }
+
+    private boolean checkIfLabelsEmpty(){
+        if(userLabel.getText().isEmpty()){
+            return false;
         }
+        if(emailLabel.getText().isEmpty()){
+            return false;
+        }
+        if(pwLabel.getText().isEmpty()){
+            return false;
+        }
+        if(pwConfirmLabel.getText().isEmpty()){
+            return false;
+        }
+        return true;
     }
 }
