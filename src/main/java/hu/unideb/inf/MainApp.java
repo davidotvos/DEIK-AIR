@@ -41,7 +41,7 @@ public class MainApp extends Application {
             Airport deb;
             deb = new Airport();
             deb.setCity("Debrecen");
-            deb.setName("DEB");
+            deb.setName("deb");
             deb.setCountry("Hungary");
             Airport.addAirportToSet(deb);
             fDao.saveAirport(deb);
@@ -49,7 +49,7 @@ public class MainApp extends Application {
             Airport bud;
             bud = new Airport();
             bud.setCity("Budapest");
-            bud.setName("BUD");
+            bud.setName("bud");
             bud.setCountry("Hungary");
             Airport.addAirportToSet(bud);
             fDao.saveAirport(bud);
@@ -57,7 +57,7 @@ public class MainApp extends Application {
             Airport vie;
             vie = new Airport();
             vie.setCity("Vienna");
-            vie.setName("VIE");
+            vie.setName("vie");
             vie.setCountry("Austria");
             Airport.addAirportToSet(vie);
             fDao.saveAirport(vie);
@@ -65,7 +65,7 @@ public class MainApp extends Application {
             Airport lon;
             lon = new Airport();
             lon.setCity("London");
-            lon.setName("LON");
+            lon.setName("lon");
             lon.setCountry("Great Britain");
             Airport.addAirportToSet(lon);
             fDao.saveAirport(lon);
@@ -73,7 +73,7 @@ public class MainApp extends Application {
             Airport bar;
             bar = new Airport();
             bar.setCity("Barcelona");
-            bar.setName("BAR");
+            bar.setName("bar");
             bar.setCountry("Spain");
             Airport.addAirportToSet(bar);
             fDao.saveAirport(bar);
@@ -81,10 +81,63 @@ public class MainApp extends Application {
             Airport ams;
             ams = new Airport();
             ams.setCity("Amsterdam");
-            ams.setName("AMS");
-            ams.setCountry("Neitherland");
+            ams.setName("rom");
+            ams.setCountry("Netherland");
             Airport.addAirportToSet(ams);
             fDao.saveAirport(ams);
+
+            Airport rom;
+            rom = new Airport();
+            rom.setCity("Rome");
+            rom.setName("rom");
+            rom.setCountry("Italy");
+            Airport.addAirportToSet(rom);
+            fDao.saveAirport(rom);
+
+            Airport par;
+            par = new Airport();
+            par.setCity("Paris");
+            par.setName("par");
+            par.setCountry("France");
+            Airport.addAirportToSet(par);
+            fDao.saveAirport(par);
+
+            Airport ber;
+            ber = new Airport();
+            ber.setCity("Berlin");
+            ber.setName("ber");
+            ber.setCountry("Germany");
+            Airport.addAirportToSet(ber);
+            fDao.saveAirport(ber);
+
+            Airport bru;
+            bru = new Airport();
+            bru.setCity("Brussel");
+            bru.setName("bru");
+            bru.setCountry("Belgium");
+            Airport.addAirportToSet(bru);
+            fDao.saveAirport(bru);
+
+            Airport pra;
+            pra = new Airport();
+            pra.setCity("Prague");
+            pra.setName("pra");
+            pra.setCountry("Czech Republic");
+            Airport.addAirportToSet(bru);
+            fDao.saveAirport(bru);
+
+            Airport bern;
+            bern = new Airport();
+            bern.setCity("Bern");
+            bern.setName("bern");
+            bern.setCountry("Switzerland");
+            Airport.addAirportToSet(bern);
+            fDao.saveAirport(bern);
+
+
+
+
+
 
 
             Flights deb_ber1 = new Flights("deb_ber1", "Debrecen", "Berlin", "Boeing 747-400", "2022.04.01 12:00");
@@ -103,7 +156,7 @@ public class MainApp extends Application {
             deb.addFlightToList(deb_par1);
             fDao.saveFlight(deb_par1);
 
-            Flights lon_deb1 = new Flights("lon-deb1", "London", "Debrecen", "Airbus A330-300", "2022.04.01 08:00");
+            Flights lon_deb1 = new Flights("lon_deb1", "London", "Debrecen", "Airbus A330-300", "2022.04.01 08:00");
             lon.addFlightToList(lon_deb1);
             fDao.saveFlight(lon_deb1);
             Flights lon_par1 = new Flights("lon_par1", "London", "Paris", "Airbus A330-300", "2022.04.01 09:00");
