@@ -1,9 +1,6 @@
 package hu.unideb.inf.model;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.List;
 
 public class JpaCustomerDAO implements CustomerDAO{
@@ -38,6 +35,14 @@ public class JpaCustomerDAO implements CustomerDAO{
                 "SELECT c FROM Customer c", Customer.class);
         List<Customer> customers = query.getResultList();
         return customers;
+    }
+
+    public String getCustomerPass(String userID)
+    {
+        String myquery  = "SELECT PASSWORD FROM CUSTOMER WHERE NAME = '" + userID + "'";
+        String pass = entityManager.createNativeQuery(myquery).getSingleResult().toString();
+
+        return pass;
     }
 
 
