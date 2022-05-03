@@ -9,7 +9,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.h2.tools.Server;
 
+
+
+
 public class MainApp extends Application {
+
+    public static final String CURRENCY = "€";
+
     Stage window;
     @Override
     public void start(Stage stage) throws Exception {

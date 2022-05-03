@@ -2,7 +2,6 @@ package hu.unideb.inf.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalTime;
 
 @Entity
 public class Flights implements Serializable {
