@@ -17,10 +17,7 @@ public class SearchFlightsSceneController {
     private ImageView FromCityPictures;
 
     @FXML
-    private Button HelpButton;
-
-    @FXML
-    private Button MyAccountButton;
+    private Button MyAccount;
 
     @FXML
     private Button ReserveButton;
@@ -35,7 +32,10 @@ public class SearchFlightsSceneController {
     private Label RightbarToCityLabel;
 
     @FXML
-    private Button SearchButton1;
+    private Label RightbarPriceFromLabel;
+
+    @FXML
+    private Button SearchButton;
 
     @FXML
     private TextField SearchTextfield;
@@ -45,9 +45,6 @@ public class SearchFlightsSceneController {
 
     @FXML
     private ImageView ToCityPicture;
-
-    @FXML
-    private Label priceFromRightbar;
 
     @FXML
     void HandleMyAccountButton(ActionEvent event) {
@@ -65,4 +62,5 @@ public class SearchFlightsSceneController {
     }
 
 }
+
 
