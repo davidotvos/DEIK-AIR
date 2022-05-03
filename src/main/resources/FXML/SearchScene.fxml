@@ -23,14 +23,32 @@
          <left>
             <VBox prefHeight="650.0" prefWidth="350.0" styleClass="rightbar" stylesheets="@../values/searchstyle.css" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="93.0" prefWidth="320.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="320.0">
                      <children>
+                        <Button fx:id="BackFromSearchPageButton" mnemonicParsing="false" onAction="#handleBackFromSearchPageButton">
+                           <HBox.margin>
+                              <Insets right="60.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView blendMode="DARKEN" fitHeight="47.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                 <image>
+                                    <Image url="@../img/blackarrow.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                         <Label prefHeight="46.0" prefWidth="122.0" styleClass="shadow" stylesheets="@../values/searchstyle.css" text="DEIK-Air" textFill="#104eea">
                            <font>
                               <Font name="Cambria Bold Italic" size="30.0" />
                            </font>
                         </Label>
                      </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="55.0" prefWidth="350.0">
                      <children>
@@ -155,7 +173,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="30.0" prefWidth="46.0" text="\$119">
+                              <Label fx:id="RightbarPriceFromLabel" prefHeight="30.0" prefWidth="46.0" text="\$119">
                                  <font>
                                     <Font name="Cambria Bold" size="20.0" />
                                  </font>
@@ -216,7 +234,7 @@
             </HBox>
             <VBox prefHeight="540.0" prefWidth="573.0" VBox.vgrow="ALWAYS">
                <children>
-                  <ScrollPane prefHeight="542.0" prefWidth="502.0">
+                  <ScrollPane prefHeight="542.0" prefWidth="502.0" styleClass="transparent" stylesheets="@../values/searchstyle.css">
                      <content>
                         <GridPane prefHeight="0.0" prefWidth="3.0">
                           <columnConstraints>

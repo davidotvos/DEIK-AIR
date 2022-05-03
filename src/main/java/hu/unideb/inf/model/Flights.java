@@ -16,17 +16,21 @@ public class Flights implements Serializable {
     private String destination_city;
     private String plane_type;
     private String start_time;
+    private Double price;
 
     public Flights() {
     }
 
-    public Flights(String name, String start_city, String destination_city, String plane_type, String start_time) {
+
+
+    public Flights(String name, String start_city, String destination_city, String plane_type, String start_time, Double price) {
 
         this.name = name;
         this.start_city = start_city;
         this.destination_city = destination_city;
         this.plane_type = plane_type;
         this.start_time = start_time;
+        this.price = price;
 
     }
 
@@ -39,8 +43,12 @@ public class Flights implements Serializable {
                 ", destination_city= " + destination_city +
                 ", plane_type= " + plane_type +
                 ", start_time= " + start_time +
+                ", price= " + price +
                 ";\n";
     }
+    public Double getPrice() {return price;}
+
+    public void setPrice(Double price) {this.price = price;}
 
     public String getStart_city() { return start_city; }
 

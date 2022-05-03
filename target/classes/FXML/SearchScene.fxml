@@ -5,31 +5,50 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.SearchFlightsSceneController">
    <children>
-      <BorderPane layoutX="6.0" layoutY="6.0" prefHeight="650.0" prefWidth="379.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="571.0" AnchorPane.topAnchor="0.0">
+      <BorderPane layoutX="6.0" layoutY="6.0" prefHeight="650.0" prefWidth="379.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <VBox prefHeight="650.0" prefWidth="350.0" styleClass="rightbar" stylesheets="@../values/searchstyle.css" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="93.0" prefWidth="320.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="320.0">
                      <children>
+                        <Button fx:id="BackFromSearchPageButton" mnemonicParsing="false" onAction="#handleBackFromSearchPageButton">
+                           <HBox.margin>
+                              <Insets right="60.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView blendMode="DARKEN" fitHeight="47.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                 <image>
+                                    <Image url="@../img/blackarrow.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                         <Label prefHeight="46.0" prefWidth="122.0" styleClass="shadow" stylesheets="@../values/searchstyle.css" text="DEIK-Air" textFill="#104eea">
                            <font>
                               <Font name="Cambria Bold Italic" size="30.0" />
                            </font>
                         </Label>
                      </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="55.0" prefWidth="350.0">
                      <children>
@@ -124,27 +143,44 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <HBox prefHeight="76.0" prefWidth="348.0">
+                        <HBox prefHeight="54.0" prefWidth="348.0">
                            <children>
                               <Label text="Departure time:">
                                  <font>
                                     <Font name="Cambria" size="20.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets left="20.0" top="20.0" />
+                                    <Insets left="20.0" top="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="RightbarStartTimeLabel" prefHeight="44.0" prefWidth="190.0" text="2022.04.25. 12:00">
+                              <Label fx:id="RightbarStartTimeLabel" prefHeight="26.0" prefWidth="190.0" text="2022.04.25. 12:00">
                                  <font>
                                     <Font name="Cambria Bold" size="20.0" />
                                  </font>
                                  <padding>
-                                    <Insets left="10.0" top="20.0" />
+                                    <Insets left="10.0" />
                                  </padding>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="TOP_CENTER" prefHeight="53.0" prefWidth="348.0">
+                           <children>
+                              <Label text="PriceFrom:  ">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="RightbarPriceFromLabel" prefHeight="30.0" prefWidth="46.0" text="\$119">
+                                 <font>
+                                    <Font name="Cambria Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="348.0">
                            <children>
                               <Button fx:id="ReserveButton" mnemonicParsing="false" onAction="#HandleReserveButton" prefHeight="64.0" prefWidth="207.0" stylesheets="@../values/searchstyle.css" text="Reserve Now!" textAlignment="CENTER" textFill="#0804c7">
                                  <font>
@@ -175,11 +211,40 @@
       </BorderPane>
       <VBox layoutX="375.0" layoutY="1.0" prefHeight="650.0" prefWidth="575.0">
          <children>
-            <HBox prefHeight="89.0" prefWidth="570.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="106.0" prefWidth="575.0">
                <children>
-                  <ListView prefHeight="90.0" prefWidth="295.0" />
+                  <Label prefHeight="83.0" prefWidth="390.0" text="Debrecen&#9; Budapest    Vienna    London&#10;Barcelona    Amsterdam    Rome   Paris&#10;Berlin   Brussel    Bern   Prague&#10;">
+                     <font>
+                        <Font name="Cambria Bold Italic" size="19.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="MyAccount" mnemonicParsing="false" onAction="#HandleMyAccountButton" prefHeight="42.0" prefWidth="153.0" stylesheets="@../values/searchstyle.css" text="myAccount" textFill="WHITE">
+                     <font>
+                        <Font name="Cambria Bold Italic" size="16.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="search-button" />
+                        <String fx:value="small-shadow" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
+            <VBox prefHeight="540.0" prefWidth="573.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <ScrollPane prefHeight="542.0" prefWidth="502.0" styleClass="transparent" stylesheets="@../values/searchstyle.css">
+                     <content>
+                        <GridPane prefHeight="0.0" prefWidth="3.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
          </children>
       </VBox>
    </children>
