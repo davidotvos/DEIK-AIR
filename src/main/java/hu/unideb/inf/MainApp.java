@@ -21,14 +21,14 @@ public class MainApp extends Application {
         stage.show();
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws SQLException {
 
 //        try {
 //            startDB();
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
-
+        startDB();
         launch(args);
     }
 
@@ -221,14 +221,15 @@ public class MainApp extends Application {
             lon.addFlightToList(ams_vie1);
             fDao.saveFlight(ams_vie1);
 
-            System.out.println(fDao.getFlights());
+            //System.out.println(fDao.getFlights());
             //System.out.println(fDao.getFlightsBy_start_city());
-            System.out.println(fDao.findWith_start_city("Debrecen"));
+            //System.out.println(fDao.findWith_start_city("Debrecen"));
+            System.out.println(fDao.findWith_start_and_destination_city("Debrecen"));
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(Airport.getAirport_city_string_list());
+        //System.out.println(Airport.getAirport_city_string_list());
         System.out.println("Open your browser and navigate to http://localhost:8082/");
         System.out.println("JDBC URL: jdbc:h2:file:my_database");
         System.out.println("User Name: sa");
