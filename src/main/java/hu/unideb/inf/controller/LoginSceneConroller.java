@@ -42,9 +42,12 @@ public class LoginSceneConroller {
         //ha a lekért jelszó megegyezik a megadottal akkor bent van a user
         if(pass.equals(pwLabel.getText()))
         {
+            loginDAO.SetLoggedInCustomer(userLabel.getText());
+            System.out.println(userLabel.getText());
             Parent newRoot = FXMLLoader.load(getClass().getResource("/FXML/HomeScene.fxml"));
             Stage currentStage = (Stage) backButton.getScene().getWindow();
             currentStage.getScene().setRoot(newRoot);
+
         }
         else{
             System.out.println("hibás felhasználónév/jeleszó!");
