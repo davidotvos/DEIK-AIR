@@ -1,10 +1,12 @@
 package hu.unideb.inf;
 import java.sql.SQLException;
+import java.util.Objects;
 
 import hu.unideb.inf.controller.MainSceneController;
 import hu.unideb.inf.model.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.h2.tools.Server;
@@ -16,14 +18,18 @@ public class MainApp extends Application {
 
     public static final String CURRENCY = "€";
 
-    Stage window;
+
     @Override
     public void start(Stage stage) throws Exception {
-        window = stage;
+        /*window = stage;
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/FXML/MainScene.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setTitle("Main Scene");
         stage.setScene(scene);
+        stage.show();*/
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/SearchScene.fxml"));
+        stage.setTitle("Scene Page");
+        stage.setScene(new Scene(root));
         stage.show();
     }
 
@@ -34,7 +40,6 @@ public class MainApp extends Application {
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
-        startDB();
         launch(args);
     }
 
@@ -230,7 +235,7 @@ public class MainApp extends Application {
             //System.out.println(fDao.getFlights());
             //System.out.println(fDao.getFlightsBy_start_city());
             //System.out.println(fDao.findWith_start_city("Debrecen"));
-            System.out.println(fDao.findWith_start_and_destination_city("Debrecen"));
+            //System.out.println(fDao.findWith_start_and_destination_city("Debrecen"));
 
         } catch (Exception e) {
             e.printStackTrace();
