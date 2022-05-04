@@ -40,7 +40,6 @@ public class JpaCustomerDAO implements CustomerDAO{
         return customers;
     }
 
-<<<<<<< HEAD
     public String getCustomerPass(String userID)
     {
         String myquery  = "SELECT PASSWORD FROM CUSTOMER WHERE NAME = '" + userID + "'";
@@ -65,9 +64,6 @@ public class JpaCustomerDAO implements CustomerDAO{
         }
     }
 
-
-=======
->>>>>>> searchpage
 
     @Override
     public void close() throws Exception {

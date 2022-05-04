@@ -16,20 +16,16 @@ import java.util.Objects;
 public class RegisterSceneController {
 
     @FXML
-<<<<<<< HEAD
     private TextField emailLabel;
 
     @FXML
     private PasswordField pwConfirmLabel;
-=======
-    private PasswordField userLabel;
->>>>>>> searchpage
+
+    @FXML
+    private TextField userLabel;
 
     @FXML
     private PasswordField pwLabel;
-
-    @FXML
-    private PasswordField pwConfirmLabel;
 
     @FXML
     private Label registerErrorLabel;
@@ -38,14 +34,10 @@ public class RegisterSceneController {
     private CheckBox tcLabel;
 
     @FXML
-<<<<<<< HEAD
-    private TextField userLabel;
-=======
     private Button backButton;
 
     @FXML
     private Button registerButton;
->>>>>>> searchpage
 
     @FXML
     void register(ActionEvent event) throws IOException {

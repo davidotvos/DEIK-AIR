@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -58,7 +59,10 @@ public class HomeSceneController{
     }
 
     @FXML
-    void toSearch(ActionEvent event) {
+    void toSearch(ActionEvent event) throws IOException {
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/fxml/SearchScene.fxml"));
+        Stage currentStage = (Stage) searchButton.getScene().getWindow();
+        currentStage.getScene().setRoot(newRoot);
 
     }
 

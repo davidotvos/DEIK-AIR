@@ -1,11 +1,6 @@
 package hu.unideb.inf;
 import java.sql.SQLException;
-<<<<<<< HEAD
 import java.util.List;
-=======
-import java.util.Objects;
->>>>>>> searchpage
-
 import hu.unideb.inf.controller.MainSceneController;
 import hu.unideb.inf.model.*;
 import javafx.application.Application;
@@ -23,55 +18,40 @@ public class MainApp extends Application {
 
     public static final String CURRENCY = "€";
 
-
+    Stage window;
     @Override
     public void start(Stage stage) throws Exception {
-        /*window = stage;
+        window = stage;
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/FXML/MainScene.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setTitle("DEIKAir");
         stage.setScene(scene);
-<<<<<<< HEAD
         Image indexImage = new Image("file:src/main/java/hu/unideb/inf/icon.png");
         stage.getIcons().add(indexImage);
-=======
-        stage.show();*/
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/SearchScene.fxml"));
-        stage.setTitle("Scene Page");
-        stage.setScene(new Scene(root));
->>>>>>> searchpage
         stage.show();
     }
 
     public static void main(String[] args) throws SQLException {
-
-<<<<<<< HEAD
         try {
             startDB();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-=======
-//        try {
-//            startDB();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
->>>>>>> searchpage
         launch(args);
     }
 
     public static void startDB() throws SQLException{
         startDatabase();
 
-<<<<<<< HEAD
-        //AddFlights();
-        //AddCustomer();
+        AddFlights();
+        AddCustomer();
+
         //DeleteCustomer();
 
         System.out.println("Open your browser and navigate to http://localhost:8082/");
-        System.out.println("JDBC URL: jdbc:h2:file:my_database");
+        System.out.println("JDBC URL: jdbc:h2:file:~/my_database");
         System.out.println("User Name: sa");
         System.out.println("Password: -");
 
@@ -111,11 +91,7 @@ public class MainApp extends Application {
         }
     }
 
-
     private static void AddFlights(){
-=======
-
->>>>>>> searchpage
         try (FlightsDAO fDao = new JpaFlightsDAO()) {
 
             Airport deb;
@@ -161,13 +137,10 @@ public class MainApp extends Application {
             Airport ams;
             ams = new Airport();
             ams.setCity("Amsterdam");
-<<<<<<< HEAD
             ams.setName("AMS");
             ams.setCountry("Netherlands");
-=======
             ams.setName("rom");
             ams.setCountry("Netherland");
->>>>>>> searchpage
             Airport.addAirportToSet(ams);
             fDao.saveAirport(ams);
 
@@ -314,17 +287,6 @@ public class MainApp extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-<<<<<<< HEAD
-=======
-        //System.out.println(Airport.getAirport_city_string_list());
-        System.out.println("Open your browser and navigate to http://localhost:8082/");
-        System.out.println("JDBC URL: jdbc:h2:file:my_database");
-        System.out.println("User Name: sa");
-        System.out.println("Password: -");
-
-
-
->>>>>>> searchpage
     }
 
     private static void startDatabase() throws SQLException {
