@@ -65,14 +65,16 @@
                         </CheckBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="66.0" prefWidth="270.0" stylesheets="@../values/searchstyle.css">
+                  <Pane prefHeight="28.0" prefWidth="378.0" />
+                  <HBox alignment="CENTER" prefHeight="54.0" prefWidth="346.0" stylesheets="@../values/searchstyle.css">
                      <children>
                         <TextField fx:id="SearchTextfield" prefHeight="38.0" prefWidth="226.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../values/searchstyle.css">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="SearchButton" mnemonicParsing="false" onAction="#HandleSearchButton" prefHeight="42.0" prefWidth="74.0" stylesheets="@../values/searchstyle.css" text="Search " textFill="WHITE">
+                        <Pane prefHeight="54.0" prefWidth="30.0" />
+                        <Button fx:id="SearchButton" mnemonicParsing="false" onAction="#HandleSearchButton" prefHeight="42.0" prefWidth="73.0" stylesheets="@../values/searchstyle.css" text="Search " textFill="WHITE">
                            <font>
                               <Font name="Cambria Bold Italic" size="16.0" />
                            </font>
@@ -90,7 +92,7 @@
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Pane prefHeight="50.0" prefWidth="378.0" VBox.vgrow="ALWAYS" />
+                  <Pane prefHeight="49.0" prefWidth="378.0" VBox.vgrow="ALWAYS" />
                   <VBox prefHeight="426.0" prefWidth="363.0" stylesheets="@../values/searchstyle.css">
                      <children>
                         <HBox alignment="CENTER" prefHeight="26.0" prefWidth="350.0" stylesheets="@../values/searchstyle.css">
@@ -207,7 +209,7 @@
                         <String fx:value="shadow" />
                      </styleClass>
                   </VBox>
-                  <Pane prefHeight="86.0" prefWidth="378.0" VBox.vgrow="ALWAYS" />
+                  <Pane prefHeight="59.0" prefWidth="378.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
          </left>
@@ -235,7 +237,7 @@
                   </Button>
                </children>
             </HBox>
-            <VBox prefHeight="694.0" prefWidth="662.0" VBox.vgrow="ALWAYS">
+            <VBox prefHeight="690.0" prefWidth="682.0" VBox.vgrow="ALWAYS">
                <children>
                   <ScrollPane fx:id="scroll" prefHeight="692.0" prefWidth="682.0" styleClass="transparent" stylesheets="@../values/searchstyle.css">
                      <content>
