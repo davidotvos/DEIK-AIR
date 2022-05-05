@@ -105,8 +105,7 @@ public class SearchFlightsSceneController implements Initializable {
         int row = 1;
         try {
             for (Flights flight : flights) {
-                FXMLLoader fxmlLoaderForFlightItem = new FXMLLoader();
-                fxmlLoaderForFlightItem.setLocation(getClass().getResource("/fxml/FlightItemController.fxml"));
+                FXMLLoader fxmlLoaderForFlightItem = FXMLLoader.load(getClass().getResource("/FXML/FlightItem.fxml"));
 
                 AnchorPane anchorPane = fxmlLoaderForFlightItem.load();
 
