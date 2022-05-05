@@ -60,8 +60,15 @@ public class HomeSceneController{
 
     @FXML
     void toSearch(ActionEvent event) throws IOException {
-        Parent newRoot = FXMLLoader.load(getClass().getResource("/fxml/SearchScene.fxml"));
+        Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/SearchScene.fxml")));
         Stage currentStage = (Stage) searchButton.getScene().getWindow();
+        currentStage.setMinHeight(600);
+        currentStage.setMinWidth(900);
+        currentStage.setHeight(800);
+        currentStage.setWidth(1200);
+        currentStage.setTitle("Search Page");
+        currentStage.setX(0);
+        currentStage.setY(0);
         currentStage.getScene().setRoot(newRoot);
 
     }

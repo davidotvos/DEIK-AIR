@@ -72,6 +72,8 @@ public class SearchFlightsSceneController implements Initializable {
     @FXML
     private GridPane grid;
 
+
+
     private List<Flights> flights = new ArrayList<>();
 
     @FXML
@@ -101,19 +103,19 @@ public class SearchFlightsSceneController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        int column = 0;
-        int row = 1;
+        int column = 1;
+        int row = 0;
         try {
             for (Flights flight : flights) {
                 FXMLLoader fxmlLoaderForFlightItem = new FXMLLoader();
-                fxmlLoaderForFlightItem.setLocation(getClass().getResource("/fxml/FlightItemController.fxml"));
+                fxmlLoaderForFlightItem.setLocation(getClass().getResource("/fxml/FlightItem.fxml"));
 
                 AnchorPane anchorPane = fxmlLoaderForFlightItem.load();
 
                 FlightItemController flightItemController = fxmlLoaderForFlightItem.getController();
                 flightItemController.setData(flight);
 
-                grid.add(anchorPane, column++, row);
+                grid.add(anchorPane, column, row++);
                 GridPane.setMargin(anchorPane, new Insets(10));
             }
         }catch (IOException e)

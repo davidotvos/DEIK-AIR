@@ -45,8 +45,8 @@ public class MainApp extends Application {
     public static void startDB() throws SQLException{
         startDatabase();
 
-        AddFlights();
-        AddCustomer();
+        //AddFlights();
+        //AddCustomer();
 
         //DeleteCustomer();
 
