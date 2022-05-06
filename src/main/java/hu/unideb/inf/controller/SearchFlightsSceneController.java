@@ -83,9 +83,9 @@ public class SearchFlightsSceneController implements Initializable {
         LeftBarToCityLabel.setText(flight.getDestination_city());
         LeftBarPriceFromLabel.setText(MainApp.CURRENCY + Double.toString(flight.getPrice()));
         LeftBarStartTimeLabel.setText(flight.getStart_time());
-        Image image1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/" + flight.getStart_city().toLowerCase() + ".jpg")));
+        Image image1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/" + flight.getStart_city() + ".jpg")));
         FromCityPictures.setImage(image1);
-        Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/" + flight.getDestination_city().toLowerCase() + ".jpg")));
+        Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/" + flight.getDestination_city() + ".jpg")));
         ToCityPicture.setImage(image2);
 
     }
