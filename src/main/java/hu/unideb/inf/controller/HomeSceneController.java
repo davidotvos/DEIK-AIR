@@ -64,8 +64,8 @@ public class HomeSceneController{
         Stage currentStage = (Stage) searchButton.getScene().getWindow();
         currentStage.setMinHeight(600);
         currentStage.setMinWidth(900);
-        currentStage.setHeight(800);
-        currentStage.setWidth(1200);
+        currentStage.setHeight(750);
+        currentStage.setWidth(1100);
         currentStage.setTitle("Search Page");
         currentStage.setX(0);
         currentStage.setY(0);

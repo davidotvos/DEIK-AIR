@@ -66,7 +66,7 @@
                      </children>
                   </HBox>
                   <Pane prefHeight="28.0" prefWidth="378.0" />
-                  <HBox alignment="CENTER" prefHeight="54.0" prefWidth="346.0" stylesheets="@../values/searchstyle.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="358.0" stylesheets="@../values/searchstyle.css">
                      <children>
                         <TextField fx:id="SearchTextfield" prefHeight="38.0" prefWidth="226.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../values/searchstyle.css">
                            <font>
@@ -74,7 +74,7 @@
                            </font>
                         </TextField>
                         <Pane prefHeight="54.0" prefWidth="30.0" />
-                        <Button fx:id="SearchButton" mnemonicParsing="false" onAction="#HandleSearchButton" prefHeight="42.0" prefWidth="73.0" stylesheets="@../values/searchstyle.css" text="Search " textFill="WHITE">
+                        <Button fx:id="SearchButton" mnemonicParsing="false" onAction="#HandleSearchButton" prefHeight="42.0" prefWidth="84.0" stylesheets="@../values/searchstyle.css" text="Search " textFill="WHITE">
                            <font>
                               <Font name="Cambria Bold Italic" size="16.0" />
                            </font>
@@ -95,7 +95,7 @@
                   <Pane prefHeight="49.0" prefWidth="378.0" VBox.vgrow="ALWAYS" />
                   <VBox prefHeight="426.0" prefWidth="363.0" stylesheets="@../values/searchstyle.css">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="26.0" prefWidth="350.0" stylesheets="@../values/searchstyle.css">
+                        <HBox alignment="CENTER" prefHeight="43.0" prefWidth="348.0" stylesheets="@../values/searchstyle.css">
                            <children>
                               <Label prefHeight="43.0" prefWidth="82.0" text="Flight:">
                                  <font>
@@ -116,9 +116,9 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="52.0" prefWidth="330.0">
                            <children>
-                              <Label fx:id="RightbarFromCity" prefHeight="47.0" prefWidth="120.0" text="FromCity">
+                              <Label fx:id="LeftBarFromCity" prefHeight="47.0" prefWidth="138.0" text="FromCity">
                                  <font>
-                                    <Font name="Cambria Italic" size="20.0" />
+                                    <Font name="Cambria Bold" size="24.0" />
                                  </font>
                               </Label>
                               <ImageView blendMode="DARKEN" fitHeight="52.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
@@ -126,9 +126,9 @@
                                     <Image url="@../img/blackarrow.jpg" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="RightbarToCityLabel" prefHeight="52.0" prefWidth="120.0" text="ToCity">
+                              <Label fx:id="LeftBarToCityLabel" prefHeight="52.0" prefWidth="139.0" text="ToCity">
                                  <font>
-                                    <Font name="Cambria Italic" size="20.0" />
+                                    <Font name="Cambria Bold Italic" size="24.0" />
                                  </font>
                               </Label>
                            </children>
@@ -157,7 +157,7 @@
                                     <Insets left="20.0" top="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="RightbarStartTimeLabel" prefHeight="26.0" prefWidth="190.0" text="2022.04.25. 12:00">
+                              <Label fx:id="LeftBarStartTimeLabel" prefHeight="26.0" prefWidth="190.0" text="2022.04.25. 12:00" textFill="WHITE">
                                  <font>
                                     <Font name="Cambria Bold" size="20.0" />
                                  </font>
@@ -177,7 +177,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="RightbarPriceFromLabel" prefHeight="30.0" prefWidth="46.0" text="\$119">
+                              <Label fx:id="LeftBarPriceFromLabel" prefHeight="30.0" prefWidth="114.0" text="\$119" textFill="WHITE">
                                  <font>
                                     <Font name="Cambria Bold" size="20.0" />
                                  </font>
