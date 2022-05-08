@@ -1,29 +1,30 @@
 package hu.unideb.inf.controller;
 
-import hu.unideb.inf.model.Flights;
-import hu.unideb.inf.model.FlightsDAO;
-import hu.unideb.inf.model.JpaFlightsDAO;
+import hu.unideb.inf.MainApp;
+import hu.unideb.inf.model.*;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
 
 public class SearchFlightsSceneController implements Initializable {
 
@@ -40,16 +41,16 @@ public class SearchFlightsSceneController implements Initializable {
     private Button ReserveButton;
 
     @FXML
-    private Label RightbarFromCity;
+    private Label LeftBarFromCity;
 
     @FXML
-    private Label RightbarStartTimeLabel;
+    private Label LeftBarStartTimeLabel;
 
     @FXML
-    private Label RightbarToCityLabel;
+    private Label LeftBarToCityLabel;
 
     @FXML
-    private Label RightbarPriceFromLabel;
+    private Label LeftBarPriceFromLabel;
 
     @FXML
     private Button SearchButton;
@@ -58,7 +59,7 @@ public class SearchFlightsSceneController implements Initializable {
     private Button BackFromSearchPageButton;
 
     @FXML
-    private TextField SearchTextfield;
+    private TextField SearchTextField;
 
     @FXML
     private CheckBox StartCheckbox;
@@ -72,7 +73,24 @@ public class SearchFlightsSceneController implements Initializable {
     @FXML
     private GridPane grid;
 
+    private MySearchListener mySearchListener;
+
     private List<Flights> flights = new ArrayList<>();
+
+    private void setChosenFlight(Flights flight)
+    {
+        LeftBarFromCity.setText(flight.getStart_city());
+        LeftBarToCityLabel.setText(flight.getDestination_city());
+        LeftBarPriceFromLabel.setText(MainApp.CURRENCY + Double.toString(flight.getPrice()));
+        LeftBarStartTimeLabel.setText(flight.getStart_time());
+        Image image1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/" + flight.getStart_city() + ".jpg")));
+        FromCityPictures.setImage(image1);
+        FromCityPictures.setFitWidth(180);
+        Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/" + flight.getDestination_city() + ".jpg")));
+        ToCityPicture.setImage(image2);
+        ToCityPicture.setFitWidth(180);
+
+    }
 
     @FXML
     void HandleMyAccountButton(ActionEvent event) {
@@ -80,39 +98,84 @@ public class SearchFlightsSceneController implements Initializable {
     }
 
     @FXML
-    void HandleReserveButton(ActionEvent event) {
+    void HandleReserveButton(ActionEvent event) throws IOException {
+        Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/ReservePage.fxml")));
+        Stage currentStage = (Stage) ReserveButton.getScene().getWindow();
+        currentStage.getScene().setRoot(newRoot);
+    }
+
+
+
+    @FXML
+    void HandleSearchButton(MouseEvent event) {
+
 
     }
 
-    @FXML
-    void HandleSearchButton(ActionEvent event) {
+    void getNewData() {
+        String searchText = SearchTextField.getText();
+        //searchText = searchText.substring(0, 1).toUpperCase() + searchText.substring(1).toLowerCase();
+        if (!searchText.isEmpty()) //&& Airport.getAirport_city_string_list().contains(searchText)) {
+        {
+            try (FlightsDAO fDao = new JpaFlightsDAO()) {
 
+                if(StartCheckbox.isSelected() && DestinationCheckbox.isSelected()){
+
+                    flights.addAll(fDao.findWith_start_and_destination_city(searchText));
+                }
+                else if(StartCheckbox.isSelected())
+                {
+
+                    flights.addAll(fDao.findWith_start_city(searchText));
+                }else if (DestinationCheckbox.isSelected())
+                {
+
+                    flights.addAll(fDao.findWith_destination_city(searchText));
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
-    void handleBackFromSearchPageButton(ActionEvent event) {
-
+    void handleBackFromSearchPageButton(ActionEvent event) throws IOException {
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/FXML/HomeScene.fxml"));
+        Stage currentStage = (Stage) BackFromSearchPageButton.getScene().getWindow();
+        currentStage.getScene().setRoot(newRoot);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try (FlightsDAO fDao = new JpaFlightsDAO()) {
-        flights.addAll(fDao.getFlights());
+            flights.addAll(fDao.getFlights());
+            //flights.addAll(fDao.findWith_start_city("London"));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        int column = 0;
+
+        MyFlightItemListener myFlightItemListener = new MyFlightItemListener() {
+            @Override
+            public void onClickListener(Flights flight) {
+                setChosenFlight(flight);
+            }
+        };
+
+        int column = 1;
         int row = 1;
         try {
             for (Flights flight : flights) {
-                FXMLLoader fxmlLoaderForFlightItem = FXMLLoader.load(getClass().getResource("/FXML/FlightItem.fxml"));
+                FXMLLoader fxmlLoaderForFlightItem = new FXMLLoader();
+                fxmlLoaderForFlightItem.setLocation(getClass().getResource("/fxml/FlightItem.fxml"));
+
 
                 AnchorPane anchorPane = fxmlLoaderForFlightItem.load();
 
                 FlightItemController flightItemController = fxmlLoaderForFlightItem.getController();
-                flightItemController.setData(flight);
+                flightItemController.setData(flight, myFlightItemListener);
 
-                grid.add(anchorPane, column++, row);
+                grid.add(anchorPane, column, row++);
                 GridPane.setMargin(anchorPane, new Insets(10));
             }
         }catch (IOException e)

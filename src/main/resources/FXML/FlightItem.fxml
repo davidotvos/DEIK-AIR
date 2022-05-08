@@ -10,24 +10,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="700.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="579.0" stylesheets="@../values/searchstyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.FlightItemController">
+<AnchorPane maxHeight="-Infinity" maxWidth="700.0" minHeight="-Infinity" minWidth="-Infinity" onMousePressed="#click" prefHeight="100.0" prefWidth="640.0" stylesheets="@../values/searchstyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.FlightItemController">
    <opaqueInsets>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </opaqueInsets>
    <children>
-      <VBox layoutX="291.0" layoutY="-1.0" prefHeight="100.0" prefWidth="210.0">
+      <VBox layoutX="291.0" layoutY="-1.0" prefHeight="100.0" prefWidth="349.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="210.0">
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="339.0">
                <children>
                   <Label text="Starts:  ">
                      <font>
-                        <Font name="Broadway" size="15.0" />
+                        <Font name="Broadway" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="itemStartTime" prefHeight="22.0" prefWidth="146.0" text="2022.05.20 14.00">
+                  <Label fx:id="itemStartTime" prefHeight="26.0" prefWidth="179.0" text="2022.05.20 14.00">
                      <font>
-                        <Font name="Arial Black" size="15.0" />
+                        <Font name="Arial Black" size="17.0" />
                      </font>
                   </Label>
                </children>
@@ -36,23 +35,23 @@
                <children>
                   <Label prefHeight="19.0" prefWidth="129.0" text="PriceFrom: ">
                      <font>
-                        <Font name="Broadway" size="15.0" />
+                        <Font name="Broadway" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="itemPriceFrom" prefHeight="23.0" prefWidth="86.0" text="€119">
+                  <Label fx:id="itemPriceFrom" prefHeight="31.0" prefWidth="126.0" text="€119">
                      <font>
-                        <Font name="Arial Black" size="15.0" />
+                        <Font name="Arial Black" size="22.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutY="-4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="106.0" prefWidth="289.0">
+      <HBox alignment="CENTER" layoutY="-4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="106.0" prefWidth="427.0">
          <children>
-            <Label fx:id="itemFromCity" prefHeight="20.0" prefWidth="100.0" text="FromCity">
+            <Label fx:id="itemFromCity" prefHeight="26.0" prefWidth="157.0" text="FromCity">
                <font>
-                  <Font name="Broadway" size="15.0" />
+                  <Font name="Broadway" size="22.0" />
                </font>
             </Label>
             <ImageView blendMode="DARKEN" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
@@ -60,12 +59,15 @@
                   <Image url="@../img/blackarrow.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="itemToCity" prefHeight="20.0" prefWidth="107.0" text="ToCity">
+            <Label fx:id="itemToCity" prefHeight="20.0" prefWidth="198.0" text="ToCity">
                <font>
-                  <Font name="Broadway" size="15.0" />
+                  <Font name="Broadway" size="22.0" />
                </font>
             </Label>
          </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
       </HBox>
    </children>
    <styleClass>

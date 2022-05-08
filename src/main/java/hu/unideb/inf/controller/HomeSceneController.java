@@ -72,6 +72,13 @@ public class HomeSceneController implements Initializable {
     void toSearch(ActionEvent event) throws IOException {
         Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/SearchScene.fxml")));
         Stage currentStage = (Stage) searchButton.getScene().getWindow();
+        currentStage.setMinHeight(600);
+        currentStage.setMinWidth(900);
+        currentStage.setHeight(750);
+        currentStage.setWidth(1100);
+        currentStage.setTitle("Search Page");
+        currentStage.setX(0);
+        currentStage.setY(0);
         currentStage.getScene().setRoot(newRoot);
     }
 

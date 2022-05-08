@@ -1,0 +1,351 @@
+[33mcommit fb4b35fd5dbd15874257ee9c87ec5a879f2a2fa6[m[33m ([m[1;36mHEAD -> [m[1;32mReservePage[m[33m, [m[1;31morigin/ReservePage[m[33m)[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Fri May 6 20:56:12 2022 +0200
+
+    SearchScene jol cserelodnek a kepek, varoskepek importalasa
+
+[33mcommit 26be57233259fc39e62496dc84eb7e5d9a21b1d1[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Fri May 6 19:49:33 2022 +0200
+
+    SearchScene commit
+
+[33mcommit ef37aecbdb6addcaec65228e4c60b41ac77d4090[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Thu May 5 13:18:21 2022 +0200
+
+    Dynamic gridPane mukodik
+
+[33mcommit fb868c84f800ffa0cda02d7cfdf958dee32674f9[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Thu May 5 13:17:50 2022 +0200
+
+    Dynamic gridPane mukodik
+
+[33mcommit c6ef7a359ff1dcafcfad54f5edd6635e910862e9[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Wed May 4 20:57:43 2022 +0200
+
+    Rudóka szemfüles volt
+
+[33mcommit 72e62bc857472b6fa0be555c0c9acde237563d59[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Wed May 4 20:46:02 2022 +0200
+
+    tessék rudi szórakozz vele commit
+
+[33mcommit 9e0d4097f7949954ea0128038a0c81da07257694[m
+Merge: 914dfe6 77fc0b2
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Wed May 4 19:58:02 2022 +0200
+
+    merge commit
+
+[33mcommit 77fc0b2d80ad26d64b01acd86d582270eff5a77e[m[33m ([m[1;31morigin/searchpage[m[33m, [m[1;32msearchpage[m[33m)[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Wed May 4 19:55:55 2022 +0200
+
+    searchpage merge ellot commit
+
+[33mcommit 914dfe6067052e282071a69587fc5dec146599e2[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Wed May 4 19:53:47 2022 +0200
+
+    rudo-davo merge test1
+
+[33mcommit 7a13990c2e234d82d91a04b403f0914890389fda[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Tue May 3 20:40:43 2022 +0200
+
+    Flightitemcontroller
+
+[33mcommit b964d428cf65ad72db33fd8f68fddff2457f2137[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Tue May 3 20:17:59 2022 +0200
+
+    flights contructor and flights database changes(added price)
+
+[33mcommit c333ce905cb9cce0ad2e161f7b8fd0b45d5ceb9f[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Tue May 3 14:15:56 2022 +0200
+
+    smaller searchpageFXML changes
+
+[33mcommit 39e9a4ae895d4eac9682480c060d9cac392cbb3f[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Tue May 3 13:41:53 2022 +0200
+
+    fDao method
+
+[33mcommit 8399344d0b06b653045233df05123aa98366a3dc[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: László Kiss <harcoskl1911@gmail.com>
+Date:   Mon May 2 18:07:16 2022 +0200
+
+    Login and logout done
+
+[33mcommit ed93d74bdccfb1b92d3fb57a6e89a4c569f625f0[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Sun May 1 18:23:29 2022 +0200
+
+    branch elotti commit
+
+[33mcommit ff4613444951de4984fcda4f72cf8bbc8ff710e5[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Thu Apr 28 09:55:49 2022 +0200
+
+    Flight Item design, controller skeleton (need for dynamic grid)
+
+[33mcommit ecc8b348515912edae710d51b26cf84d761d0df1[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Wed Apr 27 20:34:47 2022 +0200
+
+    flights adatbazis bovités
+
+[33mcommit 50bccebe3e707255c46cdd77b98c44b394ceb6b8[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Wed Apr 27 20:13:39 2022 +0200
+
+    Airport adatbazis bovites
+
+[33mcommit a4ff70fb19f9c52e902128bdac1ce6435a404bcf[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Wed Apr 27 18:38:16 2022 +0200
+
+    searchpage fxml file and controller skeleton upgrade
+
+[33mcommit ef159bcafcc5ff3498388597dd68ed568cf88d1c[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Mon Apr 25 19:59:15 2022 +0200
+
+    SearchSceneController skeleton
+
+[33mcommit 9a86654940954e23bf93d185ef6e6de3a59271d7[m[33m ([m[1;31morigin/dev_david[m[33m)[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Mon Apr 25 18:48:50 2022 +0200
+
+    kis kód szépítés
+
+[33mcommit 134abde999d9619d41bc74e11c7743ddc04a3c97[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Mon Apr 25 18:45:38 2022 +0200
+
+    Lehet regisztrálni az alkalmazásba
+
+[33mcommit a207b03727216ed9d521cfa031cd798e93d7de13[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Mon Apr 25 18:07:59 2022 +0200
+
+    SearchScene Right bar design, elements
+
+[33mcommit b49aeb0d1ae2bba0bcaed76b56b8459fec1c817b[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Mon Apr 25 18:07:15 2022 +0200
+
+    jelszavak egyeznek, min 3 karakter hosszú legyen
+
+[33mcommit 291de6d197ce3cd40ccc2a11c8cc0f2774349f23[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Mon Apr 25 17:51:31 2022 +0200
+
+    fnev, email szabad-e check register oldalnál
+
+[33mcommit 9429ed0586e6642f7969dcc64d68c50476926c51[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Mon Apr 25 17:01:29 2022 +0200
+
+    register check: egyik mező sem üres
+
+[33mcommit 2b518f1d141b6f7081832ea85b54475fd9bafa5e[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Mon Apr 25 16:11:28 2022 +0200
+
+    Can add/delete Customer manually
+
+[33mcommit dc6236b07de44bfac3e1921966a489ade43b4d43[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Mon Apr 25 11:19:40 2022 +0200
+
+    Nyelvtani hiba javítás Netherlands
+
+[33mcommit 5f915754d0dd63448bae4d1e3dd655d3059b48d8[m
+Author: László Kiss <harcoskl1911@gmail.com>
+Date:   Sun Apr 10 18:31:46 2022 +0200
+
+    Minor changes
+
+[33mcommit 9d5b7fd36c2a56cb67425df52e30d52877070fd1[m
+Author: László Kiss <harcoskl1911@gmail.com>
+Date:   Sun Apr 10 18:11:43 2022 +0200
+
+    További módosítások
+
+[33mcommit ed6b4bff3e470954a9b99b14278e84a201284572[m
+Author: László Kiss <harcoskl1911@gmail.com>
+Date:   Sun Apr 10 17:24:15 2022 +0200
+
+    Login, Main , Register updated
+
+[33mcommit b35f437030c656bc49ca1d016db22729db857593[m
+Merge: 14b128e 6c62595
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Fri Apr 8 14:48:26 2022 +0200
+
+    Davo frissitese commit
+
+[33mcommit 6c625957726419e3f501fb62c49af692a3d771d4[m[33m ([m[1;31morigin/mainPage[m[33m)[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Wed Apr 6 12:58:53 2022 +0200
+
+    main, login, register scenes + fxmls added
+
+[33mcommit 1f694b7eacad3d70166d981317a55c02c871b787[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Wed Apr 6 11:44:47 2022 +0200
+
+    javafx es db indul 2
+
+[33mcommit 3c36e4b37c1454bc0ca7ebb20de302c3cd1daab3[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Wed Apr 6 11:08:44 2022 +0200
+
+    added RegisterScene.fxml
+
+[33mcommit 459cade74b444ebe5de15441398727c13ba3ed7a[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Wed Apr 6 10:53:51 2022 +0200
+
+    javafx és DB együtt indul
+
+[33mcommit 14b128ef13665ffd6b5722162ee7735ca1e00af2[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Tue Apr 5 20:32:29 2022 +0200
+
+    searchpage elso commit
+
+[33mcommit 545574724c56b0f1ea99a6a3238599a76c126f3c[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Tue Apr 5 20:03:52 2022 +0200
+
+    added MainScene.fxml
+
+[33mcommit 370dbb12d6dbaa181238ed09f34c08524f4faf91[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Tue Apr 5 19:59:59 2022 +0200
+
+    add FXML mappa és Controllerek
+
+[33mcommit 505471b4550b37f645509397a568f2079026b056[m[33m ([m[1;31morigin/rudi6[m[33m, [m[1;32mrudi7[m[33m, [m[1;32mrudi6[m[33m, [m[1;32mmain[m[33m)[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Tue Apr 5 16:15:39 2022 +0200
+
+    getairportcitylist() ; findwithstartcity()
+
+[33mcommit 82e1af996a321afd0dd43e9e3968f481a14c6f55[m[33m ([m[1;31morigin/rudi5[m[33m, [m[1;32mrudi5[m[33m)[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Thu Mar 31 15:26:13 2022 +0200
+
+    mainapp fxml commit
+
+[33mcommit 72908d0f01962b5349d076950c3c27531ccf52a3[m[33m ([m[1;31morigin/rudi4[m[33m, [m[1;32mrudi4[m[33m)[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Thu Mar 31 11:36:07 2022 +0200
+
+    rudi4 commit
+
+[33mcommit dbe7d143380541b10dc313bb240a8e820abb3ba9[m[33m ([m[1;31morigin/rudi3[m[33m, [m[1;32mrudi3[m[33m)[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Thu Mar 31 11:07:11 2022 +0200
+
+    controller pacage commit
+
+[33mcommit 1d8f5c0b1598de7e448327fc129297933ee1d489[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Thu Mar 31 10:56:53 2022 +0200
+
+    Airport class commit
+
+[33mcommit 14276afa01f8869b39db35139c37f6ef691c3ba8[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Tue Mar 29 18:54:18 2022 +0200
+
+    jpa commit
+
+[33mcommit 035bff11f65fb1d814bd826ec5702f3dcad8fb79[m[33m ([m[1;32mrudi2[m[33m)[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Tue Mar 29 17:29:18 2022 +0200
+
+    Airportid commit
+
+[33mcommit 389fc0fa4cd5525c3af0321bc953fda7161b17f8[m[33m ([m[1;31morigin/david[m[33m)[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Tue Mar 29 15:14:42 2022 +0200
+
+    pom.xlm bovites
+
+[33mcommit 31321e1b1189d5b5e9c3490951fe1427e31db8f7[m
+Merge: 875d8c3 13ff03e
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Tue Mar 29 14:48:09 2022 +0200
+
+    Merge branch 'main' of https://github.com/davidotvos/DEIK-AIR
+
+[33mcommit 875d8c3698f296e02073b878deb8ae62efce906c[m
+Merge: 29eb0df 6fd5c8f
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Tue Mar 29 14:44:43 2022 +0200
+
+    rudi merge commit
+
+[33mcommit 6fd5c8fc2e67307f1fa99e24f199b627c60bfbf8[m[33m ([m[1;31morigin/rudi[m[33m)[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Tue Mar 29 14:34:13 2022 +0200
+
+    commit x
+
+[33mcommit 13ff03e3934ef6af79cf29fcdfbc8de91d846707[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Tue Mar 29 14:29:47 2022 +0200
+
+    deleted korte.txt
+
+[33mcommit 970cfa68fa419653aa11191a030f3b898a7e46c0[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Tue Mar 29 14:23:20 2022 +0200
+
+    korte commit
+
+[33mcommit ec2448ad97085d20751d060b7bc75142294e0ef1[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Tue Mar 29 14:02:40 2022 +0200
+
+    alma.txt removed
+
+[33mcommit 29eb0df5a18c2d17b0cd22a63bb5f6868934673d[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Tue Mar 29 13:59:33 2022 +0200
+
+    rudi merge commit
+
+[33mcommit bc6aaff7cf38f422f153bdc4845d99377cb006d1[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Tue Mar 29 11:48:55 2022 +0200
+
+    main kihelyezve merge commit
+
+[33mcommit 807c94358a3c3d99e21e4f9c4fd60daaa83d3f24[m
+Author: Vig Rudolf <vrudi@gmail.com>
+Date:   Mon Mar 28 22:36:09 2022 +0200
+
+    merge commit
+
+[33mcommit cedfa510f4346b5b47e216558fcf37120e24ec2f[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Mon Mar 28 19:56:56 2022 +0200
+
+    added alma.txt
+
+[33mcommit 38d6cc776c1a32448e12c94f046739a3b0d95336[m
+Author: davidotvos <davidotvos@wtf.com>
+Date:   Thu Mar 24 16:17:09 2022 +0100
+
+    Elso commit
