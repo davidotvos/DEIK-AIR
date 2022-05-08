@@ -44,7 +44,7 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" VBox.vgrow="ALWAYS">
       <children>
             <ImageView fx:id="imageView" fitHeight="174.0" fitWidth="267.0" layoutX="321.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="MyAccount" layoutX="454.0" layoutY="37.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="128.0" styleClass="search-button" text="My_Account" textFill="WHITE">
+            <Button fx:id="MyAccount" layoutX="454.0" layoutY="37.0" mnemonicParsing="false" onAction="#toCustomerScene" prefHeight="35.0" prefWidth="128.0" styleClass="search-button" text="My_Account" textFill="WHITE">
                <font>
                   <Font name="Cambria" size="16.0" />
                </font></Button>

@@ -38,33 +38,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.CustomerInfoSceneController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" VBox.vgrow="ALWAYS">
       <children>
-            <Label layoutX="38.0" layoutY="30.0" prefHeight="40.0" prefWidth="157.0" text="Felhasználónév:" underline="true">
+            <Label layoutX="38.0" layoutY="85.0" prefHeight="40.0" prefWidth="157.0" text="Felhasználónév:" underline="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="129.0" text="E-mail:" underline="true">
+            <Label layoutX="38.0" layoutY="125.0" text="E-mail:" underline="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="40.0" layoutY="226.0" text="Jelszó:" underline="true">
+            <Label layoutX="172.0" layoutY="92.0" prefHeight="27.0" prefWidth="98.0" text="Label" AnchorPane.bottomAnchor="282.0" AnchorPane.rightAnchor="369.6" AnchorPane.topAnchor="92.0" />
+            <Label layoutX="103.0" layoutY="130.0" text="Label" />
+            <Button fx:id="backButton" layoutX="38.0" layoutY="327.0" mnemonicParsing="false" onAction="#toHomeScene" prefHeight="40.0" prefWidth="98.0" styleClass="search-button" text="Vissza" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cambria" size="18.0" />
                </font>
-            </Label>
-            <Label layoutX="181.0" layoutY="27.0" prefHeight="27.0" prefWidth="77.0" text="Label" AnchorPane.bottomAnchor="321.0" AnchorPane.rightAnchor="395.0" AnchorPane.topAnchor="27.0" />
-            <Label layoutX="103.0" layoutY="134.0" text="Label" />
-            <Label layoutX="103.0" layoutY="231.0" text="Label" />
-            <Button layoutX="65.0" layoutY="175.0" mnemonicParsing="false" text="E-mail változtatása" />
-            <Button layoutX="65.0" layoutY="267.0" mnemonicParsing="false" text="Jelszó változtatása" />
-            <Button layoutX="65.0" layoutY="79.0" mnemonicParsing="false" text="Felhasználónév változtatása" />
-            <Button layoutX="65.0" layoutY="329.0" mnemonicParsing="false" text="Vissza" />
-            <Button layoutX="523.0" layoutY="329.0" mnemonicParsing="false" text="Mentés" />
+            </Button>
       </children>
     </AnchorPane>
   </children>
