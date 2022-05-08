@@ -1,11 +1,9 @@
 package hu.unideb.inf.controller;
 
 import hu.unideb.inf.MainApp;
-import hu.unideb.inf.model.Flights;
-import hu.unideb.inf.model.FlightsDAO;
-import hu.unideb.inf.model.JpaFlightsDAO;
-import hu.unideb.inf.model.MyFlightItemListener;
+import hu.unideb.inf.model.*;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,10 +15,10 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -59,7 +57,7 @@ public class SearchFlightsSceneController implements Initializable {
     private Button BackFromSearchPageButton;
 
     @FXML
-    private TextField SearchTextfield;
+    private TextField SearchTextField;
 
     @FXML
     private CheckBox StartCheckbox;
@@ -73,7 +71,7 @@ public class SearchFlightsSceneController implements Initializable {
     @FXML
     private GridPane grid;
 
-    private MyFlightItemListener myFlightItemListener;
+    private MySearchListener mySearchListener;
 
     private List<Flights> flights = new ArrayList<>();
 
@@ -85,8 +83,10 @@ public class SearchFlightsSceneController implements Initializable {
         LeftBarStartTimeLabel.setText(flight.getStart_time());
         Image image1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/" + flight.getStart_city() + ".jpg")));
         FromCityPictures.setImage(image1);
+        FromCityPictures.setFitWidth(180);
         Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/" + flight.getDestination_city() + ".jpg")));
         ToCityPicture.setImage(image2);
+        ToCityPicture.setFitWidth(180);
 
     }
 
@@ -100,9 +100,39 @@ public class SearchFlightsSceneController implements Initializable {
 
     }
 
-    @FXML
-    void HandleSearchButton(ActionEvent event) {
 
+
+    @FXML
+    void HandleSearchButton(MouseEvent event) {
+
+            getNewData();
+    }
+
+    void getNewData() {
+        String searchText = SearchTextField.getText();
+        //searchText = searchText.substring(0, 1).toUpperCase() + searchText.substring(1).toLowerCase();
+        if (!searchText.isEmpty()) //&& Airport.getAirport_city_string_list().contains(searchText)) {
+        {
+            try (FlightsDAO fDao = new JpaFlightsDAO()) {
+
+                if(StartCheckbox.isSelected() && DestinationCheckbox.isSelected()){
+
+                    flights.addAll(fDao.findWith_start_and_destination_city(searchText));
+                }
+                else if(StartCheckbox.isSelected())
+                {
+
+                    flights.addAll(fDao.findWith_start_city(searchText));
+                }else if (DestinationCheckbox.isSelected())
+                {
+
+                    flights.addAll(fDao.findWith_destination_city(searchText));
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
@@ -113,19 +143,23 @@ public class SearchFlightsSceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try (FlightsDAO fDao = new JpaFlightsDAO()) {
-        flights.addAll(fDao.getFlights());
+            flights.addAll(fDao.getFlights());
+            //flights.addAll(fDao.findWith_start_city("London"));
+            if(SearchButton.isPressed())
+            {
+                flights.clear();
+                getNewData();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        myFlightItemListener = new MyFlightItemListener() {
+        MyFlightItemListener myFlightItemListener = new MyFlightItemListener() {
             @Override
             public void onClickListener(Flights flight) {
                 setChosenFlight(flight);
             }
         };
-
-
 
         int column = 1;
         int row = 1;

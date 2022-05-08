@@ -80,12 +80,9 @@ public class MainApp extends Application {
                 System.out.println(c.getName());
                 if(c.getId() == 20){
                     temp = c;
-
                 }
                 cDao.deleteCustomer(temp);
             }
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -68,7 +68,7 @@
                   <Pane prefHeight="28.0" prefWidth="378.0" />
                   <HBox alignment="CENTER" prefHeight="61.0" prefWidth="358.0" stylesheets="@../values/searchstyle.css">
                      <children>
-                        <TextField fx:id="SearchTextfield" prefHeight="38.0" prefWidth="226.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../values/searchstyle.css">
+                        <TextField fx:id="SearchTextField" prefHeight="38.0" prefWidth="226.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../values/searchstyle.css">
                            <font>
                               <Font size="16.0" />
                            </font>
