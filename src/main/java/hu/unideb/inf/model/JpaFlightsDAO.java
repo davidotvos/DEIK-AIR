@@ -58,7 +58,7 @@ public class JpaFlightsDAO implements FlightsDAO {
         return entityManager.createQuery(
                         "SELECT f FROM Flights f WHERE f.start_city LIKE :Flights_start_city")
                 .setParameter("Flights_start_city", start_city)
-                .setMaxResults(50)
+                .setMaxResults(100)
                 .getResultList();
     }
 
@@ -66,7 +66,7 @@ public class JpaFlightsDAO implements FlightsDAO {
         return entityManager.createQuery(
                         "SELECT f FROM Flights f WHERE f.destination_city LIKE :Flights_destination_city")
                 .setParameter("Flights_destination_city", destination_city)
-                .setMaxResults(50)
+                .setMaxResults(100)
                 .getResultList();
     }
 

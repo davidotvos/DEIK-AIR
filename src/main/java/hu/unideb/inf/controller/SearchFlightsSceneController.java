@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,6 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -96,8 +98,10 @@ public class SearchFlightsSceneController implements Initializable {
     }
 
     @FXML
-    void HandleReserveButton(ActionEvent event) {
-
+    void HandleReserveButton(ActionEvent event) throws IOException {
+        Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/ReservePage.fxml")));
+        Stage currentStage = (Stage) ReserveButton.getScene().getWindow();
+        currentStage.getScene().setRoot(newRoot);
     }
 
 
@@ -105,7 +109,7 @@ public class SearchFlightsSceneController implements Initializable {
     @FXML
     void HandleSearchButton(MouseEvent event) {
 
-            getNewData();
+
     }
 
     void getNewData() {
@@ -145,11 +149,6 @@ public class SearchFlightsSceneController implements Initializable {
         try (FlightsDAO fDao = new JpaFlightsDAO()) {
             flights.addAll(fDao.getFlights());
             //flights.addAll(fDao.findWith_start_city("London"));
-            if(SearchButton.isPressed())
-            {
-                flights.clear();
-                getNewData();
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }

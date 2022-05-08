@@ -2,10 +2,14 @@ package hu.unideb.inf.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Objects;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class ReservePageController {
 
@@ -37,12 +41,22 @@ public class ReservePageController {
     private Button reserveButton;
 
     @FXML
-    void handleBackButton(ActionEvent event) {
-
+    void handleBackButton(ActionEvent event) throws IOException {
+        Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/SearchScene.fxml")));
+        Stage currentStage = (Stage) backButton.getScene().getWindow();
+        currentStage.setMinHeight(600);
+        currentStage.setMinWidth(900);
+        currentStage.setHeight(750);
+        currentStage.setWidth(1100);
+        currentStage.setTitle("Search Page");
+        currentStage.setX(0);
+        currentStage.setY(0);
+        currentStage.getScene().setRoot(newRoot);
     }
 
     @FXML
     void handleReserveButton(ActionEvent event) {
 
+        Alert
     }
 }
