@@ -79,6 +79,13 @@ public class JpaFlightsDAO implements FlightsDAO {
 
     }
 
+    public List getAirports() {
+        TypedQuery<Airport> query = entityManager.createQuery(
+                "SELECT a FROM Airports a", Airport.class);
+        List<Airport> airports = query.getResultList();
+        return airports;
+    }
+
 
     @Override
     public void close() throws Exception {

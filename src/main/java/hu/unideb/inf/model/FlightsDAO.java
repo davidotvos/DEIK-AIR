@@ -8,6 +8,7 @@ public interface FlightsDAO extends AutoCloseable{
     public void deleteFlight(Flights f);
     public void updateFlight(Flights f);
     public List<Flights> getFlights();
+    public List<Airport> getAirports();
     public void saveAirport(Airport airport);
     public List<Flights> findWith_start_city(String name);
     public List<Flights> findWith_destination_city(String destination_city);

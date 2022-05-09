@@ -1,13 +1,14 @@
 package hu.unideb.inf.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
-public class Airport {
+public class Airport{
     @Id
     @GeneratedValue
     private int id;
@@ -29,11 +30,22 @@ public class Airport {
     public static List<String> getAirport_city_string_list()
     {
         List<String> airport_city_string_list = new ArrayList<>();
-        for (Airport s : Airport.getAirportSet()) {
-            airport_city_string_list.add(s.toString());
-        }
+        airport_city_string_list.add("Debrecen");
+        airport_city_string_list.add("Budapest");
+        airport_city_string_list.add("Vienna");
+        airport_city_string_list.add("London");
+        airport_city_string_list.add("Barcelona");
+        airport_city_string_list.add("Amsterdam");
+        airport_city_string_list.add("Rome");
+        airport_city_string_list.add("Paris");
+        airport_city_string_list.add("Berlin");
+        airport_city_string_list.add("Brussel");
+        airport_city_string_list.add("Bern");
+        airport_city_string_list.add("Prague");
+
         return airport_city_string_list;
     }
+
 
 
     public static void addAirportToSet(Airport a){ airports.add(a);}

@@ -96,7 +96,6 @@ public class MainApp extends Application {
             deb.setCity("Debrecen");
             deb.setName("deb");
             deb.setCountry("Hungary");
-            Airport.addAirportToSet(deb);
             fDao.saveAirport(deb);
 
             Airport bud;
@@ -104,7 +103,6 @@ public class MainApp extends Application {
             bud.setCity("Budapest");
             bud.setName("bud");
             bud.setCountry("Hungary");
-            Airport.addAirportToSet(bud);
             fDao.saveAirport(bud);
 
             Airport vie;
@@ -112,7 +110,6 @@ public class MainApp extends Application {
             vie.setCity("Vienna");
             vie.setName("vie");
             vie.setCountry("Austria");
-            Airport.addAirportToSet(vie);
             fDao.saveAirport(vie);
 
             Airport lon;
@@ -120,7 +117,6 @@ public class MainApp extends Application {
             lon.setCity("London");
             lon.setName("lon");
             lon.setCountry("Great Britain");
-            Airport.addAirportToSet(lon);
             fDao.saveAirport(lon);
 
             Airport bar;
@@ -128,7 +124,6 @@ public class MainApp extends Application {
             bar.setCity("Barcelona");
             bar.setName("bar");
             bar.setCountry("Spain");
-            Airport.addAirportToSet(bar);
             fDao.saveAirport(bar);
 
             Airport ams;
@@ -138,7 +133,6 @@ public class MainApp extends Application {
             ams.setCountry("Netherlands");
             ams.setName("rom");
             ams.setCountry("Netherland");
-            Airport.addAirportToSet(ams);
             fDao.saveAirport(ams);
 
             Airport rom;
@@ -146,7 +140,6 @@ public class MainApp extends Application {
             rom.setCity("Rome");
             rom.setName("rom");
             rom.setCountry("Italy");
-            Airport.addAirportToSet(rom);
             fDao.saveAirport(rom);
 
             Airport par;
@@ -154,7 +147,6 @@ public class MainApp extends Application {
             par.setCity("Paris");
             par.setName("par");
             par.setCountry("France");
-            Airport.addAirportToSet(par);
             fDao.saveAirport(par);
 
             Airport ber;
@@ -162,7 +154,6 @@ public class MainApp extends Application {
             ber.setCity("Berlin");
             ber.setName("ber");
             ber.setCountry("Germany");
-            Airport.addAirportToSet(ber);
             fDao.saveAirport(ber);
 
             Airport bru;
@@ -170,7 +161,6 @@ public class MainApp extends Application {
             bru.setCity("Brussel");
             bru.setName("bru");
             bru.setCountry("Belgium");
-            Airport.addAirportToSet(bru);
             fDao.saveAirport(bru);
 
             Airport pra;
@@ -178,7 +168,6 @@ public class MainApp extends Application {
             pra.setCity("Prague");
             pra.setName("pra");
             pra.setCountry("Czech Republic");
-            Airport.addAirportToSet(bru);
             fDao.saveAirport(bru);
 
             Airport bern;
@@ -186,7 +175,6 @@ public class MainApp extends Application {
             bern.setCity("Bern");
             bern.setName("bern");
             bern.setCountry("Switzerland");
-            Airport.addAirportToSet(bern);
             fDao.saveAirport(bern);
 
 
