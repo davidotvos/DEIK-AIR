@@ -119,11 +119,12 @@ public class SearchFlightsSceneController implements Initializable {
 
         String searchText = SearchTextField.getText();
         //searchText = searchText.substring(0, 1).toUpperCase() + searchText.substring(1).toLowerCase();
-        if (!searchText.isEmpty() && Airport.getAirport_city_string_list().contains(searchText))
-        {
+        //if (!searchText.isEmpty() && Airport.getAirport_city_string_list().contains(searchText))
+        //{
 
             try (FlightsDAO fDao = new JpaFlightsDAO()) {
 
+                flights.clear();
                 flights.addAll(fDao.findWith_start_city(searchText));
 
                 /*if(StartCheckbox.isSelected() && DestinationCheckbox.isSelected()){
@@ -145,9 +146,9 @@ public class SearchFlightsSceneController implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            grid.getChildren().clear();
             setGrid();
-        }
-
+        //}
     }
 
     @FXML
@@ -194,7 +195,7 @@ public class SearchFlightsSceneController implements Initializable {
             e.printStackTrace();
         }
         setGrid();
-        
+
     }
 }
 
