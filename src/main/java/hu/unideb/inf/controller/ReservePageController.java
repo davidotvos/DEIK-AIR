@@ -83,7 +83,19 @@ public class ReservePageController implements Initializable {
 
     @FXML
     void handleReserveButton(ActionEvent event) {
-
+        if(iWillPayCheckbox.isSelected() && !Tickets.getSelectionModel().isEmpty())
+        {
+            Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            successAlert.setTitle("Reservation Done");
+            successAlert.setContentText("You successfully reserved this flight, you have to pay: " + Price.getText());
+            successAlert.show();
+        }else
+        {
+            Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+            warningAlert.setTitle("Warning");
+            warningAlert.setContentText("You have to choose how many tickets would you reserve. \nAnd you have to confirm you will pay or cancel your reserve");
+            warningAlert.show();
+        }
     }
 
     @FXML
