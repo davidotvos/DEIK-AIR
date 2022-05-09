@@ -32,11 +32,14 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -44,18 +47,39 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.RegisterSceneController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" VBox.vgrow="ALWAYS">
       <children>
-            <TextField fx:id="userLabel" layoutX="243.0" layoutY="122.0" />
-            <TextField fx:id="emailLabel" layoutX="243.0" layoutY="162.0" />
-            <PasswordField fx:id="pwLabel" layoutX="245.0" layoutY="200.0" />
-            <PasswordField fx:id="pwConfirmLabel" layoutX="245.0" layoutY="239.0" />
+            <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="464.0" layoutY="141.0">
+               <image>
+                  <Image url="@../../java/hu/unideb/inf/icon.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="userLabel" layoutX="243.0" layoutY="122.0" stylesheets="@../values/searchstyle.css">
+               <styleClass>
+                  <String fx:value="search-box" />
+                  <String fx:value="small-shadow" />
+               </styleClass></TextField>
+            <TextField fx:id="emailLabel" layoutX="243.0" layoutY="162.0" stylesheets="@../values/searchstyle.css">
+               <styleClass>
+                  <String fx:value="search-box" />
+                  <String fx:value="small-shadow" />
+               </styleClass></TextField>
+            <PasswordField fx:id="pwLabel" layoutX="245.0" layoutY="200.0" stylesheets="@../values/searchstyle.css">
+               <styleClass>
+                  <String fx:value="search-box" />
+                  <String fx:value="small-shadow" />
+               </styleClass></PasswordField>
+            <PasswordField fx:id="pwConfirmLabel" layoutX="245.0" layoutY="239.0" stylesheets="@../values/searchstyle.css">
+               <styleClass>
+                  <String fx:value="search-box" />
+                  <String fx:value="small-shadow" />
+               </styleClass></PasswordField>
             <CheckBox fx:id="tcLabel" layoutX="250.0" layoutY="275.0" mnemonicParsing="false" text="Terms and conditions" />
-            <Button fx:id="registerButton" layoutX="288.0" layoutY="307.0" mnemonicParsing="false" onAction="#register" text="Register" />
-            <Button fx:id="backButton" layoutX="288.0" layoutY="341.0" mnemonicParsing="false" onAction="#toLogin" prefHeight="26.0" prefWidth="59.0" text="Back" />
-            <Text layoutX="238.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DEIK Air" textAlignment="CENTER">
+            <Button fx:id="registerButton" layoutX="256.0" layoutY="314.0" mnemonicParsing="false" onAction="#register" prefHeight="26.0" prefWidth="123.0" styleClass="search-button" stylesheets="@../values/searchstyle.css" text="Register" textAlignment="CENTER" textFill="WHITE" />
+            <Button fx:id="backButton" layoutX="256.0" layoutY="349.0" mnemonicParsing="false" onAction="#toLogin" prefHeight="26.0" prefWidth="123.0" styleClass="search-button" stylesheets="@../values/searchstyle.css" text="Back" textFill="WHITE" />
+            <Text fill="#104eea" layoutX="205.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Regisztráció" textAlignment="CENTER">
                <font>
-                  <Font name="Arial" size="43.0" />
+                  <Font name="Cambria" size="43.0" />
                </font>
             </Text>
             <Text layoutX="137.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Felhasználónév">

@@ -83,6 +83,7 @@ public class ReservePageController implements Initializable {
 
     @FXML
     void handleReserveButton(ActionEvent event) {
+<<<<<<< HEAD
         if(iWillPayCheckbox.isSelected() && !Tickets.getSelectionModel().isEmpty())
         {
             Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -120,5 +121,7 @@ public class ReservePageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Integer> Ticket_number_list = FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9);
         Tickets.setItems(Ticket_number_list);
+=======
+>>>>>>> 99365d62cfa3410c60ec4553f1ea20da54592622
     }
 }

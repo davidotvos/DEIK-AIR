@@ -151,8 +151,10 @@ public class SearchFlightsSceneController implements Initializable {
     }
 
     @FXML
-    void handleBackFromSearchPageButton(ActionEvent event) {
-
+    void handleBackFromSearchPageButton(ActionEvent event) throws IOException {
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/FXML/HomeScene.fxml"));
+        Stage currentStage = (Stage) BackFromSearchPageButton.getScene().getWindow();
+        currentStage.getScene().setRoot(newRoot);
     }
 
     void setGrid()
@@ -169,6 +171,7 @@ public class SearchFlightsSceneController implements Initializable {
             for (Flights flight : flights) {
                 FXMLLoader fxmlLoaderForFlightItem = new FXMLLoader();
                 fxmlLoaderForFlightItem.setLocation(getClass().getResource("/fxml/FlightItem.fxml"));
+
 
                 AnchorPane anchorPane = fxmlLoaderForFlightItem.load();
 
