@@ -109,7 +109,7 @@ public class SearchFlightsSceneController implements Initializable {
         currentStage.getScene().setRoot(newRoot);
 
         ReservePageController reserveController = loader.getController();
-        reserveController.setReserveData(chosenFlight);
+        reserveController.setReservationData(chosenFlight);
     }
 
 

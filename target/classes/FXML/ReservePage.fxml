@@ -82,7 +82,7 @@
                         <Font name="Cambria" size="25.0" />
                      </font>
                   </Label>
-                  <Label fx:id="AirCraftType" prefHeight="31.0" prefWidth="190.0" text="aircraftType">
+                  <Label fx:id="AirCraftType" prefHeight="31.0" prefWidth="294.0" text="aircraftType">
                      <font>
                         <Font name="Cambria" size="25.0" />
                      </font>
@@ -99,7 +99,7 @@
                         <Font name="Cambria" size="25.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="Tickets" prefWidth="150.0" promptText="select" />
+                  <ComboBox fx:id="Tickets" onAction="#Select" prefHeight="26.0" prefWidth="78.0" promptText="select" />
                </children>
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
@@ -112,7 +112,7 @@
                         <Font name="Cambria" size="25.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="FirstClassCheckbox" mnemonicParsing="false" prefHeight="34.0" prefWidth="178.0" text="click it if you want" />
+                  <CheckBox fx:id="FirstClassCheckbox" mnemonicParsing="false" onAction="#FirstClass" prefHeight="34.0" prefWidth="178.0" text="click it if you want" />
                </children>
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
