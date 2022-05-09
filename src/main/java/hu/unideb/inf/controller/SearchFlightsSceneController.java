@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -75,6 +76,8 @@ public class SearchFlightsSceneController implements Initializable {
 
     private MySearchListener mySearchListener;
 
+    private Flights chosenFlight;
+
     private List<Flights> flights = new ArrayList<>();
 
     private void setChosenFlight(Flights flight)
@@ -90,6 +93,7 @@ public class SearchFlightsSceneController implements Initializable {
         ToCityPicture.setImage(image2);
         ToCityPicture.setFitWidth(180);
 
+        chosenFlight = flight;
     }
 
     @FXML
@@ -99,27 +103,30 @@ public class SearchFlightsSceneController implements Initializable {
 
     @FXML
     void HandleReserveButton(ActionEvent event) throws IOException {
-        Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/ReservePage.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/fxml/ReservePage.fxml")));
+        Parent newRoot = loader.load();
         Stage currentStage = (Stage) ReserveButton.getScene().getWindow();
         currentStage.getScene().setRoot(newRoot);
+
+        ReservePageController reserveController = loader.getController();
+        reserveController.setReserveData(chosenFlight);
     }
 
 
 
     @FXML
-    void HandleSearchButton(MouseEvent event) {
+    void HandleSearchButton(ActionEvent event) {
 
-
-    }
-
-    void getNewData() {
         String searchText = SearchTextField.getText();
         //searchText = searchText.substring(0, 1).toUpperCase() + searchText.substring(1).toLowerCase();
-        if (!searchText.isEmpty()) //&& Airport.getAirport_city_string_list().contains(searchText)) {
+        if (!searchText.isEmpty() && Airport.getAirport_city_string_list().contains(searchText))
         {
+
             try (FlightsDAO fDao = new JpaFlightsDAO()) {
 
-                if(StartCheckbox.isSelected() && DestinationCheckbox.isSelected()){
+                flights.addAll(fDao.findWith_start_city(searchText));
+
+                /*if(StartCheckbox.isSelected() && DestinationCheckbox.isSelected()){
 
                     flights.addAll(fDao.findWith_start_and_destination_city(searchText));
                 }
@@ -131,12 +138,16 @@ public class SearchFlightsSceneController implements Initializable {
                 {
 
                     flights.addAll(fDao.findWith_destination_city(searchText));
-                }
+                }else flights.addAll(fDao.getFlights());
+
+                 */
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            setGrid();
         }
+
     }
 
     @FXML
@@ -144,22 +155,14 @@ public class SearchFlightsSceneController implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        try (FlightsDAO fDao = new JpaFlightsDAO()) {
-            flights.addAll(fDao.getFlights());
-            //flights.addAll(fDao.findWith_start_city("London"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    void setGrid()
+    {
         MyFlightItemListener myFlightItemListener = new MyFlightItemListener() {
             @Override
             public void onClickListener(Flights flight) {
                 setChosenFlight(flight);
             }
         };
-
         int column = 1;
         int row = 1;
         try {
@@ -174,11 +177,24 @@ public class SearchFlightsSceneController implements Initializable {
 
                 grid.add(anchorPane, column, row++);
                 GridPane.setMargin(anchorPane, new Insets(10));
+
             }
         }catch (IOException e)
         {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try (FlightsDAO fDao = new JpaFlightsDAO()) {
+            flights.addAll(fDao.getFlights());
+            //flights.addAll(fDao.findWith_start_city("London"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        setGrid();
+        
     }
 }
 

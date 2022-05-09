@@ -1,5 +1,7 @@
 package hu.unideb.inf.controller;
 
+import hu.unideb.inf.MainApp;
+import hu.unideb.inf.model.Flights;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +28,9 @@ public class ReservePageController {
     private Label StartTime;
 
     @FXML
+    private Label Price;
+
+    @FXML
     private ComboBox<?> Tickets;
 
     @FXML
@@ -39,6 +44,15 @@ public class ReservePageController {
 
     @FXML
     private Button reserveButton;
+
+    public void setReserveData(Flights flight)
+    {
+        FromCity.setText(flight.getStart_city());
+        ToCity.setText(flight.getDestination_city());
+        StartTime.setText(flight.getStart_time());
+        AirCraftType.setText(flight.getPlane_type());
+        Price.setText(MainApp.CURRENCY + Double.toString(flight.getPrice()));
+    }
 
     @FXML
     void handleBackButton(ActionEvent event) throws IOException {
@@ -57,6 +71,5 @@ public class ReservePageController {
     @FXML
     void handleReserveButton(ActionEvent event) {
 
-        Alert
     }
 }

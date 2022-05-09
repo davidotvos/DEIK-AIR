@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -82,6 +83,9 @@
                               <String fx:value="search-button" />
                               <String fx:value="small-shadow" />
                            </styleClass>
+                           <effect>
+                              <Glow level="0.49" />
+                           </effect>
                         </Button>
                      </children>
                      <styleClass>

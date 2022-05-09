@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.ReservePageController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="414.0" prefWidth="653.0">
@@ -126,7 +125,7 @@
                         <Font name="Cambria" size="25.0" />
                      </font>
                   </Label>
-                  <Label text="Price">
+                  <Label fx:id="Price" text="Price">
                      <font>
                         <Font name="Cambria" size="25.0" />
                      </font>
