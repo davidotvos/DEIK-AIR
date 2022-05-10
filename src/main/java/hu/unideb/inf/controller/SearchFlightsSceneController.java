@@ -155,6 +155,10 @@ public class SearchFlightsSceneController implements Initializable {
         Parent newRoot = FXMLLoader.load(getClass().getResource("/FXML/HomeScene.fxml"));
         Stage currentStage = (Stage) BackFromSearchPageButton.getScene().getWindow();
         currentStage.getScene().setRoot(newRoot);
+        currentStage.setWidth(650);
+        currentStage.setHeight(460);
+        currentStage.setX(300);
+        currentStage.setY(200);
     }
 
     void setGrid()

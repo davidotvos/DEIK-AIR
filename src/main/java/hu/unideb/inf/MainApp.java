@@ -37,17 +37,19 @@ public class MainApp extends Application {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         launch(args);
     }
 
-    public static void startDB() throws SQLException{
+    public static void startDB() throws Exception {
         startDatabase();
 
         //AddFlights();
         //AddCustomer();
-
+        UpdateTypoInAmsterdam();
         //DeleteCustomer();
 
         System.out.println("Open your browser and navigate to http://localhost:8082/");
@@ -57,6 +59,20 @@ public class MainApp extends Application {
 
 
 
+    }
+
+    private static void UpdateTypoInAmsterdam() throws Exception {
+        try (FlightsDAO fDao = new JpaFlightsDAO()) {
+
+            Flights deb_ams1 = new Flights("deb_ams1", "Debrecen", "Amsterdam", "Boeing 747-400", "2022.05.20 14:30", 109.99);
+            //deb.addFlightToList(deb_ams1);
+            //fDao.updateFlight(deb_ams1);
+            fDao.deleteFlight(deb_ams1);
+
+            Flights deb_ams2 = new Flights("deb_ams2", "Debrecen", "Amsterdam", "Boeing 747-400", "2022.05.24 15:30", 209.99);
+            //fDao.updateFlight(deb_ams2);
+            fDao.deleteFlight(deb_ams2);
+        }
     }
 
     private static void AddCustomer(){
