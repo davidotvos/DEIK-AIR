@@ -1,5 +1,6 @@
 package hu.unideb.inf.controller;
 
+import hu.unideb.inf.MainApp;
 import hu.unideb.inf.model.JpaCustomerDAO;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
@@ -46,8 +47,7 @@ public class HomeSceneController implements Initializable {
 
     @FXML
     void handleHomeLogoutButtonPushed(ActionEvent event) throws IOException {
-        JpaCustomerDAO loginDAO = new JpaCustomerDAO();
-        loginDAO.SetLoggedInCustomer(null);
+        MainApp.LoggedInCustomer = null;
         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
         successAlert.setTitle("Logout");
         successAlert.setContentText("Sikeresen kijelentkeztél!");
