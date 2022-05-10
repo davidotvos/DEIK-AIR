@@ -78,7 +78,7 @@ public class MainApp extends Application {
             Customer temp = new Customer();
             for(Customer c : templi){
                 System.out.println(c.getName());
-                if(c.getId() == 20){
+                if(c.getId() == 39){
                     temp = c;
                 }
                 cDao.deleteCustomer(temp);
