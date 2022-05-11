@@ -46,7 +46,6 @@ public class LoginSceneConroller {
         //ha a lekért jelszó megegyezik a megadottal akkor bent van a user
         if(pass.equals(pwLabel.getText()))
         {
-            loginDAO.SetLoggedInCustomer(userLabel.getText());
 
             // Customer beállítása belépésnél
             MainApp.LoggedInCustomer = MainApp.getCustomerObject(userLabel.getText());
