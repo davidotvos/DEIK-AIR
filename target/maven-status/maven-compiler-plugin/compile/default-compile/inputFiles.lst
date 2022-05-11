@@ -12,6 +12,7 @@ C:\Coding\meeting\DEIK-AIR\src\main\java\hu\unideb\inf\model\Flights.java
 C:\Coding\meeting\DEIK-AIR\src\main\java\hu\unideb\inf\controller\CustomerInfoSceneController.java
 C:\Coding\meeting\DEIK-AIR\src\main\java\hu\unideb\inf\controller\SearchFlightsSceneController.java
 C:\Coding\meeting\DEIK-AIR\src\main\java\hu\unideb\inf\Main.java
+C:\Coding\meeting\DEIK-AIR\src\main\java\hu\unideb\inf\model\ReservationDataReader.java
 C:\Coding\meeting\DEIK-AIR\src\main\java\hu\unideb\inf\model\JpaCustomerDAO.java
 C:\Coding\meeting\DEIK-AIR\src\main\java\hu\unideb\inf\model\JpaFlightsDAO.java
 C:\Coding\meeting\DEIK-AIR\src\main\java\hu\unideb\inf\controller\ReservePageController.java

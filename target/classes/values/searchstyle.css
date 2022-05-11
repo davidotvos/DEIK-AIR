@@ -9,6 +9,10 @@
     -fx-background-color: #327ae6;
     -fx-background-radius: 30;
 }
+.search-button:hover{
+    -fx-background-color: #532abc;
+    -fx-background-radius: 30;
+}
 .right-bar{
     -fx-background-color:#e1eafa;
 }

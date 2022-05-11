@@ -67,11 +67,6 @@ public class HomeSceneController implements Initializable {
     }
 
     @FXML
-    void toHelp(ActionEvent event) {
-
-    }
-
-    @FXML
     void toCustomerScene(ActionEvent event) throws IOException {
         Parent newRoot = FXMLLoader.load(getClass().getResource("/FXML/CustomerInfoScene.fxml"));
         Stage currentStage = (Stage) MyAccount.getScene().getWindow();

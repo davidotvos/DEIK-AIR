@@ -44,7 +44,7 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" VBox.vgrow="ALWAYS">
       <children>
             <ImageView fx:id="imageView" fitHeight="174.0" fitWidth="281.0" layoutX="301.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="MyAccount" layoutX="454.0" layoutY="37.0" mnemonicParsing="false" onAction="#toCustomerScene" prefHeight="35.0" prefWidth="128.0" styleClass="search-button" text="My_Account" textFill="WHITE">
+            <Button fx:id="MyAccount" layoutX="39.0" layoutY="251.0" mnemonicParsing="false" onAction="#toCustomerScene" prefHeight="35.0" prefWidth="128.0" styleClass="search-button" text="My_Account" textFill="WHITE">
                <font>
                   <Font name="Cambria" size="16.0" />
                </font></Button>
@@ -52,19 +52,15 @@
                <font>
                   <Font name="Cambria" size="16.0" />
                </font></Button>
-            <Button fx:id="helpButton" layoutX="44.0" layoutY="182.0" mnemonicParsing="false" onAction="#toHelp" prefHeight="35.0" prefWidth="128.0" styleClass="search-button" text="Help" textFill="WHITE">
+            <Button fx:id="aboutButton" layoutX="39.0" layoutY="200.0" mnemonicParsing="false" onAction="#toAbout" prefHeight="35.0" prefWidth="128.0" styleClass="search-button" text="About" textFill="WHITE">
                <font>
                   <Font name="Cambria" size="16.0" />
                </font></Button>
-            <Button fx:id="aboutButton" layoutX="44.0" layoutY="227.0" mnemonicParsing="false" onAction="#toAbout" prefHeight="35.0" prefWidth="128.0" styleClass="search-button" text="About" textFill="WHITE">
+            <Button fx:id="searchButton" layoutX="39.0" layoutY="147.0" mnemonicParsing="false" onAction="#toSearch" prefHeight="35.0" prefWidth="128.0" styleClass="search-button" stylesheets="@../values/searchstyle.css" text="Search" textFill="WHITE">
                <font>
                   <Font name="Cambria" size="16.0" />
                </font></Button>
-            <Button fx:id="searchButton" layoutX="44.0" layoutY="137.0" mnemonicParsing="false" onAction="#toSearch" prefHeight="35.0" prefWidth="128.0" styleClass="search-button" stylesheets="@../values/searchstyle.css" text="Search" textFill="WHITE">
-               <font>
-                  <Font name="Cambria" size="16.0" />
-               </font></Button>
-            <Label fx:id="welcomeLabel" alignment="CENTER" layoutX="39.0" layoutY="41.0" prefHeight="62.0" prefWidth="391.0" styleClass="flight-box-title" text="ddd" textAlignment="CENTER">
+            <Label fx:id="welcomeLabel" alignment="CENTER" layoutX="39.0" layoutY="41.0" prefHeight="62.0" prefWidth="557.0" styleClass="flight-box-title" text="ddd" textAlignment="CENTER">
                <font>
                   <Font name="Cambria" size="36.0" />
                </font>

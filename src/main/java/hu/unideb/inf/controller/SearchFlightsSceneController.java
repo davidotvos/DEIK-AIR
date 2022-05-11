@@ -147,7 +147,7 @@ public class SearchFlightsSceneController implements Initializable {
             }
 
             grid.getChildren().clear();
-            //setGrid();
+            setGrid();
         }else
         {
             Alert searchAlert = new Alert(Alert.AlertType.WARNING);
@@ -210,7 +210,7 @@ public class SearchFlightsSceneController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //setGrid();
+        setGrid();
 
     }
 }
