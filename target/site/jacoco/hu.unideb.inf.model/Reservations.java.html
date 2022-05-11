@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Reservations.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DEIKAIR</a> &gt; <a href="index.source.html" class="el_package">hu.unideb.inf.model</a> &gt; <span class="el_source">Reservations.java</span></div><h1>Reservations.java</h1><pre class="source lang-java linenums">package hu.unideb.inf.model;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+<span class="nc" id="L9">public class Reservations implements Serializable {</span>
+
+    //
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private String start_city;
+    private String destination_city;
+    private String start_time;
+    private int NumberOfTickets;
+    private boolean FirstClass;
+    private Double price;
+    private String CustomerName;
+
+    public String getCustomerName() {
+<span class="nc" id="L24">        return CustomerName;</span>
+    }
+
+    public void setCustomerName(String customerName) {
+<span class="nc" id="L28">        CustomerName = customerName;</span>
+<span class="nc" id="L29">    }</span>
+
+    public int getId() {
+<span class="nc" id="L32">        return id;</span>
+    }
+
+    public void setId(int id) {
+<span class="nc" id="L36">        this.id = id;</span>
+<span class="nc" id="L37">    }</span>
+
+    public String getStart_city() {
+<span class="nc" id="L40">        return start_city;</span>
+    }
+
+    public void setStart_city(String start_city) {
+<span class="nc" id="L44">        this.start_city = start_city;</span>
+<span class="nc" id="L45">    }</span>
+
+    public String getDestination_city() {
+<span class="nc" id="L48">        return destination_city;</span>
+    }
+
+    public void setDestination_city(String destination_city) {
+<span class="nc" id="L52">        this.destination_city = destination_city;</span>
+<span class="nc" id="L53">    }</span>
+
+    public String getStart_time() {
+<span class="nc" id="L56">        return start_time;</span>
+    }
+
+    public void setStart_time(String start_time) {
+<span class="nc" id="L60">        this.start_time = start_time;</span>
+<span class="nc" id="L61">    }</span>
+
+    public int getNumberOfTickets() {
+<span class="nc" id="L64">        return NumberOfTickets;</span>
+    }
+
+    public void setNumberOfTickets(int numberOfTickets) {
+<span class="nc" id="L68">        NumberOfTickets = numberOfTickets;</span>
+<span class="nc" id="L69">    }</span>
+
+    public boolean isFirstClass() {
+<span class="nc" id="L72">        return FirstClass;</span>
+    }
+
+    public void setFirstClass(boolean firstClass) {
+<span class="nc" id="L76">        FirstClass = firstClass;</span>
+<span class="nc" id="L77">    }</span>
+
+    public Double getPrice() {
+<span class="nc" id="L80">        return price;</span>
+    }
+
+    public void setPrice(Double price) {
+<span class="nc" id="L84">        this.price = price;</span>
+<span class="nc" id="L85">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

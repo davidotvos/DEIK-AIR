@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MainApp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DEIKAIR</a> &gt; <a href="index.source.html" class="el_package">hu.unideb.inf</a> &gt; <span class="el_source">MainApp.java</span></div><h1>MainApp.java</h1><pre class="source lang-java linenums">package hu.unideb.inf;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Objects;
+
+import hu.unideb.inf.controller.MainSceneController;
+import hu.unideb.inf.model.*;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import org.h2.tools.Server;
+
+
+
+
+<span class="nc" id="L19">public class MainApp extends Application {</span>
+
+    public static final String CURRENCY = &quot;€&quot;;
+<span class="nc" id="L22">    public static Customer LoggedInCustomer = null;</span>
+
+    Stage window;
+    @Override
+    public void start(Stage stage) throws Exception {
+<span class="nc" id="L27">        window = stage;</span>
+<span class="nc" id="L28">        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(&quot;/FXML/MainScene.fxml&quot;));</span>
+<span class="nc" id="L29">        Scene scene = new Scene(loader.load());</span>
+<span class="nc" id="L30">        stage.setTitle(&quot;DEIKAir&quot;);</span>
+<span class="nc" id="L31">        stage.setScene(scene);</span>
+<span class="nc" id="L32">        Image indexImage = new Image(&quot;file:src/main/java/hu/unideb/inf/icon.png&quot;);</span>
+<span class="nc" id="L33">        stage.getIcons().add(indexImage);</span>
+<span class="nc" id="L34">        stage.show();</span>
+<span class="nc" id="L35">    }</span>
+
+    public static void main(String[] args) throws Exception {
+        try {
+<span class="nc" id="L39">            startDB();</span>
+
+<span class="nc" id="L41">        } catch (SQLException e) {</span>
+<span class="nc" id="L42">            e.printStackTrace();</span>
+<span class="nc" id="L43">        } catch (Exception e) {</span>
+<span class="nc" id="L44">            e.printStackTrace();</span>
+<span class="nc" id="L45">        }</span>
+
+<span class="nc" id="L47">        launch(args);</span>
+<span class="nc" id="L48">    }</span>
+
+    public static void startDB() throws Exception {
+        //startDatabase();
+
+        //AddFlights();
+        //AddCustomer();
+
+        //DeleteCustomer();
+        //AddReservation();
+
+
+<span class="nc" id="L60">        System.out.println(&quot;Open your browser and navigate to http://localhost:8082/&quot;);</span>
+<span class="nc" id="L61">        System.out.println(&quot;JDBC URL: jdbc:h2:file:~/my_database&quot;);</span>
+<span class="nc" id="L62">        System.out.println(&quot;User Name: sa&quot;);</span>
+<span class="nc" id="L63">        System.out.println(&quot;Password: -&quot;);</span>
+
+<span class="nc" id="L65">    }</span>
+
+    public static Customer getCustomerObject(String name){
+<span class="nc" id="L68">        try( CustomerDAO cDao = new JpaCustomerDAO()){</span>
+<span class="nc" id="L69">            List&lt;Customer&gt; templi = cDao.getCustomers();</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">            for(Customer c : templi){</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">                if(Objects.equals(c.getName(), name))</span>
+                {
+<span class="nc" id="L73">                    return c;</span>
+                }
+<span class="nc" id="L75">            }</span>
+<span class="nc" id="L76">        } catch (Exception e) {</span>
+<span class="nc" id="L77">            e.printStackTrace();</span>
+<span class="nc" id="L78">        }</span>
+<span class="nc" id="L79">        return null;</span>
+    }
+
+    private static void AddCustomer(){
+<span class="nc" id="L83">        try( CustomerDAO cDao = new JpaCustomerDAO()){</span>
+            Customer admin;
+<span class="nc" id="L85">            admin = new Customer();</span>
+<span class="nc" id="L86">            admin.setName(&quot;admin&quot;);</span>
+<span class="nc" id="L87">            admin.setEmail(&quot;admin@admin.com&quot;);</span>
+<span class="nc" id="L88">            admin.setPassword(&quot;admin&quot;);</span>
+<span class="nc" id="L89">            cDao.saveCustomer(admin);</span>
+<span class="nc" id="L90">        } catch (Exception e) {</span>
+<span class="nc" id="L91">            e.printStackTrace();</span>
+<span class="nc" id="L92">        }</span>
+<span class="nc" id="L93">    }</span>
+
+    private static void DeleteCustomer(){
+<span class="nc" id="L96">        try( CustomerDAO cDao = new JpaCustomerDAO()){</span>
+<span class="nc" id="L97">            List&lt;Customer&gt; templi = cDao.getCustomers();</span>
+<span class="nc" id="L98">            Customer temp = new Customer();</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">            for(Customer c : templi){</span>
+<span class="nc" id="L100">                System.out.println(c.getName());</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">                if(c.getId() == 39){</span>
+<span class="nc" id="L102">                    temp = c;</span>
+                }
+<span class="nc" id="L104">                cDao.deleteCustomer(temp);</span>
+<span class="nc" id="L105">            }</span>
+<span class="nc" id="L106">        } catch (Exception e) {</span>
+<span class="nc" id="L107">            e.printStackTrace();</span>
+<span class="nc" id="L108">        }</span>
+<span class="nc" id="L109">    }</span>
+
+    private static void AddReservation() throws Exception {
+<span class="nc" id="L112">        try (ReservationsDAO rDao = new JpaReservationsDAO()){</span>
+            Reservations elso;
+<span class="nc" id="L114">            elso = new Reservations();</span>
+<span class="nc" id="L115">            elso.setStart_city(&quot;Debrecen&quot;);</span>
+<span class="nc" id="L116">            elso.setDestination_city(&quot;London&quot;);</span>
+<span class="nc" id="L117">            elso.setStart_time(&quot;2022.05.10. 12:00&quot;);</span>
+<span class="nc" id="L118">            elso.setNumberOfTickets(5);</span>
+<span class="nc" id="L119">            elso.setPrice(500.0);</span>
+<span class="nc" id="L120">            elso.setCustomerName(&quot;admin&quot;);</span>
+<span class="nc" id="L121">            rDao.saveReservation(elso);</span>
+        }
+<span class="nc" id="L123">    }</span>
+
+    private static void AddFlights(){
+<span class="nc" id="L126">        try (FlightsDAO fDao = new JpaFlightsDAO()) {</span>
+
+            Airport deb;
+<span class="nc" id="L129">            deb = new Airport();</span>
+<span class="nc" id="L130">            deb.setCity(&quot;Debrecen&quot;);</span>
+<span class="nc" id="L131">            deb.setName(&quot;deb&quot;);</span>
+<span class="nc" id="L132">            deb.setCountry(&quot;Hungary&quot;);</span>
+<span class="nc" id="L133">            fDao.saveAirport(deb);</span>
+
+            Airport bud;
+<span class="nc" id="L136">            bud = new Airport();</span>
+<span class="nc" id="L137">            bud.setCity(&quot;Budapest&quot;);</span>
+<span class="nc" id="L138">            bud.setName(&quot;bud&quot;);</span>
+<span class="nc" id="L139">            bud.setCountry(&quot;Hungary&quot;);</span>
+<span class="nc" id="L140">            fDao.saveAirport(bud);</span>
+
+            Airport vie;
+<span class="nc" id="L143">            vie = new Airport();</span>
+<span class="nc" id="L144">            vie.setCity(&quot;Vienna&quot;);</span>
+<span class="nc" id="L145">            vie.setName(&quot;vie&quot;);</span>
+<span class="nc" id="L146">            vie.setCountry(&quot;Austria&quot;);</span>
+<span class="nc" id="L147">            fDao.saveAirport(vie);</span>
+
+            Airport lon;
+<span class="nc" id="L150">            lon = new Airport();</span>
+<span class="nc" id="L151">            lon.setCity(&quot;London&quot;);</span>
+<span class="nc" id="L152">            lon.setName(&quot;lon&quot;);</span>
+<span class="nc" id="L153">            lon.setCountry(&quot;Great Britain&quot;);</span>
+<span class="nc" id="L154">            fDao.saveAirport(lon);</span>
+
+            Airport bar;
+<span class="nc" id="L157">            bar = new Airport();</span>
+<span class="nc" id="L158">            bar.setCity(&quot;Barcelona&quot;);</span>
+<span class="nc" id="L159">            bar.setName(&quot;bar&quot;);</span>
+<span class="nc" id="L160">            bar.setCountry(&quot;Spain&quot;);</span>
+<span class="nc" id="L161">            fDao.saveAirport(bar);</span>
+
+            Airport ams;
+<span class="nc" id="L164">            ams = new Airport();</span>
+<span class="nc" id="L165">            ams.setCity(&quot;Amsterdam&quot;);</span>
+<span class="nc" id="L166">            ams.setName(&quot;AMS&quot;);</span>
+<span class="nc" id="L167">            ams.setCountry(&quot;Netherlands&quot;);</span>
+<span class="nc" id="L168">            ams.setName(&quot;rom&quot;);</span>
+<span class="nc" id="L169">            ams.setCountry(&quot;Netherland&quot;);</span>
+<span class="nc" id="L170">            fDao.saveAirport(ams);</span>
+
+            Airport rom;
+<span class="nc" id="L173">            rom = new Airport();</span>
+<span class="nc" id="L174">            rom.setCity(&quot;Rome&quot;);</span>
+<span class="nc" id="L175">            rom.setName(&quot;rom&quot;);</span>
+<span class="nc" id="L176">            rom.setCountry(&quot;Italy&quot;);</span>
+<span class="nc" id="L177">            fDao.saveAirport(rom);</span>
+
+            Airport par;
+<span class="nc" id="L180">            par = new Airport();</span>
+<span class="nc" id="L181">            par.setCity(&quot;Paris&quot;);</span>
+<span class="nc" id="L182">            par.setName(&quot;par&quot;);</span>
+<span class="nc" id="L183">            par.setCountry(&quot;France&quot;);</span>
+<span class="nc" id="L184">            fDao.saveAirport(par);</span>
+
+            Airport ber;
+<span class="nc" id="L187">            ber = new Airport();</span>
+<span class="nc" id="L188">            ber.setCity(&quot;Berlin&quot;);</span>
+<span class="nc" id="L189">            ber.setName(&quot;ber&quot;);</span>
+<span class="nc" id="L190">            ber.setCountry(&quot;Germany&quot;);</span>
+<span class="nc" id="L191">            fDao.saveAirport(ber);</span>
+
+            Airport bru;
+<span class="nc" id="L194">            bru = new Airport();</span>
+<span class="nc" id="L195">            bru.setCity(&quot;Brussel&quot;);</span>
+<span class="nc" id="L196">            bru.setName(&quot;bru&quot;);</span>
+<span class="nc" id="L197">            bru.setCountry(&quot;Belgium&quot;);</span>
+<span class="nc" id="L198">            fDao.saveAirport(bru);</span>
+
+            Airport pra;
+<span class="nc" id="L201">            pra = new Airport();</span>
+<span class="nc" id="L202">            pra.setCity(&quot;Prague&quot;);</span>
+<span class="nc" id="L203">            pra.setName(&quot;pra&quot;);</span>
+<span class="nc" id="L204">            pra.setCountry(&quot;Czech Republic&quot;);</span>
+<span class="nc" id="L205">            fDao.saveAirport(pra);</span>
+
+            Airport bern;
+<span class="nc" id="L208">            bern = new Airport();</span>
+<span class="nc" id="L209">            bern.setCity(&quot;Bern&quot;);</span>
+<span class="nc" id="L210">            bern.setName(&quot;bern&quot;);</span>
+<span class="nc" id="L211">            bern.setCountry(&quot;Switzerland&quot;);</span>
+<span class="nc" id="L212">            fDao.saveAirport(bern);</span>
+
+
+
+
+
+
+        //Debrecenbol indulok
+<span class="nc" id="L220">            Flights deb_ber1 = new Flights(&quot;deb_ber1&quot;, &quot;Debrecen&quot;, &quot;Berlin&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.20 12:00&quot;, 199.99);</span>
+<span class="nc" id="L221">            deb.addFlightToList(deb_ber1);</span>
+<span class="nc" id="L222">            fDao.saveFlight(deb_ber1);</span>
+<span class="nc" id="L223">            Flights deb_rom1 = new Flights(&quot;deb_rom1&quot;, &quot;Debrecen&quot;, &quot;Roma&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.20 14:00&quot;, 149.99);</span>
+<span class="nc" id="L224">            deb.addFlightToList(deb_rom1);</span>
+<span class="nc" id="L225">            fDao.saveFlight(deb_rom1);</span>
+<span class="nc" id="L226">            Flights deb_lon1 = new Flights(&quot;deb_lon1&quot;, &quot;Debrecen&quot;, &quot;London&quot;, &quot;Hawker Hurricane&quot;, &quot;2022.05.20 10:00&quot;, 179.99);</span>
+<span class="nc" id="L227">            deb.addFlightToList(deb_lon1);</span>
+<span class="nc" id="L228">            fDao.saveFlight(deb_lon1);</span>
+<span class="nc" id="L229">            Flights deb_bar1 = new Flights(&quot;deb_bar1&quot;, &quot;Debrecen&quot;, &quot;Barcelona&quot;, &quot;Hawker Hurricane&quot;, &quot;2022.05.20 11:00&quot;, 119.99);</span>
+<span class="nc" id="L230">            deb.addFlightToList(deb_bar1);</span>
+<span class="nc" id="L231">            fDao.saveFlight(deb_bar1);</span>
+<span class="nc" id="L232">            Flights deb_par1 = new Flights(&quot;deb_par1&quot;, &quot;Debrecen&quot;, &quot;Paris&quot;, &quot;Hawker Hurricane&quot;, &quot;2022.05.20 14:00&quot;, 169.99);</span>
+<span class="nc" id="L233">            deb.addFlightToList(deb_par1);</span>
+<span class="nc" id="L234">            fDao.saveFlight(deb_par1);</span>
+<span class="nc" id="L235">            Flights deb_vie1 = new Flights(&quot;deb_vie1&quot;, &quot;Debrecen&quot;, &quot;Vienna&quot;, &quot;Airbus A330-300&quot;, &quot;2022.05.20 16:00&quot;, 79.99);</span>
+<span class="nc" id="L236">            deb.addFlightToList(deb_vie1);</span>
+<span class="nc" id="L237">            fDao.saveFlight(deb_vie1);</span>
+<span class="nc" id="L238">            Flights deb_ams1 = new Flights(&quot;deb_ams1&quot;, &quot;Debrecen&quot;, &quot;Amsterdam&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.20 14:30&quot;, 109.99);</span>
+<span class="nc" id="L239">            deb.addFlightToList(deb_ams1);</span>
+<span class="nc" id="L240">            fDao.saveFlight(deb_ams1);</span>
+<span class="nc" id="L241">            Flights deb_pra1 = new Flights(&quot;deb_pra1&quot;, &quot;Debrecen&quot;, &quot;Prague&quot; , &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.20 14:30&quot;, 99.99);</span>
+<span class="nc" id="L242">            deb.addFlightToList(deb_pra1);</span>
+<span class="nc" id="L243">            fDao.saveFlight(deb_pra1);</span>
+<span class="nc" id="L244">            Flights deb_bern1 = new Flights(&quot;deb_bern1&quot;, &quot;Debrecen&quot;, &quot;Bern&quot; , &quot;Antonov An-12&quot;, &quot;2022.05.20 16:00&quot;, 179.99);</span>
+<span class="nc" id="L245">            deb.addFlightToList(deb_bern1);</span>
+<span class="nc" id="L246">            fDao.saveFlight(deb_bern1);</span>
+<span class="nc" id="L247">            Flights deb_ber2 = new Flights(&quot;deb_ber2&quot;, &quot;Debrecen&quot;, &quot;Berlin&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.23 12:00&quot;, 209.99);</span>
+<span class="nc" id="L248">            deb.addFlightToList(deb_ber2);</span>
+<span class="nc" id="L249">            fDao.saveFlight(deb_ber2);</span>
+<span class="nc" id="L250">            Flights deb_rom2 = new Flights(&quot;deb_rom2&quot;, &quot;Debrecen&quot;, &quot;Roma&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.22 15:00&quot;, 169.99);</span>
+<span class="nc" id="L251">            deb.addFlightToList(deb_rom2);</span>
+<span class="nc" id="L252">            fDao.saveFlight(deb_rom2);</span>
+<span class="nc" id="L253">            Flights deb_lon2 = new Flights(&quot;deb_lon2&quot;, &quot;Debrecen&quot;, &quot;London&quot;, &quot;Hawker Hurricane&quot;, &quot;2022.05.22 12:00&quot;, 179.99);</span>
+<span class="nc" id="L254">            deb.addFlightToList(deb_lon2);</span>
+<span class="nc" id="L255">            fDao.saveFlight(deb_lon2);</span>
+<span class="nc" id="L256">            Flights deb_bar2 = new Flights(&quot;deb_bar2&quot;, &quot;Debrecen&quot;, &quot;Barcelona&quot;, &quot;Hawker Hurricane&quot;, &quot;2022.05.24 16:00&quot;, 119.99);</span>
+<span class="nc" id="L257">            deb.addFlightToList(deb_bar2);</span>
+<span class="nc" id="L258">            fDao.saveFlight(deb_bar2);</span>
+<span class="nc" id="L259">            Flights deb_par2 = new Flights(&quot;deb_par2&quot;, &quot;Debrecen&quot;, &quot;Paris&quot;, &quot;Hawker Hurricane&quot;, &quot;2022.05.23 18:00&quot;, 159.99);</span>
+<span class="nc" id="L260">            deb.addFlightToList(deb_par2);</span>
+<span class="nc" id="L261">            fDao.saveFlight(deb_par2);</span>
+<span class="nc" id="L262">            Flights deb_vie2 = new Flights(&quot;deb_vie2&quot;, &quot;Debrecen&quot;, &quot;Vienna&quot;, &quot;Airbus A330-300&quot;, &quot;2022.05.25 16:00&quot;, 69.99);</span>
+<span class="nc" id="L263">            deb.addFlightToList(deb_vie2);</span>
+<span class="nc" id="L264">            fDao.saveFlight(deb_vie2);</span>
+<span class="nc" id="L265">            Flights deb_ams2 = new Flights(&quot;deb_ams2&quot;, &quot;Debrecen&quot;, &quot;Amsterdam&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.24 15:30&quot;, 209.99);</span>
+<span class="nc" id="L266">            deb.addFlightToList(deb_ams2);</span>
+<span class="nc" id="L267">            fDao.saveFlight(deb_ams2);</span>
+<span class="nc" id="L268">            Flights deb_pra2 = new Flights(&quot;deb_pra2&quot;, &quot;Debrecen&quot;, &quot;Prague&quot; , &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.23 10:00&quot;, 139.99);</span>
+<span class="nc" id="L269">            deb.addFlightToList(deb_pra2);</span>
+<span class="nc" id="L270">            fDao.saveFlight(deb_pra2);</span>
+<span class="nc" id="L271">            Flights deb_bern2 = new Flights(&quot;deb_bern2&quot;, &quot;Debrecen&quot;, &quot;Bern&quot; , &quot;Antonov An-12&quot;, &quot;2022.05.23 8:00&quot;, 229.99);</span>
+<span class="nc" id="L272">            deb.addFlightToList(deb_bern2);</span>
+<span class="nc" id="L273">            fDao.saveFlight(deb_bern2);</span>
+
+        //Londonbol indulok
+<span class="nc" id="L276">            Flights lon_deb1 = new Flights(&quot;lon_deb1&quot;, &quot;London&quot;, &quot;Debrecen&quot;, &quot;Airbus A330-300&quot;, &quot;2022.04.01 08:00&quot;, 259.99);</span>
+<span class="nc" id="L277">            lon.addFlightToList(lon_deb1);</span>
+<span class="nc" id="L278">            fDao.saveFlight(lon_deb1);</span>
+<span class="nc" id="L279">            Flights lon_par1 = new Flights(&quot;lon_par1&quot;, &quot;London&quot;, &quot;Paris&quot;, &quot;Airbus A330-300&quot;, &quot;2022.04.01 09:00&quot;, 119.99);</span>
+<span class="nc" id="L280">            lon.addFlightToList(lon_par1);</span>
+<span class="nc" id="L281">            fDao.saveFlight(lon_par1);</span>
+<span class="nc" id="L282">            Flights lon_bar1 = new Flights(&quot;lon_bar1&quot;, &quot;London&quot;, &quot;Barcelona&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.04.01 10:00&quot;, 199.99);</span>
+<span class="nc" id="L283">            lon.addFlightToList(lon_bar1);</span>
+<span class="nc" id="L284">            fDao.saveFlight(lon_bar1);</span>
+<span class="nc" id="L285">            Flights lon_ber1 = new Flights(&quot;lon_ber1&quot;, &quot;London&quot;, &quot;Berlin&quot;, &quot;Airbus A330-300&quot;, &quot;2022.04.02 11:00&quot;, 129.99);</span>
+<span class="nc" id="L286">            lon.addFlightToList(lon_ber1);</span>
+<span class="nc" id="L287">            fDao.saveFlight(lon_ber1);</span>
+<span class="nc" id="L288">            Flights lon_bud1 = new Flights(&quot;lon_par1&quot;, &quot;London&quot;, &quot;Budapest&quot;, &quot;Airbus A340-600&quot;, &quot;2022.04.02 11:30&quot;, 179.99);</span>
+<span class="nc" id="L289">            lon.addFlightToList(lon_bud1);</span>
+<span class="nc" id="L290">            fDao.saveFlight(lon_par1);</span>
+<span class="nc" id="L291">            Flights lon_vie1 = new Flights(&quot;lon_vie1&quot;, &quot;London&quot;, &quot;Vienna&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.04.02 12:00&quot;, 229.99);</span>
+<span class="nc" id="L292">            lon.addFlightToList(lon_vie1);</span>
+<span class="nc" id="L293">            fDao.saveFlight(lon_bar1);</span>
+<span class="nc" id="L294">            Flights lon_deb2 = new Flights(&quot;lon_deb2&quot;, &quot;London&quot;, &quot;Debrecen&quot;, &quot;Airbus A330-300&quot;, &quot;2022.05.12 08:00&quot;, 219.99);</span>
+<span class="nc" id="L295">            lon.addFlightToList(lon_deb2);</span>
+<span class="nc" id="L296">            fDao.saveFlight(lon_deb2);</span>
+<span class="nc" id="L297">            Flights lon_par2 = new Flights(&quot;lon_par2&quot;, &quot;London&quot;, &quot;Paris&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.13 19:00&quot;, 109.99);</span>
+<span class="nc" id="L298">            lon.addFlightToList(lon_par2);</span>
+<span class="nc" id="L299">            fDao.saveFlight(lon_par2);</span>
+<span class="nc" id="L300">            Flights lon_bar2 = new Flights(&quot;lon_bar2&quot;, &quot;London&quot;, &quot;Barcelona&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.13 11:00&quot;, 189.99);</span>
+<span class="nc" id="L301">            lon.addFlightToList(lon_bar2);</span>
+<span class="nc" id="L302">            fDao.saveFlight(lon_bar2);</span>
+<span class="nc" id="L303">            Flights lon_ber2 = new Flights(&quot;lon_ber2&quot;, &quot;London&quot;, &quot;Berlin&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.14 12:00&quot;, 139.99);</span>
+<span class="nc" id="L304">            lon.addFlightToList(lon_ber2);</span>
+<span class="nc" id="L305">            fDao.saveFlight(lon_ber2);</span>
+<span class="nc" id="L306">            Flights lon_bud2 = new Flights(&quot;lon_par2&quot;, &quot;London&quot;, &quot;Budapest&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.13 11:30&quot;, 179.99);</span>
+<span class="nc" id="L307">            lon.addFlightToList(lon_bud2);</span>
+<span class="nc" id="L308">            fDao.saveFlight(lon_par2);</span>
+<span class="nc" id="L309">            Flights lon_vie2 = new Flights(&quot;lon_vie2&quot;, &quot;London&quot;, &quot;Vienna&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.14 12:00&quot;, 209.99);</span>
+<span class="nc" id="L310">            lon.addFlightToList(lon_vie2);</span>
+<span class="nc" id="L311">            fDao.saveFlight(lon_bar2);</span>
+
+        //Amsterdambol indulok
+<span class="nc" id="L314">            Flights ams_bud1 = new Flights(&quot;ams_bud1&quot;, &quot;Amsterdam&quot;, &quot;Budapest&quot;, &quot;Boeing 747-400&quot;, &quot;2022.04.01 08:00&quot;, 149.99);</span>
+<span class="nc" id="L315">            ams.addFlightToList(ams_bud1);</span>
+<span class="nc" id="L316">            fDao.saveFlight(ams_bud1);</span>
+<span class="nc" id="L317">            Flights ams_vie1 = new Flights(&quot;ams_vie1&quot;, &quot;Amsterdam&quot;, &quot;Vienna&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.04.01 09:00&quot;, 149.99);</span>
+<span class="nc" id="L318">            ams.addFlightToList(ams_vie1);</span>
+<span class="nc" id="L319">            fDao.saveFlight(ams_vie1);</span>
+<span class="nc" id="L320">            Flights ams_lon1 = new Flights(&quot;ams_lon1&quot;, &quot;Amsterdam&quot;, &quot;London&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.20 18:00&quot;, 69.99);</span>
+<span class="nc" id="L321">            ams.addFlightToList(ams_lon1);</span>
+<span class="nc" id="L322">            fDao.saveFlight(ams_lon1);</span>
+<span class="nc" id="L323">            Flights ams_bar1 = new Flights(&quot;ams_bar1&quot;, &quot;Amsterdam&quot;, &quot;Barcelona&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.11 09:00&quot;, 129.99);</span>
+<span class="nc" id="L324">            ams.addFlightToList(ams_bar1);</span>
+<span class="nc" id="L325">            fDao.saveFlight(ams_bar1);</span>
+<span class="nc" id="L326">            Flights ams_pra1 = new Flights(&quot;ams_pra1&quot;, &quot;Amsterdam&quot;, &quot;Prague&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.11 08:00&quot;, 109.99);</span>
+<span class="nc" id="L327">            ams.addFlightToList(ams_pra1);</span>
+<span class="nc" id="L328">            fDao.saveFlight(ams_pra1);</span>
+<span class="nc" id="L329">            Flights ams_bern1 = new Flights(&quot;ams_bern1&quot;, &quot;Amsterdam&quot;, &quot;Bern&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.15 09:00&quot;, 129.99);</span>
+<span class="nc" id="L330">            ams.addFlightToList(ams_bern1);</span>
+<span class="nc" id="L331">            fDao.saveFlight(ams_bern1);</span>
+<span class="nc" id="L332">            Flights ams_bud2 = new Flights(&quot;ams_bud2&quot;, &quot;Amsterdam&quot;, &quot;Budapest&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.11 10:00&quot;, 139.99);</span>
+<span class="nc" id="L333">            ams.addFlightToList(ams_bud2);</span>
+<span class="nc" id="L334">            fDao.saveFlight(ams_bud2);</span>
+<span class="nc" id="L335">            Flights ams_vie2 = new Flights(&quot;ams_vie2&quot;, &quot;Amsterdam&quot;, &quot;Vienna&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.15 09:00&quot;, 139.99);</span>
+<span class="nc" id="L336">            ams.addFlightToList(ams_vie2);</span>
+<span class="nc" id="L337">            fDao.saveFlight(ams_vie2);</span>
+<span class="nc" id="L338">            Flights ams_lon2 = new Flights(&quot;ams_lon2&quot;, &quot;Amsterdam&quot;, &quot;London&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.20 18:00&quot;, 69.99);</span>
+<span class="nc" id="L339">            ams.addFlightToList(ams_lon2);</span>
+<span class="nc" id="L340">            fDao.saveFlight(ams_lon2);</span>
+<span class="nc" id="L341">            Flights ams_bar2 = new Flights(&quot;ams_bar2&quot;, &quot;Amsterdam&quot;, &quot;Barcelona&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.14 09:00&quot;, 129.99);</span>
+<span class="nc" id="L342">            ams.addFlightToList(ams_bar2);</span>
+<span class="nc" id="L343">            fDao.saveFlight(ams_bar2);</span>
+<span class="nc" id="L344">            Flights ams_pra2 = new Flights(&quot;ams_pra2&quot;, &quot;Amsterdam&quot;, &quot;Prague&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.14 08:00&quot;, 109.99);</span>
+<span class="nc" id="L345">            ams.addFlightToList(ams_pra2);</span>
+<span class="nc" id="L346">            fDao.saveFlight(ams_pra2);</span>
+<span class="nc" id="L347">            Flights ams_bern2 = new Flights(&quot;ams_bern2&quot;, &quot;Amsterdam&quot;, &quot;Bern&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.18 14:00&quot;, 129.99);</span>
+<span class="nc" id="L348">            ams.addFlightToList(ams_bern2);</span>
+<span class="nc" id="L349">            fDao.saveFlight(ams_bern2);</span>
+
+        //Budapestrol indulok
+<span class="nc" id="L352">            Flights bud_bar1 = new Flights(&quot;bud_bar1&quot;, &quot;Budapest&quot;, &quot;Barcelona&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.11 11:00&quot;, 189.99);</span>
+<span class="nc" id="L353">            bud.addFlightToList(bud_bar1);</span>
+<span class="nc" id="L354">            fDao.saveFlight(bud_bar1);</span>
+<span class="nc" id="L355">            Flights bud_ams1 = new Flights(&quot;bud_ams1&quot;, &quot;Budapest&quot;, &quot;Amsterdam&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.12 13:00&quot;, 159.99);</span>
+<span class="nc" id="L356">            bud.addFlightToList(bud_ams1);</span>
+<span class="nc" id="L357">            fDao.saveFlight(bud_ams1);</span>
+<span class="nc" id="L358">            Flights bud_rom1 = new Flights(&quot;bud_rom1&quot;, &quot;Budapest&quot;, &quot;Roma&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.12 16:00&quot;, 129.99);</span>
+<span class="nc" id="L359">            bud.addFlightToList(bud_rom1);</span>
+<span class="nc" id="L360">            fDao.saveFlight(bud_rom1);</span>
+<span class="nc" id="L361">            Flights bud_par1 = new Flights(&quot;bud_par1&quot;, &quot;Budapest&quot;, &quot;Paris&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.10 12:00&quot;, 169.99);</span>
+<span class="nc" id="L362">            bud.addFlightToList(bud_par1);</span>
+<span class="nc" id="L363">            fDao.saveFlight(bud_par1);</span>
+<span class="nc" id="L364">            Flights bud_ber1 = new Flights(&quot;bud_ber1&quot;, &quot;Budapest&quot;, &quot;Berlin&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.14 08:00&quot;, 169.99);</span>
+<span class="nc" id="L365">            bud.addFlightToList(bud_ber1);</span>
+<span class="nc" id="L366">            fDao.saveFlight(bud_ber1);</span>
+<span class="nc" id="L367">            Flights bud_bru1 = new Flights(&quot;bud_bru1&quot;, &quot;Budapest&quot;, &quot;Brussel&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.11 13:00&quot;, 189.99);</span>
+<span class="nc" id="L368">            bud.addFlightToList(bud_bru1);</span>
+<span class="nc" id="L369">            fDao.saveFlight(bud_bru1);</span>
+<span class="nc" id="L370">            Flights bud_bar2 = new Flights(&quot;bud_bar2&quot;, &quot;Budapest&quot;, &quot;Barcelona&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.14 13:00&quot;, 189.99);</span>
+<span class="nc" id="L371">            bud.addFlightToList(bud_bar2);</span>
+<span class="nc" id="L372">            fDao.saveFlight(bud_bar2);</span>
+<span class="nc" id="L373">            Flights bud_ams2 = new Flights(&quot;bud_ams2&quot;, &quot;Budapest&quot;, &quot;Amsterdam&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.18 13:00&quot;, 119.99);</span>
+<span class="nc" id="L374">            bud.addFlightToList(bud_ams2);</span>
+<span class="nc" id="L375">            fDao.saveFlight(bud_ams2);</span>
+<span class="nc" id="L376">            Flights bud_rom2 = new Flights(&quot;bud_rom2&quot;, &quot;Budapest&quot;, &quot;Roma&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.17 09:00&quot;, 119.99);</span>
+<span class="nc" id="L377">            bud.addFlightToList(bud_rom2);</span>
+<span class="nc" id="L378">            fDao.saveFlight(bud_rom2);</span>
+<span class="nc" id="L379">            Flights bud_par2 = new Flights(&quot;bud_par2&quot;, &quot;Budapest&quot;, &quot;Paris&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.17 15:00&quot;, 199.99);</span>
+<span class="nc" id="L380">            bud.addFlightToList(bud_par2);</span>
+<span class="nc" id="L381">            fDao.saveFlight(bud_par2);</span>
+<span class="nc" id="L382">            Flights bud_ber2 = new Flights(&quot;bud_ber2&quot;, &quot;Budapest&quot;, &quot;Berlin&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.15 18:00&quot;, 119.99);</span>
+<span class="nc" id="L383">            bud.addFlightToList(bud_ber2);</span>
+<span class="nc" id="L384">            fDao.saveFlight(bud_ber2);</span>
+<span class="nc" id="L385">            Flights bud_bru2 = new Flights(&quot;bud_bru2&quot;, &quot;Budapest&quot;, &quot;Brussel&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.17 15:00&quot;, 179.99);</span>
+<span class="nc" id="L386">            bud.addFlightToList(bud_bru2);</span>
+<span class="nc" id="L387">            fDao.saveFlight(bud_bru2);</span>
+
+        //Romabol indulok
+<span class="nc" id="L390">            Flights rom_lon1 = new Flights(&quot;rom_lon1&quot;, &quot;Rome&quot;, &quot;London&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.11 09:00&quot;, 169.99);</span>
+<span class="nc" id="L391">            rom.addFlightToList(rom_lon1);</span>
+<span class="nc" id="L392">            fDao.saveFlight(rom_lon1);</span>
+<span class="nc" id="L393">            Flights rom_bud1 = new Flights(&quot;rom_bud1&quot;, &quot;Rome&quot;, &quot;Budapest&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.12 19:00&quot;, 109.99);</span>
+<span class="nc" id="L394">            rom.addFlightToList(rom_bud1);</span>
+<span class="nc" id="L395">            fDao.saveFlight(rom_bud1);</span>
+<span class="nc" id="L396">            Flights rom_bru1 = new Flights(&quot;rom_bru1&quot;, &quot;Rome&quot;, &quot;Brussel&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.13 11:00&quot;, 189.99);</span>
+<span class="nc" id="L397">            rom.addFlightToList(rom_bru1);</span>
+<span class="nc" id="L398">            fDao.saveFlight(rom_bru1);</span>
+<span class="nc" id="L399">            Flights rom_vie1 = new Flights(&quot;rom_vie1&quot;, &quot;Rome&quot;, &quot;Vienna&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.12 15:00&quot;, 129.99);</span>
+<span class="nc" id="L400">            rom.addFlightToList(rom_vie1);</span>
+<span class="nc" id="L401">            fDao.saveFlight(rom_vie1);</span>
+<span class="nc" id="L402">            Flights rom_ber1 = new Flights(&quot;rom_ber1&quot;, &quot;Rome&quot;, &quot;Berlin&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.14 12:00&quot;, 169.99);</span>
+<span class="nc" id="L403">            rom.addFlightToList(rom_ber1);</span>
+<span class="nc" id="L404">            fDao.saveFlight(rom_ber1);</span>
+<span class="nc" id="L405">            Flights rom_pra1 = new Flights(&quot;rom_pra1&quot;, &quot;Rome&quot;, &quot;Prague&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.11 17:00&quot;, 159.99);</span>
+<span class="nc" id="L406">            rom.addFlightToList(rom_pra1);</span>
+<span class="nc" id="L407">            fDao.saveFlight(rom_pra1);</span>
+<span class="nc" id="L408">            Flights rom_lon2 = new Flights(&quot;rom_lon2&quot;, &quot;Rome&quot;, &quot;London&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.16 10:00&quot;, 159.99);</span>
+<span class="nc" id="L409">            rom.addFlightToList(rom_lon2);</span>
+<span class="nc" id="L410">            fDao.saveFlight(rom_lon2);</span>
+<span class="nc" id="L411">            Flights rom_bud2 = new Flights(&quot;rom_bud2&quot;, &quot;Rome&quot;, &quot;Budapest&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.14 15:00&quot;, 119.99);</span>
+<span class="nc" id="L412">            rom.addFlightToList(rom_bud2);</span>
+<span class="nc" id="L413">            fDao.saveFlight(rom_bud2);</span>
+<span class="nc" id="L414">            Flights rom_bru2 = new Flights(&quot;rom_bru2&quot;, &quot;Rome&quot;, &quot;Brussel&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.17 14:00&quot;, 169.99);</span>
+<span class="nc" id="L415">            rom.addFlightToList(rom_bru2);</span>
+<span class="nc" id="L416">            fDao.saveFlight(rom_bru2);</span>
+<span class="nc" id="L417">            Flights rom_vie2 = new Flights(&quot;rom_vie2&quot;, &quot;Rome&quot;, &quot;Vienna&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.19 16:00&quot;, 109.99);</span>
+<span class="nc" id="L418">            rom.addFlightToList(rom_vie2);</span>
+<span class="nc" id="L419">            fDao.saveFlight(rom_vie2);</span>
+<span class="nc" id="L420">            Flights rom_ber2 = new Flights(&quot;rom_ber2&quot;, &quot;Rome&quot;, &quot;Berlin&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.17 14:00&quot;, 159.99);</span>
+<span class="nc" id="L421">            rom.addFlightToList(rom_ber2);</span>
+<span class="nc" id="L422">            fDao.saveFlight(rom_ber2);</span>
+<span class="nc" id="L423">            Flights rom_pra2 = new Flights(&quot;rom_pra2&quot;, &quot;Rome&quot;, &quot;Prague&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.16 08:00&quot;, 139.99);</span>
+<span class="nc" id="L424">            rom.addFlightToList(rom_pra2);</span>
+<span class="nc" id="L425">            fDao.saveFlight(rom_pra2);</span>
+
+        //Viennabol indulok
+<span class="nc" id="L428">            Flights vie_deb1 = new Flights(&quot;vie_deb1&quot;, &quot;Vienna&quot;, &quot;Debrecen&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.16 08:00&quot;, 139.99);</span>
+<span class="nc" id="L429">            vie.addFlightToList(vie_deb1);</span>
+<span class="nc" id="L430">            fDao.saveFlight(vie_deb1);</span>
+<span class="nc" id="L431">            Flights vie_par1 = new Flights(&quot;vie_par1&quot;, &quot;Vienna&quot;, &quot;Paris&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.13 18:00&quot;, 159.99);</span>
+<span class="nc" id="L432">            vie.addFlightToList(vie_par1);</span>
+<span class="nc" id="L433">            fDao.saveFlight(vie_par1);</span>
+<span class="nc" id="L434">            Flights vie_ams1 = new Flights(&quot;vie_ams1&quot;, &quot;Vienna&quot;, &quot;Amsterdam&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.14 11:00&quot;, 139.99);</span>
+<span class="nc" id="L435">            vie.addFlightToList(vie_ams1);</span>
+<span class="nc" id="L436">            fDao.saveFlight(vie_ams1);</span>
+<span class="nc" id="L437">            Flights vie_lon1 = new Flights(&quot;vie_lon1&quot;, &quot;Vienna&quot;, &quot;London&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.15 15:00&quot;, 149.99);</span>
+<span class="nc" id="L438">            vie.addFlightToList(vie_lon1);</span>
+<span class="nc" id="L439">            fDao.saveFlight(vie_lon1);</span>
+<span class="nc" id="L440">            Flights vie_bar1 = new Flights(&quot;vie_bar1&quot;, &quot;Vienna&quot;, &quot;Barcelona&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.17 14:00&quot;, 189.99);</span>
+<span class="nc" id="L441">            vie.addFlightToList(vie_bar1);</span>
+<span class="nc" id="L442">            fDao.saveFlight(vie_bar1);</span>
+<span class="nc" id="L443">            Flights vie_bern1 = new Flights(&quot;vie_bern1&quot;, &quot;Vienna&quot;, &quot;Bern&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.15 12:00&quot;, 109.99);</span>
+<span class="nc" id="L444">            vie.addFlightToList(vie_bern1);</span>
+<span class="nc" id="L445">            fDao.saveFlight(vie_bern1);</span>
+<span class="nc" id="L446">            Flights vie_rom1 = new Flights(&quot;vie_rom1&quot;, &quot;Vienna&quot;, &quot;Rome&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.13 13:00&quot;, 99.99);</span>
+<span class="nc" id="L447">            vie.addFlightToList(vie_rom1);</span>
+<span class="nc" id="L448">            fDao.saveFlight(vie_rom1);</span>
+<span class="nc" id="L449">            Flights vie_deb2 = new Flights(&quot;vie_deb2&quot;, &quot;Vienna&quot;, &quot;Debrecen&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.20 18:00&quot;, 109.99);</span>
+<span class="nc" id="L450">            vie.addFlightToList(vie_deb2);</span>
+<span class="nc" id="L451">            fDao.saveFlight(vie_deb2);</span>
+<span class="nc" id="L452">            Flights vie_par2 = new Flights(&quot;vie_par2&quot;, &quot;Vienna&quot;, &quot;Paris&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.17 18:00&quot;, 149.99);</span>
+<span class="nc" id="L453">            vie.addFlightToList(vie_par2);</span>
+<span class="nc" id="L454">            fDao.saveFlight(vie_par2);</span>
+<span class="nc" id="L455">            Flights vie_ams2 = new Flights(&quot;vie_ams2&quot;, &quot;Vienna&quot;, &quot;Amsterdam&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.18 16:00&quot;, 169.99);</span>
+<span class="nc" id="L456">            vie.addFlightToList(vie_ams2);</span>
+<span class="nc" id="L457">            fDao.saveFlight(vie_ams2);</span>
+<span class="nc" id="L458">            Flights vie_lon2 = new Flights(&quot;vie_lon2&quot;, &quot;Vienna&quot;, &quot;London&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.20 12:00&quot;, 189.99);</span>
+<span class="nc" id="L459">            vie.addFlightToList(vie_lon2);</span>
+<span class="nc" id="L460">            fDao.saveFlight(vie_lon2);</span>
+<span class="nc" id="L461">            Flights vie_bar2 = new Flights(&quot;vie_bar2&quot;, &quot;Vienna&quot;, &quot;Barcelona&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.21 16:00&quot;, 199.99);</span>
+<span class="nc" id="L462">            vie.addFlightToList(vie_bar2);</span>
+<span class="nc" id="L463">            fDao.saveFlight(vie_bar2);</span>
+<span class="nc" id="L464">            Flights vie_bern2 = new Flights(&quot;vie_bern2&quot;, &quot;Vienna&quot;, &quot;Bern&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.22 10:00&quot;, 179.99);</span>
+<span class="nc" id="L465">            vie.addFlightToList(vie_bern2);</span>
+<span class="nc" id="L466">            fDao.saveFlight(vie_bern2);</span>
+<span class="nc" id="L467">            Flights vie_rom2 = new Flights(&quot;vie_rom2&quot;, &quot;Vienna&quot;, &quot;Rome&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.19 13:00&quot;, 109.99);</span>
+<span class="nc" id="L468">            vie.addFlightToList(vie_rom2);</span>
+<span class="nc" id="L469">            fDao.saveFlight(vie_rom2);</span>
+
+        //Barcelonabol indulok
+<span class="nc" id="L472">            Flights bar_deb1 = new Flights(&quot;bar_deb1&quot;, &quot;Barcelona&quot;, &quot;Debrecen&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.13 16:00&quot;, 209.99);</span>
+<span class="nc" id="L473">            bar.addFlightToList(bar_deb1);</span>
+<span class="nc" id="L474">            fDao.saveFlight(bar_deb1);</span>
+<span class="nc" id="L475">            Flights bar_lon1 = new Flights(&quot;bar_lon1&quot;, &quot;Barcelona&quot;, &quot;London&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.12 08:00&quot;, 129.99);</span>
+<span class="nc" id="L476">            bar.addFlightToList(bar_lon1);</span>
+<span class="nc" id="L477">            fDao.saveFlight(bar_lon1);</span>
+<span class="nc" id="L478">            Flights bar_pra1 = new Flights(&quot;bar_pra1&quot;, &quot;Barcelona&quot;, &quot;Prague&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.14 09:00&quot;, 169.99);</span>
+<span class="nc" id="L479">            bar.addFlightToList(bar_pra1);</span>
+<span class="nc" id="L480">            fDao.saveFlight(bar_pra1);</span>
+<span class="nc" id="L481">            Flights bar_ber1 = new Flights(&quot;bar_ber1&quot;, &quot;Barcelona&quot;, &quot;Berlin&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.16 14:00&quot;, 159.99);</span>
+<span class="nc" id="L482">            bar.addFlightToList(bar_ber1);</span>
+<span class="nc" id="L483">            fDao.saveFlight(bar_ber1);</span>
+<span class="nc" id="L484">            Flights bar_par1 = new Flights(&quot;bar_par1&quot;, &quot;Barcelona&quot;, &quot;Paris&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.12 11:00&quot;, 109.99);</span>
+<span class="nc" id="L485">            bar.addFlightToList(bar_par1);</span>
+<span class="nc" id="L486">            fDao.saveFlight(bar_par1);</span>
+<span class="nc" id="L487">            Flights bar_ams1 = new Flights(&quot;bar_ams1&quot;, &quot;Barcelona&quot;, &quot;Amsterdam&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.15 18:00&quot;, 99.99);</span>
+<span class="nc" id="L488">            bar.addFlightToList(bar_ams1);</span>
+<span class="nc" id="L489">            fDao.saveFlight(bar_ams1);</span>
+<span class="nc" id="L490">            Flights bar_deb2 = new Flights(&quot;bar_deb2&quot;, &quot;Barcelona&quot;, &quot;Debrecen&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.17 14:00&quot;, 179.99);</span>
+<span class="nc" id="L491">            bar.addFlightToList(bar_deb2);</span>
+<span class="nc" id="L492">            fDao.saveFlight(bar_deb2);</span>
+<span class="nc" id="L493">            Flights bar_lon2 = new Flights(&quot;bar_lon2&quot;, &quot;Barcelona&quot;, &quot;London&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.19 11:00&quot;, 139.99);</span>
+<span class="nc" id="L494">            bar.addFlightToList(bar_lon2);</span>
+<span class="nc" id="L495">            fDao.saveFlight(bar_lon2);</span>
+<span class="nc" id="L496">            Flights bar_pra2 = new Flights(&quot;bar_pra2&quot;, &quot;Barcelona&quot;, &quot;Prague&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.21 17:00&quot;, 149.99);</span>
+<span class="nc" id="L497">            bar.addFlightToList(bar_pra2);</span>
+<span class="nc" id="L498">            fDao.saveFlight(bar_pra2);</span>
+<span class="nc" id="L499">            Flights bar_ber2 = new Flights(&quot;bar_ber2&quot;, &quot;Barcelona&quot;, &quot;Berlin&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.22 12:00&quot;, 149.99);</span>
+<span class="nc" id="L500">            bar.addFlightToList(bar_ber2);</span>
+<span class="nc" id="L501">            fDao.saveFlight(bar_ber2);</span>
+<span class="nc" id="L502">            Flights bar_par2 = new Flights(&quot;bar_par2&quot;, &quot;Barcelona&quot;, &quot;Paris&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.18 14:00&quot;, 129.99);</span>
+<span class="nc" id="L503">            bar.addFlightToList(bar_par2);</span>
+<span class="nc" id="L504">            fDao.saveFlight(bar_par2);</span>
+<span class="nc" id="L505">            Flights bar_ams2 = new Flights(&quot;bar_ams2&quot;, &quot;Barcelona&quot;, &quot;Amsterdam&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.21 13:00&quot;, 129.99);</span>
+<span class="nc" id="L506">            bar.addFlightToList(bar_ams2);</span>
+<span class="nc" id="L507">            fDao.saveFlight(bar_ams2);</span>
+
+        //Parisbol indulok
+<span class="nc" id="L510">            Flights par_vie1 = new Flights(&quot;par_vie1&quot;, &quot;Paris&quot;, &quot;Vienna&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.11 13:00&quot;, 159.99);</span>
+<span class="nc" id="L511">            par.addFlightToList(par_vie1);</span>
+<span class="nc" id="L512">            fDao.saveFlight(par_vie1);</span>
+<span class="nc" id="L513">            Flights par_ber1 = new Flights(&quot;par_ber1&quot;, &quot;Paris&quot;, &quot;Berlin&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.12 08:00&quot;, 109.99);</span>
+<span class="nc" id="L514">            par.addFlightToList(par_ber1);</span>
+<span class="nc" id="L515">            fDao.saveFlight(par_ber1);</span>
+<span class="nc" id="L516">            Flights par_bern1 = new Flights(&quot;par_bern1&quot;, &quot;Paris&quot;, &quot;Bern&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.13 17:00&quot;, 149.99);</span>
+<span class="nc" id="L517">            par.addFlightToList(par_bern1);</span>
+<span class="nc" id="L518">            fDao.saveFlight(par_bern1);</span>
+<span class="nc" id="L519">            Flights par_pra1 = new Flights(&quot;par_pra1&quot;, &quot;Paris&quot;, &quot;Prague&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.11 14:00&quot;, 119.99);</span>
+<span class="nc" id="L520">            par.addFlightToList(par_pra1);</span>
+<span class="nc" id="L521">            fDao.saveFlight(par_pra1);</span>
+<span class="nc" id="L522">            Flights par_bud1 = new Flights(&quot;par_bud1&quot;, &quot;Paris&quot;, &quot;Budapest&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.13 08:00&quot;, 119.99);</span>
+<span class="nc" id="L523">            par.addFlightToList(par_bud1);</span>
+<span class="nc" id="L524">            fDao.saveFlight(par_bud1);</span>
+<span class="nc" id="L525">            Flights par_lon1 = new Flights(&quot;par_lon1&quot;, &quot;Paris&quot;, &quot;London&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.14 10:00&quot;, 109.99);</span>
+<span class="nc" id="L526">            par.addFlightToList(par_lon1);</span>
+<span class="nc" id="L527">            fDao.saveFlight(par_lon1);</span>
+<span class="nc" id="L528">            Flights par_vie2 = new Flights(&quot;par_vie2&quot;, &quot;Paris&quot;, &quot;Vienna&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.19 16:00&quot;, 159.99);</span>
+<span class="nc" id="L529">            par.addFlightToList(par_vie2);</span>
+<span class="nc" id="L530">            fDao.saveFlight(par_vie2);</span>
+<span class="nc" id="L531">            Flights par_ber2 = new Flights(&quot;par_ber2&quot;, &quot;Paris&quot;, &quot;Berlin&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.17 11:00&quot;, 119.99);</span>
+<span class="nc" id="L532">            par.addFlightToList(par_ber2);</span>
+<span class="nc" id="L533">            fDao.saveFlight(par_ber2);</span>
+<span class="nc" id="L534">            Flights par_bern2 = new Flights(&quot;par_bern2&quot;, &quot;Paris&quot;, &quot;Bern&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.21 13:00&quot;, 169.99);</span>
+<span class="nc" id="L535">            par.addFlightToList(par_bern2);</span>
+<span class="nc" id="L536">            fDao.saveFlight(par_bern2);</span>
+<span class="nc" id="L537">            Flights par_pra2 = new Flights(&quot;par_pra2&quot;, &quot;Paris&quot;, &quot;Prague&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.15 17:00&quot;, 129.99);</span>
+<span class="nc" id="L538">            par.addFlightToList(par_pra2);</span>
+<span class="nc" id="L539">            fDao.saveFlight(par_pra2);</span>
+<span class="nc" id="L540">            Flights par_bud2 = new Flights(&quot;par_bud2&quot;, &quot;Paris&quot;, &quot;Budapest&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.22 14:00&quot;, 129.99);</span>
+<span class="nc" id="L541">            par.addFlightToList(par_bud2);</span>
+<span class="nc" id="L542">            fDao.saveFlight(par_bud2);</span>
+<span class="nc" id="L543">            Flights par_lon2 = new Flights(&quot;par_lon2&quot;, &quot;Paris&quot;, &quot;London&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.19 11:00&quot;, 89.99);</span>
+<span class="nc" id="L544">            par.addFlightToList(par_lon2);</span>
+<span class="nc" id="L545">            fDao.saveFlight(par_lon2);</span>
+
+        //Berlinbol indulok
+<span class="nc" id="L548">            Flights ber_pra1 = new Flights(&quot;ber_pra1&quot;, &quot;Berlin&quot;, &quot;Prague&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.12 15:00&quot;, 119.99);</span>
+<span class="nc" id="L549">            ber.addFlightToList(ber_pra1);</span>
+<span class="nc" id="L550">            fDao.saveFlight(ber_pra1);</span>
+<span class="nc" id="L551">            Flights ber_deb1 = new Flights(&quot;ber_deb1&quot;, &quot;Berlin&quot;, &quot;Debrecen&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.12 11:00&quot;, 149.99);</span>
+<span class="nc" id="L552">            ber.addFlightToList(ber_deb1);</span>
+<span class="nc" id="L553">            fDao.saveFlight(ber_deb1);</span>
+<span class="nc" id="L554">            Flights ber_bud1 = new Flights(&quot;ber_bud1&quot;, &quot;Berlin&quot;, &quot;Budapest&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.13 17:00&quot;, 149.99);</span>
+<span class="nc" id="L555">            ber.addFlightToList(ber_bud1);</span>
+<span class="nc" id="L556">            fDao.saveFlight(ber_bud1);</span>
+<span class="nc" id="L557">            Flights ber_bar1 = new Flights(&quot;ber_bar1&quot;, &quot;Berlin&quot;, &quot;Barcelona&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.14 10:00&quot;, 179.99);</span>
+<span class="nc" id="L558">            ber.addFlightToList(ber_bar1);</span>
+<span class="nc" id="L559">            fDao.saveFlight(ber_bar1);</span>
+<span class="nc" id="L560">            Flights ber_bru1 = new Flights(&quot;ber_bru1&quot;, &quot;Berlin&quot;, &quot;Brussel&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.11 09:00&quot;, 59.99);</span>
+<span class="nc" id="L561">            ber.addFlightToList(ber_bru1);</span>
+<span class="nc" id="L562">            fDao.saveFlight(ber_bru1);</span>
+<span class="nc" id="L563">            Flights ber_rom1 = new Flights(&quot;ber_rom1&quot;, &quot;Berlin&quot;, &quot;Rome&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.13 19:00&quot;, 159.99);</span>
+<span class="nc" id="L564">            ber.addFlightToList(ber_rom1);</span>
+<span class="nc" id="L565">            fDao.saveFlight(ber_rom1);</span>
+<span class="nc" id="L566">            Flights ber_pra2 = new Flights(&quot;ber_pra2&quot;, &quot;Berlin&quot;, &quot;Prague&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.17 17:00&quot;, 129.99);</span>
+<span class="nc" id="L567">            ber.addFlightToList(ber_pra2);</span>
+<span class="nc" id="L568">            fDao.saveFlight(ber_pra2);</span>
+<span class="nc" id="L569">            Flights ber_deb2 = new Flights(&quot;ber_deb2&quot;, &quot;Berlin&quot;, &quot;Debrecen&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.21 18:00&quot;, 149.99);</span>
+<span class="nc" id="L570">            ber.addFlightToList(ber_deb2);</span>
+<span class="nc" id="L571">            fDao.saveFlight(ber_deb2);</span>
+<span class="nc" id="L572">            Flights ber_bud2 = new Flights(&quot;ber_bud2&quot;, &quot;Berlin&quot;, &quot;Budapest&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.19 12:00&quot;, 179.99);</span>
+<span class="nc" id="L573">            ber.addFlightToList(ber_bud2);</span>
+<span class="nc" id="L574">            fDao.saveFlight(ber_bud2);</span>
+<span class="nc" id="L575">            Flights ber_bar2 = new Flights(&quot;ber_bar2&quot;, &quot;Berlin&quot;, &quot;Barcelona&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.21 17:00&quot;, 109.99);</span>
+<span class="nc" id="L576">            ber.addFlightToList(ber_bar2);</span>
+<span class="nc" id="L577">            fDao.saveFlight(ber_bar2);</span>
+<span class="nc" id="L578">            Flights ber_bru2 = new Flights(&quot;ber_bru2&quot;, &quot;Berlin&quot;, &quot;Brussel&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.19 19:00&quot;, 79.99);</span>
+<span class="nc" id="L579">            ber.addFlightToList(ber_bru2);</span>
+<span class="nc" id="L580">            fDao.saveFlight(ber_bru2);</span>
+<span class="nc" id="L581">            Flights ber_rom2 = new Flights(&quot;ber_rom2&quot;, &quot;Berlin&quot;, &quot;Rome&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.22 12:00&quot;, 139.99);</span>
+<span class="nc" id="L582">            ber.addFlightToList(ber_rom2);</span>
+<span class="nc" id="L583">            fDao.saveFlight(ber_rom2);</span>
+
+        //Brusselbol indulok
+<span class="nc" id="L586">            Flights bru_ber1 = new Flights(&quot;bru_ber1&quot;, &quot;Brussel&quot;, &quot;Berlin&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.13 15:00&quot;, 59.99);</span>
+<span class="nc" id="L587">            bru.addFlightToList(bru_ber1);</span>
+<span class="nc" id="L588">            fDao.saveFlight(bru_ber1);</span>
+<span class="nc" id="L589">            Flights bru_bud1 = new Flights(&quot;bru_bud1&quot;, &quot;Brussel&quot;, &quot;Budapest&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.14 12:00&quot;, 159.99);</span>
+<span class="nc" id="L590">            bru.addFlightToList(bru_bud1);</span>
+<span class="nc" id="L591">            fDao.saveFlight(bru_bud1);</span>
+<span class="nc" id="L592">            Flights bru_bar1 = new Flights(&quot;bru_ber1&quot;, &quot;Brussel&quot;, &quot;Barcelona&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.11 11:00&quot;, 129.99);</span>
+<span class="nc" id="L593">            bru.addFlightToList(bru_bar1);</span>
+<span class="nc" id="L594">            fDao.saveFlight(bru_bar1);</span>
+<span class="nc" id="L595">            Flights bru_lon1 = new Flights(&quot;bru_lon1&quot;, &quot;Brussel&quot;, &quot;London&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.12 08:00&quot;, 49.99);</span>
+<span class="nc" id="L596">            bru.addFlightToList(bru_lon1);</span>
+<span class="nc" id="L597">            fDao.saveFlight(bru_lon1);</span>
+<span class="nc" id="L598">            Flights bru_vie1 = new Flights(&quot;bru_vie1&quot;, &quot;Brussel&quot;, &quot;Vienna&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.14 09:30&quot;, 149.99);</span>
+<span class="nc" id="L599">            bru.addFlightToList(bru_vie1);</span>
+<span class="nc" id="L600">            fDao.saveFlight(bru_vie1);</span>
+<span class="nc" id="L601">            Flights bru_bern1 = new Flights(&quot;bru_bern1&quot;, &quot;Brussel&quot;, &quot;Bern&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.11 14:00&quot;, 139.99);</span>
+<span class="nc" id="L602">            bru.addFlightToList(bru_bern1);</span>
+<span class="nc" id="L603">            fDao.saveFlight(bru_bern1);</span>
+<span class="nc" id="L604">            Flights bru_ber2 = new Flights(&quot;bru_ber2&quot;, &quot;Brussel&quot;, &quot;Berlin&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.16 13:00&quot;, 69.99);</span>
+<span class="nc" id="L605">            bru.addFlightToList(bru_ber2);</span>
+<span class="nc" id="L606">            fDao.saveFlight(bru_ber2);</span>
+<span class="nc" id="L607">            Flights bru_bud2 = new Flights(&quot;bru_bud2&quot;, &quot;Brussel&quot;, &quot;Budapest&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.17 14:00&quot;, 139.99);</span>
+<span class="nc" id="L608">            bru.addFlightToList(bru_bud2);</span>
+<span class="nc" id="L609">            fDao.saveFlight(bru_bud2);</span>
+<span class="nc" id="L610">            Flights bru_bar2 = new Flights(&quot;bru_bar2&quot;, &quot;Brussel&quot;, &quot;Barcelona&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.17 12:00&quot;, 119.99);</span>
+<span class="nc" id="L611">            bru.addFlightToList(bru_bar2);</span>
+<span class="nc" id="L612">            fDao.saveFlight(bru_bar2);</span>
+<span class="nc" id="L613">            Flights bru_lon2 = new Flights(&quot;bru_lon2&quot;, &quot;Brussel&quot;, &quot;London&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.21 08:00&quot;, 59.99);</span>
+<span class="nc" id="L614">            bru.addFlightToList(bru_lon2);</span>
+<span class="nc" id="L615">            fDao.saveFlight(bru_lon2);</span>
+<span class="nc" id="L616">            Flights bru_vie2 = new Flights(&quot;bru_vie2&quot;, &quot;Brussel&quot;, &quot;Vienna&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.22 09:30&quot;, 159.99);</span>
+<span class="nc" id="L617">            bru.addFlightToList(bru_vie2);</span>
+<span class="nc" id="L618">            fDao.saveFlight(bru_vie2);</span>
+<span class="nc" id="L619">            Flights bru_bern2 = new Flights(&quot;bru_bern2&quot;, &quot;Brussel&quot;, &quot;Bern&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.18 17:00&quot;, 129.99);</span>
+<span class="nc" id="L620">            bru.addFlightToList(bru_bern2);</span>
+<span class="nc" id="L621">            fDao.saveFlight(bru_bern2);</span>
+
+        //Bernbol indulok
+<span class="nc" id="L624">            Flights bern_deb1 = new Flights(&quot;bern_deb1&quot;, &quot;Bern&quot;, &quot;Debrecen&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.11 08:00&quot;, 159.99);</span>
+<span class="nc" id="L625">            bern.addFlightToList(bern_deb1);</span>
+<span class="nc" id="L626">            fDao.saveFlight(bern_deb1);</span>
+<span class="nc" id="L627">            Flights bern_lon1 = new Flights(&quot;bern_lon1&quot;, &quot;Bern&quot;, &quot;London&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.12 10:00&quot;, 139.99);</span>
+<span class="nc" id="L628">            bern.addFlightToList(bern_lon1);</span>
+<span class="nc" id="L629">            fDao.saveFlight(bern_lon1);</span>
+<span class="nc" id="L630">            Flights bern_bar1 = new Flights(&quot;bern_bar1&quot;, &quot;Bern&quot;, &quot;Barcelona&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.14 18:00&quot;, 179.99);</span>
+<span class="nc" id="L631">            bern.addFlightToList(bern_bar1);</span>
+<span class="nc" id="L632">            fDao.saveFlight(bern_bar1);</span>
+<span class="nc" id="L633">            Flights bern_pra1 = new Flights(&quot;bern_pra1&quot;, &quot;Bern&quot;, &quot;Prague&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.13 12:00&quot;, 209.99);</span>
+<span class="nc" id="L634">            bern.addFlightToList(bern_pra1);</span>
+<span class="nc" id="L635">            fDao.saveFlight(bern_pra1);</span>
+<span class="nc" id="L636">            Flights bern_rom1 = new Flights(&quot;bern_rom1&quot;, &quot;Bern&quot;, &quot;Rome&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.15 14:00&quot;, 189.99);</span>
+<span class="nc" id="L637">            bern.addFlightToList(bern_rom1);</span>
+<span class="nc" id="L638">            fDao.saveFlight(bern_rom1);</span>
+<span class="nc" id="L639">            Flights bern_ams1 = new Flights(&quot;bern_ams1&quot;, &quot;Bern&quot;, &quot;Amsterdam&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.14 15:00&quot;, 139.99);</span>
+<span class="nc" id="L640">            bern.addFlightToList(bern_ams1);</span>
+<span class="nc" id="L641">            fDao.saveFlight(bern_ams1);</span>
+<span class="nc" id="L642">            Flights bern_deb2 = new Flights(&quot;bern_deb2&quot;, &quot;Bern&quot;, &quot;Debrecen&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.16 11:00&quot;, 169.99);</span>
+<span class="nc" id="L643">            bern.addFlightToList(bern_deb2);</span>
+<span class="nc" id="L644">            fDao.saveFlight(bern_deb2);</span>
+<span class="nc" id="L645">            Flights bern_lon2 = new Flights(&quot;bern_lon2&quot;, &quot;Bern&quot;, &quot;London&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.21 16:00&quot;, 169.99);</span>
+<span class="nc" id="L646">            bern.addFlightToList(bern_lon2);</span>
+<span class="nc" id="L647">            fDao.saveFlight(bern_lon2);</span>
+<span class="nc" id="L648">            Flights bern_bar2 = new Flights(&quot;bern_bar2&quot;, &quot;Bern&quot;, &quot;Barcelona&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.19 15:00&quot;, 169.99);</span>
+<span class="nc" id="L649">            bern.addFlightToList(bern_bar2);</span>
+<span class="nc" id="L650">            fDao.saveFlight(bern_bar2);</span>
+<span class="nc" id="L651">            Flights bern_pra2 = new Flights(&quot;bern_pra2&quot;, &quot;Bern&quot;, &quot;Prague&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.23 16:00&quot;, 229.99);</span>
+<span class="nc" id="L652">            bern.addFlightToList(bern_pra2);</span>
+<span class="nc" id="L653">            fDao.saveFlight(bern_pra2);</span>
+<span class="nc" id="L654">            Flights bern_rom2 = new Flights(&quot;bern_rom2&quot;, &quot;Bern&quot;, &quot;Rome&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.25 09:00&quot;, 179.99);</span>
+<span class="nc" id="L655">            bern.addFlightToList(bern_rom2);</span>
+<span class="nc" id="L656">            fDao.saveFlight(bern_rom2);</span>
+<span class="nc" id="L657">            Flights bern_ams2 = new Flights(&quot;bern_ams2&quot;, &quot;Bern&quot;, &quot;Amsterdam&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.17 12:00&quot;, 169.99);</span>
+<span class="nc" id="L658">            bern.addFlightToList(bern_ams2);</span>
+<span class="nc" id="L659">            fDao.saveFlight(bern_ams2);</span>
+
+        //Praguebol indulok
+<span class="nc" id="L662">            Flights pra_bud1 = new Flights(&quot;pra_bud1&quot;, &quot;Prague&quot;, &quot;Budapest&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.13 13:00&quot;, 139.99);</span>
+<span class="nc" id="L663">            pra.addFlightToList(pra_bud1);</span>
+<span class="nc" id="L664">            fDao.saveFlight(pra_bud1);</span>
+<span class="nc" id="L665">            Flights pra_lon1 = new Flights(&quot;pra_lon1&quot;, &quot;Prague&quot;, &quot;London&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.14 08:00&quot;, 159.99);</span>
+<span class="nc" id="L666">            pra.addFlightToList(pra_lon1);</span>
+<span class="nc" id="L667">            fDao.saveFlight(pra_lon1);</span>
+<span class="nc" id="L668">            Flights pra_ber1 = new Flights(&quot;pra_ber1&quot;, &quot;Prague&quot;, &quot;Berlin&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.12 17:00&quot;, 179.99);</span>
+<span class="nc" id="L669">            pra.addFlightToList(pra_ber1);</span>
+<span class="nc" id="L670">            fDao.saveFlight(pra_ber1);</span>
+<span class="nc" id="L671">            Flights pra_vie1 = new Flights(&quot;pra_vie1&quot;, &quot;Prague&quot;, &quot;Vienna&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.15 07:00&quot;, 119.99);</span>
+<span class="nc" id="L672">            pra.addFlightToList(pra_vie1);</span>
+<span class="nc" id="L673">            fDao.saveFlight(pra_vie1);</span>
+<span class="nc" id="L674">            Flights pra_deb1 = new Flights(&quot;pra_deb1&quot;, &quot;Prague&quot;, &quot;Debrecen&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.13 16:00&quot;, 129.99);</span>
+<span class="nc" id="L675">            pra.addFlightToList(pra_deb1);</span>
+<span class="nc" id="L676">            fDao.saveFlight(pra_deb1);</span>
+<span class="nc" id="L677">            Flights pra_bern1 = new Flights(&quot;pra_bern1&quot;, &quot;Prague&quot;, &quot;Bern&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.11 10:00&quot;, 149.99);</span>
+<span class="nc" id="L678">            pra.addFlightToList(pra_bern1);</span>
+<span class="nc" id="L679">            fDao.saveFlight(pra_bern1);</span>
+<span class="nc" id="L680">            Flights pra_rom1 = new Flights(&quot;pra_rom1&quot;, &quot;Prague&quot;, &quot;Roma&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.14 13:00&quot;, 129.99);</span>
+<span class="nc" id="L681">            pra.addFlightToList(pra_rom1);</span>
+<span class="nc" id="L682">            fDao.saveFlight(pra_rom1);</span>
+<span class="nc" id="L683">            Flights pra_bud2 = new Flights(&quot;pra_bud2&quot;, &quot;Prague&quot;, &quot;Budapest&quot;, &quot;Fairchild-Dornier 328JET&quot;, &quot;2022.05.17 15:00&quot;, 149.99);</span>
+<span class="nc" id="L684">            pra.addFlightToList(pra_bud2);</span>
+<span class="nc" id="L685">            fDao.saveFlight(pra_bud2);</span>
+<span class="nc" id="L686">            Flights pra_lon2 = new Flights(&quot;pra_lon2&quot;, &quot;Prague&quot;, &quot;London&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.18 18:00&quot;, 109.99);</span>
+<span class="nc" id="L687">            pra.addFlightToList(pra_lon2);</span>
+<span class="nc" id="L688">            fDao.saveFlight(pra_lon2);</span>
+<span class="nc" id="L689">            Flights pra_ber2 = new Flights(&quot;pra_ber2&quot;, &quot;Prague&quot;, &quot;Berlin&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.21 13:00&quot;, 169.99);</span>
+<span class="nc" id="L690">            pra.addFlightToList(pra_ber2);</span>
+<span class="nc" id="L691">            fDao.saveFlight(pra_ber2);</span>
+<span class="nc" id="L692">            Flights pra_vie2 = new Flights(&quot;pra_vie2&quot;, &quot;Prague&quot;, &quot;Vienna&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.24 08:00&quot;, 129.99);</span>
+<span class="nc" id="L693">            pra.addFlightToList(pra_vie2);</span>
+<span class="nc" id="L694">            fDao.saveFlight(pra_vie2);</span>
+<span class="nc" id="L695">            Flights pra_deb2 = new Flights(&quot;pra_deb2&quot;, &quot;Prague&quot;, &quot;Debrecen&quot;, &quot;Boeing 747-400&quot;, &quot;2022.05.21 13:00&quot;, 149.99);</span>
+<span class="nc" id="L696">            pra.addFlightToList(pra_deb2);</span>
+<span class="nc" id="L697">            fDao.saveFlight(pra_deb2);</span>
+<span class="nc" id="L698">            Flights pra_bern2 = new Flights(&quot;pra_bern2&quot;, &quot;Prague&quot;, &quot;Bern&quot;, &quot;British Aerospace ATP&quot;, &quot;2022.05.18 11:00&quot;, 129.99);</span>
+<span class="nc" id="L699">            pra.addFlightToList(pra_bern2);</span>
+<span class="nc" id="L700">            fDao.saveFlight(pra_bern2);</span>
+<span class="nc" id="L701">            Flights pra_rom2 = new Flights(&quot;pra_rom2&quot;, &quot;Prague&quot;, &quot;Roma&quot;, &quot;Antonov An-12&quot;, &quot;2022.05.22 15:00&quot;, 159.99);</span>
+<span class="nc" id="L702">            pra.addFlightToList(pra_rom2);</span>
+<span class="nc" id="L703">            fDao.saveFlight(pra_rom2);</span>
+
+            //megoltem magam kozbe
+
+
+
+            //System.out.println(fDao.getFlights());
+            //System.out.println(fDao.getFlightsBy_start_city());
+            //System.out.println(fDao.findWith_start_city(&quot;Debrecen&quot;));
+            //System.out.println(fDao.findWith_start_and_destination_city(&quot;Debrecen&quot;));
+
+<span class="nc" id="L714">        } catch (Exception e) {</span>
+<span class="nc" id="L715">            e.printStackTrace();</span>
+<span class="nc" id="L716">        }</span>
+<span class="nc" id="L717">    }</span>
+
+    private static void startDatabase() throws SQLException {
+<span class="nc" id="L720">        new Server().runTool(&quot;-tcp&quot;, &quot;-web&quot;, &quot;-ifNotExists&quot;);</span>
+<span class="nc" id="L721">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

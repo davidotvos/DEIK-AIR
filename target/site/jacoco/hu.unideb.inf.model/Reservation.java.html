@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Reservation.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DEIKAIR</a> &gt; <a href="index.source.html" class="el_package">hu.unideb.inf.model</a> &gt; <span class="el_source">Reservation.java</span></div><h1>Reservation.java</h1><pre class="source lang-java linenums">package hu.unideb.inf.model;
+
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
+public class Reservation {
+    private String startCity;
+    private String destCity;
+    private String startTime;
+    private int numberOfTickets;
+    private boolean firstClass;
+    private double price;
+
+    public String getStartCity() {
+<span class="nc" id="L17">        return startCity;</span>
+    }
+
+    public void setStartCity(String startCity) {
+<span class="nc" id="L21">        this.startCity = startCity;</span>
+<span class="nc" id="L22">    }</span>
+
+    public String getDestCity() {
+<span class="nc" id="L25">        return destCity;</span>
+    }
+
+    public void setDestCity(String destCity) {
+<span class="nc" id="L29">        this.destCity = destCity;</span>
+<span class="nc" id="L30">    }</span>
+
+    public String getStartTime() {
+<span class="nc" id="L33">        return startTime;</span>
+    }
+
+    public void setStartTime(String startTime) {
+<span class="nc" id="L37">        this.startTime = startTime;</span>
+<span class="nc" id="L38">    }</span>
+
+    public Integer getNumberOfTickets() {
+<span class="nc" id="L41">        return numberOfTickets;</span>
+    }
+
+    public void setNumberOfTickets(Integer numberOfTickets) {
+<span class="nc" id="L45">        this.numberOfTickets = numberOfTickets;</span>
+<span class="nc" id="L46">    }</span>
+
+    public Boolean getFirstClass() {
+<span class="nc" id="L49">        return firstClass;</span>
+    }
+
+    public void setFirstClass(Boolean firstClass) {
+<span class="nc" id="L53">        this.firstClass = firstClass;</span>
+<span class="nc" id="L54">    }</span>
+
+    public Double getPrice() {
+<span class="nc" id="L57">        return price;</span>
+    }
+
+    public void setPrice(Double price) {
+<span class="nc" id="L61">        this.price = price;</span>
+<span class="nc" id="L62">    }</span>
+
+<span class="nc" id="L64">    public Reservation(String startCity, String destCity, String startTime, Integer numberOfTickets, Boolean firstClass, Double price) {</span>
+<span class="nc" id="L65">        this.startCity = startCity;</span>
+<span class="nc" id="L66">        this.destCity = destCity;</span>
+<span class="nc" id="L67">        this.startTime = startTime;</span>
+<span class="nc" id="L68">        this.numberOfTickets = numberOfTickets;</span>
+<span class="nc" id="L69">        this.firstClass = firstClass;</span>
+<span class="nc" id="L70">        this.price = price;</span>
+<span class="nc" id="L71">    }</span>
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

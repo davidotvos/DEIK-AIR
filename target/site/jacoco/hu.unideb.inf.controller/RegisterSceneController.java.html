@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RegisterSceneController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DEIKAIR</a> &gt; <a href="index.source.html" class="el_package">hu.unideb.inf.controller</a> &gt; <span class="el_source">RegisterSceneController.java</span></div><h1>RegisterSceneController.java</h1><pre class="source lang-java linenums">package hu.unideb.inf.controller;
+import hu.unideb.inf.model.Customer;
+import hu.unideb.inf.model.CustomerDAO;
+import hu.unideb.inf.model.JpaCustomerDAO;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Objects;
+
+<span class="nc" id="L16">public class RegisterSceneController {</span>
+
+    @FXML
+    private TextField emailLabel;
+
+    @FXML
+    private PasswordField pwConfirmLabel;
+
+    @FXML
+    private TextField userLabel;
+
+    @FXML
+    private PasswordField pwLabel;
+
+    @FXML
+    private Label registerErrorLabel;
+
+    @FXML
+    private CheckBox tcLabel;
+
+    @FXML
+    private Button backButton;
+
+    @FXML
+    private Button registerButton;
+
+    @FXML
+    void register(ActionEvent event) throws IOException {
+<span class="nc" id="L44">        Alert warningAlert = new Alert(Alert.AlertType.WARNING);</span>
+<span class="nc" id="L45">        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        if(CredentialChecker(warningAlert)){</span>
+<span class="nc" id="L47">            RegisterUser();</span>
+<span class="nc" id="L48">            successAlert.setTitle(&quot;Regisztráció&quot;);</span>
+<span class="nc" id="L49">            successAlert.setContentText(&quot;Sikeresen regisztráltál!&quot;);</span>
+<span class="nc" id="L50">            successAlert.showAndWait();</span>
+<span class="nc" id="L51">            toLogin(event);</span>
+        }
+<span class="nc" id="L53">    }</span>
+
+    @FXML
+     void toLogin(ActionEvent event) throws IOException {
+<span class="nc" id="L57">        Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(&quot;/FXML/MainScene.fxml&quot;)));</span>
+<span class="nc" id="L58">        Stage currentStage = (Stage) backButton.getScene().getWindow();</span>
+<span class="nc" id="L59">        currentStage.getScene().setRoot(newRoot);</span>
+<span class="nc" id="L60">    }</span>
+
+    private void RegisterUser(){
+<span class="nc" id="L63">        String name = userLabel.getText();</span>
+<span class="nc" id="L64">        String email = emailLabel.getText();</span>
+<span class="nc" id="L65">        String pw = pwLabel.getText();</span>
+
+<span class="nc" id="L67">        try( CustomerDAO cDao = new JpaCustomerDAO()){</span>
+<span class="nc" id="L68">            Customer CurrentCustomer = new Customer();</span>
+<span class="nc" id="L69">            CurrentCustomer.setName(name);</span>
+<span class="nc" id="L70">            CurrentCustomer.setEmail(email);</span>
+<span class="nc" id="L71">            CurrentCustomer.setPassword(pw);</span>
+<span class="nc" id="L72">            cDao.saveCustomer(CurrentCustomer);</span>
+<span class="nc" id="L73">        } catch (Exception e) {</span>
+<span class="nc" id="L74">            e.printStackTrace();</span>
+<span class="nc" id="L75">        }</span>
+<span class="nc" id="L76">    }</span>
+
+    //megnézzük , hogy mindegyik adat helyes
+    private boolean CredentialChecker(Alert alert)
+    {
+<span class="nc" id="L81">        alert.setTitle(&quot;Hiba&quot;);</span>
+<span class="nc" id="L82">        alert.setHeaderText(&quot;Az alábbi hibába ütköztél:&quot;);</span>
+<span class="nc" id="L83">        String alertText = &quot;&quot;;</span>
+<span class="nc" id="L84">        boolean Stimmel = true;</span>
+
+        // Ellenőrzi hogy egyik mező sem üres.
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        if(!checkIfLabelsEmpty()){</span>
+<span class="nc" id="L88">            alertText += &quot;Az összes mező kitöltése kötelező!\n&quot;;</span>
+<span class="nc" id="L89">            Stimmel = false;</span>
+        }
+
+        // Ellenőrzi hogy az felhasználónév szabad-e
+<span class="nc bnc" id="L93" title="All 2 branches missed.">        if(!checkIfUsernameIsFree(userLabel.getText())){</span>
+<span class="nc" id="L94">            alertText += &quot;Ez a felhasználónév már foglalt!\n&quot;;</span>
+<span class="nc" id="L95">            Stimmel = false;</span>
+        }
+
+        // Ellenőrzi hogy az e-mail cím szabad-e
+<span class="nc bnc" id="L99" title="All 2 branches missed.">        if(!checkIfEmailIsFree(emailLabel.getText())){</span>
+<span class="nc" id="L100">            alertText += &quot;Ez az e-mail cím már foglalt!\n&quot;;</span>
+<span class="nc" id="L101">            Stimmel = false;</span>
+        }
+
+        // Email cím helyes-e
+<span class="nc bnc" id="L105" title="All 2 branches missed.">        if(!emailLabel.getText().contains(&quot;@&quot;)){</span>
+<span class="nc" id="L106">            alertText += &quot;E-mail cím nem tartalmaz @ karaktert!\n&quot;;</span>
+<span class="nc" id="L107">            Stimmel = false;</span>
+        }
+
+        // Jelszó legalább 3 karakter hosszú
+<span class="nc bnc" id="L111" title="All 2 branches missed.">        if(!checkIfPasswordCorrect()){</span>
+<span class="nc" id="L112">            alertText += &quot;Jelszó hossz minimum 3 karakter!\n&quot;;</span>
+<span class="nc" id="L113">            Stimmel = false;</span>
+        }
+
+        // Ellenőrzi hogy a két jelszó eggyezik-e
+<span class="nc bnc" id="L117" title="All 2 branches missed.">        if(!checkIfPasswordsMatch()){</span>
+<span class="nc" id="L118">            alertText += &quot;A jelszavak nem eggyeznek!\n&quot;;</span>
+<span class="nc" id="L119">            Stimmel = false;</span>
+        }
+
+        // Terms and conditions check
+<span class="nc bnc" id="L123" title="All 2 branches missed.">        if(!tcLabel.isSelected()){</span>
+<span class="nc" id="L124">            alertText += &quot;Feltételek nincsenek elfogadva!\n&quot;;</span>
+<span class="nc" id="L125">            Stimmel = false;</span>
+        }
+
+<span class="nc bnc" id="L128" title="All 2 branches missed.">        if(!Stimmel) {</span>
+<span class="nc" id="L129">            alert.setContentText(alertText);</span>
+<span class="nc" id="L130">            alert.showAndWait();</span>
+<span class="nc" id="L131">            return false;</span>
+        }
+<span class="nc" id="L133">        return true;</span>
+    }
+
+    // True ha az összes mező ki van töltve, más esetben False
+    private boolean checkIfLabelsEmpty(){
+<span class="nc bnc" id="L138" title="All 2 branches missed.">        if(userLabel.getText().isEmpty()){</span>
+<span class="nc" id="L139">            return false;</span>
+        }
+<span class="nc bnc" id="L141" title="All 2 branches missed.">        if(emailLabel.getText().isEmpty()){</span>
+<span class="nc" id="L142">            return false;</span>
+        }
+<span class="nc bnc" id="L144" title="All 2 branches missed.">        if(pwLabel.getText().isEmpty()){</span>
+<span class="nc" id="L145">            return false;</span>
+        }
+<span class="nc bnc" id="L147" title="All 2 branches missed.">        return !pwConfirmLabel.getText().isEmpty();</span>
+    }
+
+    // True ha a felhasználónév szabad, más esetben False
+    private boolean checkIfUsernameIsFree(String name){
+<span class="nc" id="L152">        try( CustomerDAO cDao = new JpaCustomerDAO()){</span>
+<span class="nc" id="L153">            List&lt;Customer&gt; templi = cDao.getCustomers();</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">            for(Customer c : templi){</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">                if(Objects.equals(c.getName(), name))</span>
+                {
+<span class="nc" id="L157">                    return false;</span>
+                }
+<span class="nc" id="L159">            }</span>
+<span class="nc" id="L160">        } catch (Exception e) {</span>
+<span class="nc" id="L161">            e.printStackTrace();</span>
+<span class="nc" id="L162">        }</span>
+<span class="nc" id="L163">        return true;</span>
+    }
+
+    // True ha az email cím szabad, más esetben False
+    private boolean checkIfEmailIsFree(String email){
+<span class="nc" id="L168">        try( CustomerDAO cDao = new JpaCustomerDAO()){</span>
+<span class="nc" id="L169">            List&lt;Customer&gt; templi = cDao.getCustomers();</span>
+<span class="nc bnc" id="L170" title="All 2 branches missed.">            for(Customer c : templi){</span>
+<span class="nc bnc" id="L171" title="All 2 branches missed.">                if(Objects.equals(c.getEmail(), email))</span>
+                {
+<span class="nc" id="L173">                    return false;</span>
+                }
+<span class="nc" id="L175">            }</span>
+<span class="nc" id="L176">        } catch (Exception e) {</span>
+<span class="nc" id="L177">            e.printStackTrace();</span>
+<span class="nc" id="L178">        }</span>
+<span class="nc" id="L179">        return true;</span>
+    }
+
+    private boolean checkIfPasswordsMatch(){
+<span class="nc" id="L183">        return pwLabel.getText().equals(pwConfirmLabel.getText());</span>
+    }
+
+    private boolean checkIfPasswordCorrect(){
+<span class="nc bnc" id="L187" title="All 2 branches missed.">        return pwLabel.getText().length() &gt;= 3;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

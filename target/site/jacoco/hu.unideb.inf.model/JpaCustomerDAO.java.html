@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JpaCustomerDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DEIKAIR</a> &gt; <a href="index.source.html" class="el_package">hu.unideb.inf.model</a> &gt; <span class="el_source">JpaCustomerDAO.java</span></div><h1>JpaCustomerDAO.java</h1><pre class="source lang-java linenums">package hu.unideb.inf.model;
+
+import javax.persistence.*;
+import java.util.List;
+import java.util.Objects;
+
+<span class="nc" id="L7">public class JpaCustomerDAO implements CustomerDAO{</span>
+
+<span class="nc" id="L9">    final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(&quot;br.com.flights&quot;);</span>
+<span class="nc" id="L10">    final EntityManager entityManager = entityManagerFactory.createEntityManager();</span>
+
+    @Override
+    public void saveCustomer(Customer c)
+    {
+<span class="nc" id="L15">        entityManager.getTransaction().begin();</span>
+<span class="nc" id="L16">        entityManager.persist(c);</span>
+<span class="nc" id="L17">        entityManager.getTransaction().commit();</span>
+<span class="nc" id="L18">    }</span>
+
+    @Override
+    public void deleteCustomer(Customer c)
+    {
+<span class="nc" id="L23">        entityManager.getTransaction().begin();</span>
+<span class="nc" id="L24">        entityManager.remove(c);</span>
+<span class="nc" id="L25">        entityManager.getTransaction().commit();</span>
+<span class="nc" id="L26">    }</span>
+
+    @Override
+    public void updateCustomer(Customer c) {
+<span class="nc" id="L30">        saveCustomer(c);</span>
+<span class="nc" id="L31">    }</span>
+
+    @Override
+    public List&lt;Customer&gt; getCustomers() {
+<span class="nc" id="L35">        TypedQuery&lt;Customer&gt; query = entityManager.createQuery(</span>
+                &quot;SELECT c FROM Customer c&quot;, Customer.class);
+<span class="nc" id="L37">        List&lt;Customer&gt; customers = query.getResultList();</span>
+<span class="nc" id="L38">        return customers;</span>
+    }
+
+    public String getCustomerPass(String userID)
+    {
+<span class="nc" id="L43">        String myquery  = &quot;SELECT PASSWORD FROM CUSTOMER WHERE NAME = '&quot; + userID + &quot;'&quot;;</span>
+<span class="nc" id="L44">        String pass = entityManager.createNativeQuery(myquery).getSingleResult().toString();</span>
+
+<span class="nc" id="L46">        return pass;</span>
+    }
+
+    @Override
+    public void close() throws Exception {
+<span class="nc" id="L51">        entityManager.close();</span>
+<span class="nc" id="L52">        entityManagerFactory.close();</span>
+<span class="nc" id="L53">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

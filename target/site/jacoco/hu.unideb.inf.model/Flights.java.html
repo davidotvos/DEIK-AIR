@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Flights.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DEIKAIR</a> &gt; <a href="index.source.html" class="el_package">hu.unideb.inf.model</a> &gt; <span class="el_source">Flights.java</span></div><h1>Flights.java</h1><pre class="source lang-java linenums">package hu.unideb.inf.model;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+public class Flights implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    private String name;
+    private String start_city;
+    private String destination_city;
+    private String plane_type;
+    private String start_time;
+    private Double price;
+
+<span class="nc" id="L20">    public Flights() {</span>
+<span class="nc" id="L21">    }</span>
+
+
+
+<span class="nc" id="L25">    public Flights(String name, String start_city, String destination_city, String plane_type, String start_time, Double price) {</span>
+
+<span class="nc" id="L27">        this.name = name;</span>
+<span class="nc" id="L28">        this.start_city = start_city;</span>
+<span class="nc" id="L29">        this.destination_city = destination_city;</span>
+<span class="nc" id="L30">        this.plane_type = plane_type;</span>
+<span class="nc" id="L31">        this.start_time = start_time;</span>
+<span class="nc" id="L32">        this.price = price;</span>
+
+<span class="nc" id="L34">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L38">        return &quot;Flight: &quot; +</span>
+                &quot;id= &quot; + id +
+                &quot;, name= &quot; + name +
+                &quot;, start_city= &quot; + start_city +
+                &quot;, destination_city= &quot; + destination_city +
+                &quot;, plane_type= &quot; + plane_type +
+                &quot;, start_time= &quot; + start_time +
+                &quot;, price= &quot; + price +
+                &quot;;\n&quot;;
+    }
+<span class="nc" id="L48">    public Double getPrice() {return price;}</span>
+
+<span class="nc" id="L50">    public void setPrice(Double price) {this.price = price;}</span>
+
+<span class="nc" id="L52">    public String getStart_city() { return start_city; }</span>
+
+<span class="nc" id="L54">    public String getDestination_city() { return destination_city; }</span>
+
+<span class="nc" id="L56">    public String getPlane_type() { return plane_type; }</span>
+
+    public int getId() {
+<span class="nc" id="L59">        return id;</span>
+    }
+
+    public String getName() {
+<span class="nc" id="L63">        return name;</span>
+    }
+
+<span class="nc" id="L66">    public String getStart_time() { return start_time; }</span>
+
+    public void setId(int id) {
+<span class="nc" id="L69">        this.id = id;</span>
+<span class="nc" id="L70">    }</span>
+
+<span class="nc" id="L72">    public void setStart_time(String start_time) { this.start_time = start_time; }</span>
+
+    public void setName(String name) {
+<span class="nc" id="L75">        this.name = name;</span>
+<span class="nc" id="L76">    }</span>
+
+<span class="nc" id="L78">    public void setStart_city(String start_city) { this.start_city = start_city; }</span>
+
+<span class="nc" id="L80">    public void setDestination_city(String destination_city) { this.destination_city = destination_city; }</span>
+
+<span class="nc" id="L82">    public void setPlane_type(String plane_type) { this.plane_type = plane_type; }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
