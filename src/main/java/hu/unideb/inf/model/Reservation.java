@@ -69,6 +69,14 @@ public class Reservation {
         this.firstClass = firstClass;
         this.price = price;
     }
+
+    public static double FirstClassPrice(double basePrice){
+        return basePrice * 2;
+    }
+    public static double BaseClassPrice(double basePrice){
+        return basePrice / 2;
+    }
+
 }
 
 

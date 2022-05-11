@@ -1,10 +1,7 @@
 package hu.unideb.inf.controller;
 
 import hu.unideb.inf.MainApp;
-import hu.unideb.inf.model.Flights;
-import hu.unideb.inf.model.JpaReservationsDAO;
-import hu.unideb.inf.model.Reservations;
-import hu.unideb.inf.model.ReservationsDAO;
+import hu.unideb.inf.model.*;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -123,8 +120,9 @@ public class ReservePageController implements Initializable {
         double newPrice = Double.parseDouble(Price.getText().substring(1));
         if(FirstClassCheckbox.isSelected())
         {
-            newPrice = newPrice * 2;
-        }else newPrice = newPrice / 2;
+            newPrice = Reservation.FirstClassPrice(newPrice);
+        }else newPrice = Reservation.BaseClassPrice(newPrice);
+
         Price.setText(MainApp.CURRENCY + newPrice);
     }
 
