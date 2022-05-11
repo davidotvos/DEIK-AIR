@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1150.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.SearchFlightsSceneController">
+   <children>
+      <BorderPane layoutX="6.0" layoutY="6.0" prefHeight="800.0" prefWidth="390.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="760.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefHeight="650.0" prefWidth="350.0" styleClass="rightbar" stylesheets="@../values/searchstyle.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="320.0">
+                     <children>
+                        <Button fx:id="BackFromSearchPageButton" mnemonicParsing="false" onAction="#handleBackFromSearchPageButton">
+                           <HBox.margin>
+                              <Insets right="60.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView blendMode="DARKEN" fitHeight="47.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                 <image>
+                                    <Image url="@../img/blackarrow.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label prefHeight="46.0" prefWidth="122.0" styleClass="shadow" stylesheets="@../values/searchstyle.css" text="DEIK-Air" textFill="#104eea">
+                           <font>
+                              <Font name="Cambria Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="55.0" prefWidth="350.0">
+                     <children>
+                        <CheckBox fx:id="StartCheckbox" mnemonicParsing="false" prefHeight="18.0" prefWidth="132.0" styleClass="shadow" stylesheets="@../values/searchstyle.css" text="Start City ">
+                           <font>
+                              <Font name="Cambria" size="16.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="DestinationCheckbox" mnemonicParsing="false" prefHeight="22.0" prefWidth="142.0" styleClass="shadow" stylesheets="@../values/searchstyle.css" text="Destination City">
+                           <font>
+                              <Font name="Cambria" size="16.0" />
+                           </font>
+                        </CheckBox>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="28.0" prefWidth="378.0" />
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="358.0" stylesheets="@../values/searchstyle.css">
+                     <children>
+                        <TextField fx:id="SearchTextField" prefHeight="38.0" prefWidth="226.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../values/searchstyle.css">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextField>
+                        <Pane prefHeight="54.0" prefWidth="30.0" />
+                        <Button fx:id="SearchButton" mnemonicParsing="false" onAction="#HandleSearchButton" prefHeight="42.0" prefWidth="84.0" stylesheets="@../values/searchstyle.css" text="Search " textFill="WHITE">
+                           <font>
+                              <Font name="Cambria Bold Italic" size="16.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="search-button" />
+                              <String fx:value="small-shadow" />
+                           </styleClass>
+                           <effect>
+                              <Glow level="0.49" />
+                           </effect>
+                        </Button>
+                     </children>
+                     <styleClass>
+                        <String fx:value="search-box" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Pane prefHeight="49.0" prefWidth="378.0" VBox.vgrow="ALWAYS" />
+                  <VBox prefHeight="426.0" prefWidth="363.0" stylesheets="@../values/searchstyle.css">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="43.0" prefWidth="348.0" stylesheets="@../values/searchstyle.css">
+                           <children>
+                              <Label prefHeight="43.0" prefWidth="82.0" text="Flight:">
+                                 <font>
+                                    <Font name="Cambria" size="27.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                           <styleClass>
+                              <String fx:value="flight-box-title" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="52.0" prefWidth="330.0">
+                           <children>
+                              <Label fx:id="LeftBarFromCity" prefHeight="47.0" prefWidth="138.0" text="FromCity">
+                                 <font>
+                                    <Font name="Cambria Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ImageView blendMode="DARKEN" fitHeight="52.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/blackarrow.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="LeftBarToCityLabel" prefHeight="52.0" prefWidth="139.0" text="ToCity">
+                                 <font>
+                                    <Font name="Cambria Bold Italic" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="FromCityPictures" fitHeight="168.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/paris.jpg" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="ToCityPicture" fitHeight="160.0" fitWidth="197.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/budapest.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="54.0" prefWidth="348.0">
+                           <children>
+                              <Label text="Departure time:">
+                                 <font>
+                                    <Font name="Cambria" size="20.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="LeftBarStartTimeLabel" prefHeight="26.0" prefWidth="190.0" text="2022.04.25. 12:00" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria Bold" size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" prefHeight="53.0" prefWidth="348.0">
+                           <children>
+                              <Label text="PriceFrom:  ">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="LeftBarPriceFromLabel" prefHeight="30.0" prefWidth="114.0" text="\$119" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="348.0">
+                           <children>
+                              <Button fx:id="ReserveButton" mnemonicParsing="false" onAction="#HandleReserveButton" prefHeight="64.0" prefWidth="207.0" stylesheets="@../values/searchstyle.css" text="Reserve Now!" textAlignment="CENTER" textFill="#0804c7">
+                                 <font>
+                                    <Font name="Cambria" size="20.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="shadow" />
+                                    <String fx:value="reserve-button" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <styleClass>
+                        <String fx:value="flight-box" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </VBox>
+                  <Pane prefHeight="59.0" prefWidth="378.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </left>
+      </BorderPane>
+      <VBox layoutX="382.0" prefHeight="800.0" prefWidth="682.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="106.0" prefWidth="575.0">
+               <children>
+                  <Label prefHeight="83.0" prefWidth="390.0" text="Debrecen&#9; Budapest    Vienna    London&#10;Barcelona    Amsterdam    Rome   Paris&#10;Berlin   Brussel    Bern   Prague&#10;">
+                     <font>
+                        <Font name="Cambria Bold Italic" size="19.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="MyAccount" mnemonicParsing="false" onAction="#HandleMyAccountButton" prefHeight="42.0" prefWidth="153.0" stylesheets="@../values/searchstyle.css" text="myAccount" textFill="WHITE">
+                     <font>
+                        <Font name="Cambria Bold Italic" size="16.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="search-button" />
+                        <String fx:value="small-shadow" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <VBox prefHeight="690.0" prefWidth="682.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <ScrollPane fx:id="scroll" prefHeight="692.0" prefWidth="682.0" styleClass="transparent" stylesheets="@../values/searchstyle.css">
+                     <content>
+                        <GridPane fx:id="grid" prefHeight="18.0" prefWidth="12.0">
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

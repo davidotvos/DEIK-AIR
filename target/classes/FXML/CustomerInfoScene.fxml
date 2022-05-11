@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="490.0" prefWidth="739.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.CustomerInfoSceneController">
+<children>
+      <AnchorPane layoutX="238.0" layoutY="31.0">
+         <children>
+            <Label prefHeight="40.0" prefWidth="157.0" text="Felhasználónév:" underline="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="UserLabel" layoutX="134.0" layoutY="7.0" prefHeight="26.0" prefWidth="126.0" text="Teszt Elek">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="238.0" layoutY="71.0" prefHeight="27.0" prefWidth="186.0">
+         <children>
+            <Label text="E-mail:" underline="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="EmailLabel" layoutX="64.0" layoutY="2.0" prefHeight="18.0" prefWidth="176.0" text="test@test.com">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="backButton" layoutX="23.0" layoutY="432.0" mnemonicParsing="false" onAction="#toHomeScene" prefHeight="27.0" prefWidth="80.0" styleClass="search-button" text="Vissza" textFill="WHITE">
+         <font>
+            <Font name="Cambria" size="18.0" />
+         </font>
+      </Button>
+      <TableView fx:id="ReservationTable" layoutX="26.0" layoutY="119.0" prefHeight="290.0" prefWidth="686.0" stylesheets="@../values/tableview.css">
+        <columns>
+          <TableColumn fx:id="startColumn" prefWidth="110.39993286132812" text="Start" />
+          <TableColumn fx:id="destColumn" prefWidth="111.99998474121094" text="Destination" />
+            <TableColumn fx:id="startTimeColumn" prefWidth="96.0" text="Start" />
+            <TableColumn fx:id="ticketsColumn" prefWidth="57.5999755859375" text="Tickets" />
+            <TableColumn fx:id="firstclassColumn" prefWidth="64.0" text="First Class" />
+            <TableColumn fx:id="priceColumn" prefWidth="70.39996337890625" text="Price (€)" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+</children>
+</AnchorPane>
