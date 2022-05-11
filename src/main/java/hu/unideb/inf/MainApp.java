@@ -48,7 +48,7 @@ public class MainApp extends Application {
     }
 
     public static void startDB() throws Exception {
-        startDatabase();
+        //startDatabase();
 
         //AddFlights();
         //AddCustomer();

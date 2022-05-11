@@ -36,26 +36,43 @@ public class LoginSceneConroller {
     @FXML
     private TextField userLabel;
 
+    private boolean usernameExists(String name){
+        JpaCustomerDAO loginDAO = new JpaCustomerDAO();
+        try( CustomerDAO cDao = new JpaCustomerDAO()){
+            List<Customer> templi = cDao.getCustomers();
+            for(Customer c : templi){
+                if(Objects.equals(c.getName(), name))
+                {
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     @FXML
     void login(ActionEvent event) throws IOException{
 
         JpaCustomerDAO loginDAO = new JpaCustomerDAO();
-        String pass = loginDAO.getCustomerPass(userLabel.getText());
+        if(usernameExists(userLabel.getText())){
+            String pass = loginDAO.getCustomerPass(userLabel.getText());
 
-        //ha a lekért jelszó megegyezik a megadottal akkor bent van a user
-        if(pass.equals(pwLabel.getText()))
-        {
 
-            // Customer beállítása belépésnél
-            MainApp.LoggedInCustomer = MainApp.getCustomerObject(userLabel.getText());
-            Parent newRoot = FXMLLoader.load(getClass().getResource("/FXML/HomeScene.fxml"));
-            Stage currentStage = (Stage) backButton.getScene().getWindow();
-            currentStage.getScene().setRoot(newRoot);
+            //ha a lekért jelszó megegyezik a megadottal akkor bent van a user
+            if(pass.equals(pwLabel.getText()))
+            {
 
+                // Customer beállítása belépésnél
+                MainApp.LoggedInCustomer = MainApp.getCustomerObject(userLabel.getText());
+                Parent newRoot = FXMLLoader.load(getClass().getResource("/FXML/HomeScene.fxml"));
+                Stage currentStage = (Stage) backButton.getScene().getWindow();
+                currentStage.getScene().setRoot(newRoot);
+            }
         }
+
         else{
-            System.out.println("hibás felhasználónév/jeleszó!");
             Alert hiba = new Alert(Alert.AlertType.WARNING);
             hiba.setTitle("Hiba");
             hiba.setHeaderText("Az alábbi hibába ütköztél:");

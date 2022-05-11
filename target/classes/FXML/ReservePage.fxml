@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.ReservePageController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml" fx:controller="hu.unideb.inf.controller.ReservePageController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="414.0" prefWidth="653.0">
          <children>

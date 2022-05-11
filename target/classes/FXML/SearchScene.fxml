@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1150.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.SearchFlightsSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1150.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml" fx:controller="hu.unideb.inf.controller.SearchFlightsSceneController">
    <children>
       <BorderPane layoutX="6.0" layoutY="6.0" prefHeight="800.0" prefWidth="390.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="760.0" AnchorPane.topAnchor="0.0">
          <left>
