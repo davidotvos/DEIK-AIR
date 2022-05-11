@@ -39,7 +39,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="490.0" prefWidth="739.0" styleClass="right-bar" stylesheets="@../values/searchstyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.CustomerInfoSceneController">
 <children>
       <AnchorPane layoutX="238.0" layoutY="31.0">
@@ -75,7 +74,7 @@
             <Font name="Cambria" size="18.0" />
          </font>
       </Button>
-      <TableView fx:id="ReservationTable" layoutX="26.0" layoutY="119.0" prefHeight="290.0" prefWidth="686.0">
+      <TableView fx:id="ReservationTable" layoutX="26.0" layoutY="119.0" prefHeight="290.0" prefWidth="686.0" stylesheets="@../values/tableview.css">
         <columns>
           <TableColumn fx:id="startColumn" prefWidth="110.39993286132812" text="Start" />
           <TableColumn fx:id="destColumn" prefWidth="111.99998474121094" text="Destination" />
