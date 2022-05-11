@@ -137,6 +137,7 @@ public class ReservePageController implements Initializable {
             r.setStart_time(f.getStart_time());
             r.setNumberOfTickets(Integer.parseInt(Tickets.getSelectionModel().getSelectedItem().toString()));
             r.setPrice(Double.parseDouble(Price.getText().substring(1)));
+            r.setFirstClass(FirstClassCheckbox.isSelected());
             r.setCustomerName(MainApp.LoggedInCustomer.getName());
             rDao.saveReservation(r);
         }

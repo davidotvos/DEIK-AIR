@@ -49,7 +49,6 @@ public class LoginSceneConroller {
 
             // Customer beállítása belépésnél
             MainApp.LoggedInCustomer = MainApp.getCustomerObject(userLabel.getText());
-
             Parent newRoot = FXMLLoader.load(getClass().getResource("/FXML/HomeScene.fxml"));
             Stage currentStage = (Stage) backButton.getScene().getWindow();
             currentStage.getScene().setRoot(newRoot);
