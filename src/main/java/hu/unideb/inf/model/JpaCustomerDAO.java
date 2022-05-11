@@ -6,8 +6,6 @@ import java.util.Objects;
 
 public class JpaCustomerDAO implements CustomerDAO{
 
-    Customer LoggedInCustomer = null;
-
     final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("br.com.flights");
     final EntityManager entityManager = entityManagerFactory.createEntityManager();
 
@@ -47,23 +45,6 @@ public class JpaCustomerDAO implements CustomerDAO{
 
         return pass;
     }
-
-
-    // Jelenleg bejelentkezett customer beállítása
-    public void SetLoggedInCustomer(String userID){
-        try( CustomerDAO cDao = new JpaCustomerDAO()){
-            List<Customer> templi = cDao.getCustomers();
-            for(Customer c : templi){
-                if(Objects.equals(c.getName(), userID))
-                {
-                    LoggedInCustomer = c;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 
     @Override
     public void close() throws Exception {

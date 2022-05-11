@@ -1,5 +1,6 @@
 package hu.unideb.inf.controller;
 
+import hu.unideb.inf.MainApp;
 import hu.unideb.inf.model.JpaCustomerDAO;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
@@ -27,6 +28,9 @@ import java.util.ResourceBundle;
 public class HomeSceneController implements Initializable {
 
     @FXML
+    private Label welcomeLabel;
+
+    @FXML
     private Button MyAccount;
 
     @FXML
@@ -46,8 +50,7 @@ public class HomeSceneController implements Initializable {
 
     @FXML
     void handleHomeLogoutButtonPushed(ActionEvent event) throws IOException {
-        JpaCustomerDAO loginDAO = new JpaCustomerDAO();
-        loginDAO.SetLoggedInCustomer(null);
+        MainApp.LoggedInCustomer = null;
         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
         successAlert.setTitle("Logout");
         successAlert.setContentText("Sikeresen kijelentkeztél!");
@@ -72,6 +75,8 @@ public class HomeSceneController implements Initializable {
     void toCustomerScene(ActionEvent event) throws IOException {
         Parent newRoot = FXMLLoader.load(getClass().getResource("/FXML/CustomerInfoScene.fxml"));
         Stage currentStage = (Stage) MyAccount.getScene().getWindow();
+        currentStage.setHeight(515);
+        currentStage.setWidth(750);
         currentStage.getScene().setRoot(newRoot);
     }
 
@@ -79,8 +84,8 @@ public class HomeSceneController implements Initializable {
     void toSearch(ActionEvent event) throws IOException {
         Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/SearchScene.fxml")));
         Stage currentStage = (Stage) searchButton.getScene().getWindow();
-        currentStage.setMinHeight(600);
-        currentStage.setMinWidth(900);
+        //currentStage.setMinHeight(600);
+        //currentStage.setMinWidth(900);
         currentStage.setHeight(750);
         currentStage.setWidth(1100);
         currentStage.setTitle("Search Page");
@@ -115,9 +120,9 @@ public class HomeSceneController implements Initializable {
 
 
         ArrayList<Image> images = new ArrayList<>();
-        images.add(new Image("img/homepagepic1.jpg"));
         //images.add(new Image("img/homepagepic2.jpg"));
         images.add(new Image("img/homepagepic3.jpg"));
+        images.add(new Image("img/homepagepic1.jpg"));
         images.add(new Image("img/homepagepic4.jpg"));
         images.add(new Image("img/homepagepic5.jpg"));
 
@@ -135,7 +140,8 @@ public class HomeSceneController implements Initializable {
 
         @Override
         public void initialize(URL location, ResourceBundle resources){
-            slideshow();
+        welcomeLabel.setText("Welcome " + MainApp.LoggedInCustomer.getName());
+        slideshow();
         }
     }
 

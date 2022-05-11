@@ -9,6 +9,7 @@
         <class>hu.unideb.inf.model.Customer</class>
         <class>hu.unideb.inf.model.Flights</class>
         <class>hu.unideb.inf.model.Airport</class>
+        <class>hu.unideb.inf.model.Reservations</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>

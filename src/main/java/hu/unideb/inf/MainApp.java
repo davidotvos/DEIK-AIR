@@ -1,6 +1,8 @@
 package hu.unideb.inf;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
+
 import hu.unideb.inf.controller.MainSceneController;
 import hu.unideb.inf.model.*;
 import javafx.application.Application;
@@ -17,6 +19,7 @@ import org.h2.tools.Server;
 public class MainApp extends Application {
 
     public static final String CURRENCY = "€";
+    public static Customer LoggedInCustomer = null;
 
     Stage window;
     @Override
@@ -31,7 +34,7 @@ public class MainApp extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws Exception {
         try {
             startDB();
 
@@ -42,13 +45,15 @@ public class MainApp extends Application {
         launch(args);
     }
 
-    public static void startDB() throws SQLException{
+    public static void startDB() throws Exception {
         startDatabase();
 
         //AddFlights();
         //AddCustomer();
 
         //DeleteCustomer();
+        //AddReservation();
+
 
         System.out.println("Open your browser and navigate to http://localhost:8082/");
         System.out.println("JDBC URL: jdbc:h2:file:~/my_database");
@@ -57,6 +62,21 @@ public class MainApp extends Application {
 
 
 
+    }
+
+    public static Customer getCustomerObject(String name){
+        try( CustomerDAO cDao = new JpaCustomerDAO()){
+            List<Customer> templi = cDao.getCustomers();
+            for(Customer c : templi){
+                if(Objects.equals(c.getName(), name))
+                {
+                    return c;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private static void AddCustomer(){
@@ -78,13 +98,27 @@ public class MainApp extends Application {
             Customer temp = new Customer();
             for(Customer c : templi){
                 System.out.println(c.getName());
-                if(c.getId() == 20){
+                if(c.getId() == 39){
                     temp = c;
                 }
                 cDao.deleteCustomer(temp);
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void AddReservation() throws Exception {
+        try (ReservationsDAO rDao = new JpaReservationsDAO()){
+            Reservations elso;
+            elso = new Reservations();
+            elso.setStart_city("Debrecen");
+            elso.setDestination_city("London");
+            elso.setStart_time("2022.05.10. 12:00");
+            elso.setNumberOfTickets(5);
+            elso.setPrice(500.0);
+            elso.setCustomerName("admin");
+            rDao.saveReservation(elso);
         }
     }
 

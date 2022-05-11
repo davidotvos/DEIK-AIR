@@ -1,5 +1,8 @@
 package hu.unideb.inf.controller;
 
+import hu.unideb.inf.MainApp;
+import hu.unideb.inf.model.Customer;
+import hu.unideb.inf.model.CustomerDAO;
 import hu.unideb.inf.model.JpaCustomerDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +17,8 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import javax.swing.text.html.ImageView;
 import java.io.IOException;
+import java.util.List;
+import java.util.Objects;
 
 public class LoginSceneConroller {
     @FXML
@@ -34,7 +39,6 @@ public class LoginSceneConroller {
 
     @FXML
     void login(ActionEvent event) throws IOException{
-        System.out.println("Hello");
 
         JpaCustomerDAO loginDAO = new JpaCustomerDAO();
         String pass = loginDAO.getCustomerPass(userLabel.getText());
@@ -42,8 +46,10 @@ public class LoginSceneConroller {
         //ha a lekért jelszó megegyezik a megadottal akkor bent van a user
         if(pass.equals(pwLabel.getText()))
         {
-            loginDAO.SetLoggedInCustomer(userLabel.getText());
-            System.out.println(userLabel.getText());
+
+            // Customer beállítása belépésnél
+            MainApp.LoggedInCustomer = MainApp.getCustomerObject(userLabel.getText());
+
             Parent newRoot = FXMLLoader.load(getClass().getResource("/FXML/HomeScene.fxml"));
             Stage currentStage = (Stage) backButton.getScene().getWindow();
             currentStage.getScene().setRoot(newRoot);
