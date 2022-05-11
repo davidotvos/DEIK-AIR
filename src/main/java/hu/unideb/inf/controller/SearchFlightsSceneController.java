@@ -97,8 +97,14 @@ public class SearchFlightsSceneController implements Initializable {
     }
 
     @FXML
-    void HandleMyAccountButton(ActionEvent event) {
-
+    void HandleMyAccountButton(ActionEvent event) throws IOException {
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/FXML/CustomerInfoScene.fxml"));
+        Stage currentStage = (Stage) MyAccount.getScene().getWindow();
+        currentStage.setHeight(515);
+        currentStage.setWidth(750);
+        currentStage.setX(300);
+        currentStage.setY(200);
+        currentStage.getScene().setRoot(newRoot);
     }
 
     @FXML
@@ -155,13 +161,12 @@ public class SearchFlightsSceneController implements Initializable {
         Parent newRoot = FXMLLoader.load(getClass().getResource("/FXML/HomeScene.fxml"));
         Stage currentStage = (Stage) BackFromSearchPageButton.getScene().getWindow();
         currentStage.getScene().setRoot(newRoot);
-<<<<<<< HEAD
-        currentStage.setWidth(650);
-        currentStage.setHeight(460);
-=======
+
+
+
         currentStage.setHeight(437.6000061035156);
         currentStage.setWidth(614.4000244140625);
->>>>>>> 9c4e70f44c230131f23208c938af5e3d6a5e3556
+
         currentStage.setX(300);
         currentStage.setY(200);
     }

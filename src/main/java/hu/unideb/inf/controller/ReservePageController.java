@@ -85,12 +85,7 @@ public class ReservePageController implements Initializable {
     }
 
     @FXML
-<<<<<<< HEAD
-    void handleReserveButton(ActionEvent event) {
-
-=======
     void handleReserveButton(ActionEvent event) throws Exception {
->>>>>>> 9c4e70f44c230131f23208c938af5e3d6a5e3556
         if(iWillPayCheckbox.isSelected() && !Tickets.getSelectionModel().isEmpty())
         {
             AddReservation(this_flight);
@@ -152,9 +147,6 @@ public class ReservePageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Integer> Ticket_number_list = FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9);
         Tickets.setItems(Ticket_number_list);
-<<<<<<< HEAD
 
-=======
->>>>>>> 9c4e70f44c230131f23208c938af5e3d6a5e3556
     }
 }
