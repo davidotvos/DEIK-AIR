@@ -2,6 +2,9 @@ package hu.unideb.inf.controller;
 
 import hu.unideb.inf.MainApp;
 import hu.unideb.inf.model.Flights;
+import hu.unideb.inf.model.JpaReservationsDAO;
+import hu.unideb.inf.model.Reservations;
+import hu.unideb.inf.model.ReservationsDAO;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -82,14 +85,22 @@ public class ReservePageController implements Initializable {
     }
 
     @FXML
-    void handleReserveButton(ActionEvent event) {
-<<<<<<< HEAD
+    void handleReserveButton(ActionEvent event) throws Exception {
         if(iWillPayCheckbox.isSelected() && !Tickets.getSelectionModel().isEmpty())
         {
+            AddReservation(this_flight);
             Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
             successAlert.setTitle("Reservation Done");
             successAlert.setContentText("You successfully reserved this flight, you have to pay: " + Price.getText());
             successAlert.show();
+            Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/SearchScene.fxml")));
+            Stage currentStage = (Stage) reserveButton.getScene().getWindow();
+            currentStage.setHeight(750);
+            currentStage.setWidth(1100);
+            currentStage.setTitle("Search Page");
+            currentStage.setX(0);
+            currentStage.setY(0);
+            currentStage.getScene().setRoot(newRoot);
         }else
         {
             Alert warningAlert = new Alert(Alert.AlertType.WARNING);
@@ -117,11 +128,23 @@ public class ReservePageController implements Initializable {
         Price.setText(MainApp.CURRENCY + newPrice);
     }
 
+    private void AddReservation(Flights f) throws Exception {
+        try (ReservationsDAO rDao = new JpaReservationsDAO()){
+            Reservations r;
+            r = new Reservations();
+            r.setStart_city(f.getStart_city());
+            r.setDestination_city(f.getDestination_city());
+            r.setStart_time(f.getStart_time());
+            r.setNumberOfTickets(Integer.parseInt(Tickets.getSelectionModel().getSelectedItem().toString()));
+            r.setPrice(Double.parseDouble(Price.getText().substring(1)));
+            r.setCustomerName(MainApp.LoggedInCustomer.getName());
+            rDao.saveReservation(r);
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Integer> Ticket_number_list = FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9);
         Tickets.setItems(Ticket_number_list);
-=======
->>>>>>> 99365d62cfa3410c60ec4553f1ea20da54592622
     }
 }
